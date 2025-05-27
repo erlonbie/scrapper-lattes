@@ -4,13 +4,16 @@ A Python web scraper for extracting researcher information from the CNPq Lattes 
 
 ## Features
 
-- Search for researchers by keywords (default: "metodos formais")
-- Extract basic information from search results
-- Get detailed information from individual researcher CV pages
-- Save all data to a SQLite database
-- Respectful scraping with delays between requests
-- Comprehensive logging
-- Error handling and recovery
+- **Multi-term search**: Automatically searches for 10 formal methods related terms in both Portuguese and English
+- **Threaded processing**: Uses multiple threads for faster data collection
+- **Duplicate prevention**: Ensures no researcher is saved twice in the database
+- **Comprehensive coverage**: Searches for terms like "Formal Methods", "Model Checking", "Theorem Proving", etc.
+- **Smart term merging**: Tracks which search terms found each researcher
+- **Extract detailed information** from individual researcher CV pages
+- **SQLite database** with thread-safe operations
+- **Respectful scraping** with appropriate delays between requests
+- **Comprehensive logging** and error handling
+- **Interactive data viewer** with statistics and search capabilities
 
 ## Installation
 
@@ -67,9 +70,11 @@ uv run view-results    # View scraped data
 
 This will:
 
-- Search for "metodos formais"
-- Scrape up to 3 pages of results (30 researchers)
-- Get detailed information for each researcher
+- Search for 10 formal methods related terms in Portuguese and English
+- Use 8 threads for faster processing
+- Scrape up to 2 pages per term (20 researchers per term)
+- Remove duplicates automatically
+- Get detailed information for each unique researcher
 - Save everything to `cnpq_researchers.db`
 
 ### Customization
@@ -90,12 +95,22 @@ def main():
 
 ### Search Terms
 
-The scraper can handle different search terms. Examples:
+The scraper automatically searches for these formal methods related terms:
 
-- "metodos formais" (formal methods)
-- "inteligencia artificial" (artificial intelligence)
-- "machine learning"
-- "verificacao formal" (formal verification)
+**Portuguese & English pairs:**
+
+- Métodos Formais / Formal Methods
+- Verificação Formal / Formal Verification
+- Verificação de Modelos / Model Checking
+- Prova de Teoremas / Theorem Proving
+- Lógica Temporal / Temporal Logic
+- Análise Estática / Static Analysis
+- Verificação de Programas / Program Verification
+- Linguagens de Especificação / Specification Languages
+- Raciocínio Automatizado / Automated Reasoning
+- Semântica Formal / Formal Semantics
+
+You can customize these terms by modifying the `SEARCH_TERMS` list in `main.py`.
 
 ## Database Schema
 

@@ -2,6 +2,10 @@ import requests
 import sqlite3
 import re
 import time
+import asyncio
+import aiohttp
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from bs4 import BeautifulSoup
 from urllib.parse import urlencode, quote
 import logging
@@ -15,10 +19,26 @@ from urllib3.util.ssl_ import create_urllib3_context
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
+# Global search terms - Portuguese and English pairs
+SEARCH_TERMS = [
+    ("Formal Methods", "Métodos Formais"),
+    ("Formal Verification", "Verificação Formal"),
+    ("Model Checking", "Verificação de Modelos"),
+    ("Theorem Proving", "Prova de Teoremas"),
+    ("Temporal Logic", "Lógica Temporal"),
+    ("Static Analysis", "Análise Estática"),
+    ("Program Verification", "Verificação de Programas"),
+    ("Specification Languages", "Linguagens de Especificação"),
+    ("Automated Reasoning", "Raciocínio Automatizado"),
+    ("Formal Semantics", "Semântica Formal"),
+]
+
 class CNPqScraper:
-    def __init__(self):
+    def __init__(self, max_workers=5):
         self.session = requests.Session()
         self.base_url = "https://buscatextual.cnpq.br/buscatextual"
+        self.max_workers = max_workers
+        self.db_lock = threading.Lock()  # Thread-safe database operations
         self.setup_session()
         self.setup_database()
     
@@ -114,28 +134,7 @@ class CNPqScraper:
             response.raise_for_status()
             logger.info("Connection test successful!")
             
-            # Try a simple search to see if we can get any results
-            logger.info("Testing simple search...")
-            simple_search_url = "https://buscatextual.cnpq.br/buscatextual/busca.do"
-            simple_params = {
-                'metodo': 'forwardPaginaResultados',
-                'registros': '0;10',
-                'query': '(+idx_assunto:(computacao)+idx_particao:1)',
-                'analise': 'cv',
-                'tipoOrdenacao': 'null',
-                'paginaOrigem': 'index.do',
-                'mostrarScore': 'true',
-                'mostrarBandeira': 'true',
-                'modoIndAdhoc': 'null'
-            }
-            
-            test_response = self.session.get(simple_search_url, params=simple_params)
-            test_response.raise_for_status()
-            
-            # Save test response
-            with open('test_search.html', 'w', encoding='utf-8') as f:
-                f.write(test_response.text)
-            logger.info("Saved test search to test_search.html")
+            logger.info("Connection test successful!")
             
             return True
         except Exception as e:
@@ -182,14 +181,7 @@ class CNPqScraper:
                 response = self.session.get(url, params=params)
                 response.raise_for_status()
                 
-                # Debug: save the response to see what we're getting
-                logger.info(f"Response status: {response.status_code}")
-                logger.info(f"Response URL: {response.url}")
-                
-                # Save response for debugging
-                with open(f'debug_page_{page + 1}.html', 'w', encoding='utf-8') as f:
-                    f.write(response.text)
-                logger.info(f"Saved response to debug_page_{page + 1}.html")
+                logger.info(f"Response status: {response.status_code} for page {page + 1}")
                 
                 researchers = self.parse_search_results(response.text, search_term)
                 if not researchers:
@@ -349,52 +341,172 @@ class CNPqScraper:
         
         return details
     
-    def save_researcher(self, researcher_data):
-        """Save researcher data to the database"""
+    def process_researcher_with_details(self, researcher):
+        """Process a single researcher with details (for threading)"""
         try:
-            self.cursor.execute('''
-                INSERT OR REPLACE INTO researchers 
-                (cnpq_id, name, institution, area, city, state, country, lattes_url, search_term)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-            ''', (
-                researcher_data.get('cnpq_id'),
-                researcher_data.get('name'),
-                researcher_data.get('institution'),
-                researcher_data.get('area'),
-                researcher_data.get('city'),
-                researcher_data.get('state'),
-                researcher_data.get('country'),
-                f"http://lattes.cnpq.br/{researcher_data.get('cnpq_id')}" if researcher_data.get('cnpq_id') else None,
-                researcher_data.get('search_term')
-            ))
-            self.conn.commit()
-            logger.info(f"Saved researcher: {researcher_data.get('name')} ({researcher_data.get('cnpq_id')})")
-        except sqlite3.Error as e:
-            logger.error(f"Database error: {e}")
+            logger.info(f"Processing researcher: {researcher['name']}")
+            
+            # Get detailed information
+            details = self.get_researcher_details(researcher['cnpq_id'])
+            researcher.update(details)
+            
+            # Save to database
+            self.save_researcher(researcher)
+            
+            # Be respectful to the server
+            time.sleep(1)  # Reduced delay for threading
+            
+            return researcher
+        except Exception as e:
+            logger.error(f"Error processing researcher {researcher.get('name', 'Unknown')}: {e}")
+            return researcher
     
-    def scrape_all(self, search_term="metodos formais", max_pages=5, get_details=True):
+    def save_researcher(self, researcher_data):
+        """Save researcher data to the database (thread-safe)"""
+        with self.db_lock:  # Ensure thread-safe database operations
+            try:
+                # Create a new connection for thread safety
+                conn = sqlite3.connect('cnpq_researchers.db')
+                cursor = conn.cursor()
+                
+                # Check if researcher already exists
+                cursor.execute('SELECT cnpq_id FROM researchers WHERE cnpq_id = ?', 
+                                  (researcher_data.get('cnpq_id'),))
+                existing = cursor.fetchone()
+                
+                if existing:
+                    # Update existing record with new search term if different
+                    cursor.execute('''
+                        UPDATE researchers 
+                        SET search_term = CASE 
+                            WHEN search_term LIKE '%' || ? || '%' THEN search_term
+                            ELSE search_term || ', ' || ?
+                        END,
+                        name = COALESCE(?, name),
+                        institution = COALESCE(?, institution),
+                        area = COALESCE(?, area),
+                        city = COALESCE(?, city),
+                        state = COALESCE(?, state),
+                        country = COALESCE(?, country)
+                        WHERE cnpq_id = ?
+                    ''', (
+                        researcher_data.get('search_term'),
+                        researcher_data.get('search_term'),
+                        researcher_data.get('name'),
+                        researcher_data.get('institution'),
+                        researcher_data.get('area'),
+                        researcher_data.get('city'),
+                        researcher_data.get('state'),
+                        researcher_data.get('country'),
+                        researcher_data.get('cnpq_id')
+                    ))
+                    logger.info(f"Updated researcher: {researcher_data.get('name')} ({researcher_data.get('cnpq_id')})")
+                else:
+                    # Insert new researcher
+                    cursor.execute('''
+                        INSERT INTO researchers 
+                        (cnpq_id, name, institution, area, city, state, country, lattes_url, search_term)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    ''', (
+                        researcher_data.get('cnpq_id'),
+                        researcher_data.get('name'),
+                        researcher_data.get('institution'),
+                        researcher_data.get('area'),
+                        researcher_data.get('city'),
+                        researcher_data.get('state'),
+                        researcher_data.get('country'),
+                        f"http://lattes.cnpq.br/{researcher_data.get('cnpq_id')}" if researcher_data.get('cnpq_id') else None,
+                        researcher_data.get('search_term')
+                    ))
+                    logger.info(f"Saved new researcher: {researcher_data.get('name')} ({researcher_data.get('cnpq_id')})")
+                
+                conn.commit()
+                conn.close()
+            except sqlite3.Error as e:
+                logger.error(f"Database error: {e}")
+    
+    def scrape_all(self, search_terms=None, max_pages=3, get_details=True, use_threading=True):
         """Main method to scrape all researchers"""
         logger.info("Starting CNPq scraping process...")
         
-        # Search for researchers
-        researchers = self.search_researchers(search_term, max_pages)
-        logger.info(f"Found {len(researchers)} researchers total")
+        if search_terms is None:
+            search_terms = SEARCH_TERMS
         
-        # Get detailed information for each researcher
-        for i, researcher in enumerate(researchers, 1):
-            logger.info(f"Processing researcher {i}/{len(researchers)}: {researcher['name']}")
+        all_researchers = []
+        
+        # Process each search term
+        for english_term, portuguese_term in search_terms:
+            logger.info(f"Processing search terms: '{english_term}' / '{portuguese_term}'")
             
-            if get_details:
+            # Try Portuguese term first, then English if no results
+            for term in [portuguese_term.lower(), english_term.lower()]:
+                researchers = self.search_researchers(term, max_pages)
+                if researchers:
+                    logger.info(f"Found {len(researchers)} researchers for '{term}'")
+                    all_researchers.extend(researchers)
+                    break  # Found results, no need to try the other language
+                else:
+                    logger.info(f"No results for '{term}'")
+        
+        # Remove duplicates based on CNPq ID
+        unique_researchers = {}
+        for researcher in all_researchers:
+            cnpq_id = researcher['cnpq_id']
+            if cnpq_id not in unique_researchers:
+                unique_researchers[cnpq_id] = researcher
+            else:
+                # Merge search terms
+                existing_terms = unique_researchers[cnpq_id]['search_term']
+                new_term = researcher['search_term']
+                if new_term not in existing_terms:
+                    unique_researchers[cnpq_id]['search_term'] = f"{existing_terms}, {new_term}"
+        
+        researchers_list = list(unique_researchers.values())
+        logger.info(f"Found {len(researchers_list)} unique researchers total")
+        
+        if not get_details:
+            # Just save basic info without details
+            for researcher in researchers_list:
+                self.save_researcher(researcher)
+            logger.info("Scraping completed!")
+            return researchers_list
+        
+        # Process researchers with details using threading
+        if use_threading and len(researchers_list) > 1:
+            logger.info(f"Processing researchers using {self.max_workers} threads...")
+            
+            with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
+                # Submit all tasks
+                future_to_researcher = {
+                    executor.submit(self.process_researcher_with_details, researcher): researcher 
+                    for researcher in researchers_list
+                }
+                
+                # Process completed tasks
+                completed = 0
+                for future in as_completed(future_to_researcher):
+                    completed += 1
+                    researcher = future_to_researcher[future]
+                    try:
+                        result = future.result()
+                        logger.info(f"Completed {completed}/{len(researchers_list)}: {result['name']}")
+                    except Exception as e:
+                        logger.error(f"Error processing {researcher['name']}: {e}")
+        else:
+            # Sequential processing (fallback)
+            logger.info("Processing researchers sequentially...")
+            for i, researcher in enumerate(researchers_list, 1):
+                logger.info(f"Processing researcher {i}/{len(researchers_list)}: {researcher['name']}")
+                
                 details = self.get_researcher_details(researcher['cnpq_id'])
                 researcher.update(details)
+                self.save_researcher(researcher)
                 
                 # Be respectful to the server
-                time.sleep(3)
-            
-            self.save_researcher(researcher)
+                time.sleep(2)
         
         logger.info("Scraping completed!")
-        return researchers
+        return researchers_list
     
     def close(self):
         """Close database connection"""
@@ -402,48 +514,52 @@ class CNPqScraper:
             self.conn.close()
 
 def main():
-    scraper = CNPqScraper()
+    scraper = CNPqScraper(max_workers=8)  # Increased workers for better performance
     
     try:
-        # Try different search terms to see what works
-        search_terms = [
-            "computacao",  # This should work based on test search
-            "inteligencia", 
-            "metodos",
-            "formal"
-        ]
+        print("🚀 Starting CNPq Lattes Scraper with improved performance!")
+        print(f"📋 Will search for {len(SEARCH_TERMS)} formal methods related terms")
+        print(f"🧵 Using {scraper.max_workers} threads for faster processing")
+        print("=" * 60)
         
-        for term in search_terms:
-            print(f"\n=== Trying search term: '{term}' ===")
-            researchers = scraper.search_researchers(term, max_pages=1)
-            if researchers:
-                print(f"Found {len(researchers)} researchers for '{term}'")
-                # If we find results, use this term for full scraping
-                researchers = scraper.scrape_all(
-                    search_term=term,
-                    max_pages=3,
-                    get_details=True
-                )
-                break
-            else:
-                print(f"No results for '{term}'")
+        # Use the new comprehensive scraping approach
+        researchers = scraper.scrape_all(
+            search_terms=SEARCH_TERMS,  # Use all formal methods terms
+            max_pages=2,  # Reduced pages per term since we have many terms
+            get_details=True,
+            use_threading=True
+        )
         
-        if not researchers:
-            print("No researchers found with any search term. Trying a basic search...")
-            # Try the original approach with "metodos formais"
-            researchers = scraper.scrape_all(
-                search_term="metodos formais",
-                max_pages=3,
-                get_details=True
-            )
+        print("\n" + "=" * 60)
+        print(f"✅ Scraping completed! Found and saved {len(researchers)} unique researchers.")
+        print("💾 Data saved to 'cnpq_researchers.db' SQLite database.")
+        print("\n📊 Quick stats:")
         
-        print(f"\nScraping completed! Found and saved {len(researchers)} researchers.")
-        print("Data saved to 'cnpq_researchers.db' SQLite database.")
+        # Show some quick statistics
+        institutions = {}
+        search_terms_used = {}
+        
+        for researcher in researchers:
+            # Count institutions
+            inst = researcher.get('institution', 'Unknown')
+            institutions[inst] = institutions.get(inst, 0) + 1
+            
+            # Count search terms
+            terms = researcher.get('search_term', '').split(', ')
+            for term in terms:
+                if term.strip():
+                    search_terms_used[term.strip()] = search_terms_used.get(term.strip(), 0) + 1
+        
+        print(f"🏛️  Top institutions: {dict(list(institutions.items())[:3])}")
+        print(f"🔍 Search terms found: {len(search_terms_used)} different terms")
+        print("\n💡 Use 'uv run view-results' to explore the data!")
         
     except KeyboardInterrupt:
         logger.info("Scraping interrupted by user")
+        print("\n⚠️  Scraping was interrupted, but partial data may have been saved.")
     except Exception as e:
         logger.error(f"Unexpected error: {e}")
+        print(f"\n❌ Error occurred: {e}")
     finally:
         scraper.close()
 
