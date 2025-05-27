@@ -1,19 +1,19 @@
-# CNPq Lattes Web Scraper
+# CNPq Lattes Research Aggregator
 
-A Python web scraper for extracting researcher information from the CNPq Lattes platform (https://buscatextual.cnpq.br/).
+A powerful Python web scraper for extracting and aggregating researcher information from the CNPq Lattes platform (https://buscatextual.cnpq.br/) based on customizable search terms.
 
 ## Features
 
-- **Multi-term search**: Automatically searches for 10 formal methods related terms in both Portuguese and English
+- **Multi-term search**: Configurable search terms in both Portuguese and English
 - **Threaded processing**: Uses multiple threads for faster data collection
 - **Duplicate prevention**: Ensures no researcher is saved twice in the database
-- **Comprehensive coverage**: Searches for terms like "Formal Methods", "Model Checking", "Theorem Proving", etc.
+- **Comprehensive coverage**: Searches across multiple related terms in your research area
 - **Smart term merging**: Tracks which search terms found each researcher
 - **Extract detailed information** from individual researcher CV pages
 - **SQLite database** with thread-safe operations
 - **Respectful scraping** with appropriate delays between requests
 - **Comprehensive logging** and error handling
-- **Interactive data viewer** with statistics and search capabilities
+- **Interactive data viewers** with statistics, search capabilities, and visual charts
 
 ## Installation
 
@@ -64,15 +64,16 @@ python main.py
 **Using project scripts (with uv):**
 
 ```bash
-uv run cnpq-scraper    # Run the main scraper
-uv run view-results    # View scraped data
+uv run cnpq-scraper        # Run the main scraper
+uv run view-results-text   # View scraped data (text interface)
+uv run view-results-charts # Generate visual charts
 ```
 
 This will:
 
-- Search for 10 formal methods related terms in Portuguese and English
+- Search for configurable research terms in Portuguese and English
 - Use 8 threads for faster processing
-- Scrape up to 2 pages per term (20 researchers per term)
+- Scrape up to 10 pages per term (100 researchers per term)
 - Remove duplicates automatically
 - Get detailed information for each unique researcher
 - Save everything to `cnpq_researchers.db`
@@ -95,9 +96,20 @@ def main():
 
 ### Search Terms
 
-The scraper automatically searches for these formal methods related terms:
+The scraper uses configurable search terms defined in the `SEARCH_TERMS` list in `main.py`. By default, it includes research terms related to formal methods, but you can easily customize it for any research area.
 
-**Portuguese & English pairs:**
+**Example configuration (Portuguese & English pairs):**
+
+```python
+SEARCH_TERMS = [
+    ("Your English Term", "Seu Termo em Português"),
+    ("Machine Learning", "Aprendizado de Máquina"),
+    ("Artificial Intelligence", "Inteligência Artificial"),
+    # Add more terms as needed
+]
+```
+
+**Current default terms (Formal Methods):**
 
 - Métodos Formais / Formal Methods
 - Verificação Formal / Formal Verification
@@ -110,7 +122,7 @@ The scraper automatically searches for these formal methods related terms:
 - Raciocínio Automatizado / Automated Reasoning
 - Semântica Formal / Formal Semantics
 
-You can customize these terms by modifying the `SEARCH_TERMS` list in `main.py`.
+You can easily customize these terms for any research area by modifying the `SEARCH_TERMS` list in `main.py`.
 
 ## Database Schema
 
@@ -141,21 +153,30 @@ The project includes a convenient script to view and analyze the scraped data:
 **Using uv:**
 
 ```bash
-uv run view-results
+uv run view-results-text   # Text-based interface
+uv run view-results-charts # Generate visual charts
 ```
 
 **Using Python directly:**
 
 ```bash
-python view_results.py
+python view_results_text.py   # Text-based interface
+python view_results_charts.py # Generate visual charts
 ```
 
-This provides an interactive menu to:
+**Text interface** provides an interactive menu to:
 
 - View all researchers
 - Display statistics
 - Search researchers by name or institution
 - Export data to CSV
+
+**Charts interface** generates visual charts:
+
+- Distribution by search terms
+- Top institutions
+- Geographic distribution
+- Research trends over time
 
 ### Using Python directly
 
