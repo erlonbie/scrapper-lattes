@@ -141,6 +141,30 @@ class CNPqScraper:
             logger.error(f"Connection test failed: {e}")
             return False
     
+    def extract_pagination_info(self, html_content):
+        """Extract pagination information from the HTML"""
+        try:
+            # Look for the JavaScript variables that contain pagination info
+            total_match = re.search(r'var intLTotReg = (\d+);', html_content)
+            current_start_match = re.search(r'var intLRegInicio = (\d+);', html_content)
+            page_size_match = re.search(r'var intLRegPagina = (\d+);', html_content)
+            
+            if total_match and current_start_match and page_size_match:
+                total_records = int(total_match.group(1))
+                current_start = int(current_start_match.group(1))
+                page_size = int(page_size_match.group(1))
+                
+                return {
+                    'total_records': total_records,
+                    'current_start': current_start,
+                    'page_size': page_size,
+                    'has_more': current_start + page_size < total_records
+                }
+        except Exception as e:
+            logger.error(f"Error extracting pagination info: {e}")
+        
+        return None
+
     def search_researchers(self, search_term="metodos formais", max_pages=5):
         """Search for researchers based on the search term"""
         logger.info(f"Starting search for: {search_term}")
@@ -160,6 +184,7 @@ class CNPqScraper:
             query = f"(+idx_assunto:({terms[0]})+idx_particao:1)"
         
         all_researchers = []
+        total_records = None
         
         for page in range(max_pages):
             start_record = page * 10
@@ -181,15 +206,44 @@ class CNPqScraper:
                 response = self.session.get(url, params=params)
                 response.raise_for_status()
                 
+                # Extract pagination info from the first page
+                if page == 0:
+                    pagination_info = self.extract_pagination_info(response.text)
+                    if pagination_info:
+                        total_records = pagination_info['total_records']
+                        logger.info(f"Found {total_records} total records for '{search_term}'")
+                        
+                        # Adjust max_pages based on actual data available
+                        max_possible_pages = (total_records + 9) // 10  # Round up
+                        if max_pages > max_possible_pages:
+                            max_pages = max_possible_pages
+                            logger.info(f"Adjusted max_pages to {max_pages} based on available data")
+                
                 logger.info(f"Response status: {response.status_code} for page {page + 1}")
                 
                 researchers = self.parse_search_results(response.text, search_term)
+                
+                # Check if we have pagination info to make better decisions
+                pagination_info = self.extract_pagination_info(response.text)
+                
                 if not researchers:
-                    logger.info(f"No more researchers found on page {page + 1}")
-                    break
+                    logger.info(f"No researchers found on page {page + 1}")
+                    # If we have pagination info, check if there should be more pages
+                    if pagination_info and pagination_info['has_more']:
+                        logger.warning(f"Expected more results but found none on page {page + 1}. Continuing...")
+                        time.sleep(2)
+                        continue
+                    else:
+                        logger.info(f"Reached end of results on page {page + 1}")
+                        break
                 
                 all_researchers.extend(researchers)
                 logger.info(f"Found {len(researchers)} researchers on page {page + 1}")
+                
+                # Check if we should continue based on pagination info
+                if pagination_info and not pagination_info['has_more']:
+                    logger.info(f"Reached last page ({page + 1}) based on pagination info")
+                    break
                 
                 # Be respectful to the server
                 time.sleep(2)
@@ -197,6 +251,9 @@ class CNPqScraper:
             except requests.RequestException as e:
                 logger.error(f"Error fetching page {page + 1}: {e}")
                 break
+        
+        if total_records:
+            logger.info(f"Collected {len(all_researchers)} researchers out of {total_records} total available")
         
         return all_researchers
     
@@ -210,6 +267,30 @@ class CNPqScraper:
         researcher_links = soup.find_all('a', href=re.compile(r'javascript:abreDetalhe\('))
         
         logger.info(f"Found {len(researcher_links)} potential researcher links")
+        
+        # Also check for any parsing issues by looking at the HTML structure
+        if len(researcher_links) == 0:
+            # Debug: check if there are any results at all
+            result_list = soup.find('ol')
+            if result_list:
+                list_items = result_list.find_all('li')
+                logger.info(f"Found {len(list_items)} list items but no researcher links")
+                
+                # Try alternative parsing methods
+                for li in list_items:
+                    # Look for any links that might be researchers
+                    all_links = li.find_all('a')
+                    for link in all_links:
+                        href = link.get('href', '')
+                        if 'abreDetalhe' in href:
+                            logger.info(f"Found alternative link pattern: {href}")
+            else:
+                logger.info("No result list found in HTML")
+                # Check if there's an error message or no results message
+                if 'nenhum resultado' in html_content.lower() or 'no results' in html_content.lower():
+                    logger.info("Page indicates no results found")
+                else:
+                    logger.warning("Unexpected HTML structure - may need to update parsing logic")
         
         for link in researcher_links:
             # Extract ID from the javascript function
@@ -525,7 +606,7 @@ def main():
         # Use the new comprehensive scraping approach
         researchers = scraper.scrape_all(
             search_terms=SEARCH_TERMS,  # Use all formal methods terms
-            max_pages=2,  # Reduced pages per term since we have many terms
+            max_pages=10,  # Increased to get more comprehensive results
             get_details=True,
             use_threading=True
         )

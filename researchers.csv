@@ -1,198 +1,798 @@
 CNPq_ID,Name,Institution,Area,City,State,Country,Lattes_URL,Search_Term,Created_At
-K8709106Z6,Adelson Dias de Araújo Júnior,University of Twente,,,,,http://lattes.cnpq.br/K8709106Z6,automated reasoning,2025-05-27 02:41:47
-K4736428E9,Adilson Luiz Bonifácio,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4736428E9,model checking,2025-05-27 02:41:30
-K4761438J8,Adnan Sherif,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4761438J8,"formal verification, formal semantics",2025-05-27 02:41:26
-K4231376H8,Airton Jacob Alvares,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4231376H8,prova de teoremas,2025-05-27 02:41:33
-K4422087H5,Alex Donizeti Betez Alberto,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4422087H5,formal semantics,2025-05-27 02:41:50
-K4784948H6,Alex de Vasconcellos Garcia,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4784948H6,linguagens de especificação,2025-05-27 02:41:44
-K8205200Z6,Alexandra Lehmkuhl,,,,,,http://lattes.cnpq.br/K8205200Z6,prova de teoremas,2025-05-27 02:41:33
-K4219769E2,Alexandre Filgueiras,,,,,,http://lattes.cnpq.br/K4219769E2,computacao,2025-05-27 02:24:54
-K2581995D1,Alexandre Garcez Vieira,Universidade Federal da Bahia,,,,,http://lattes.cnpq.br/K2581995D1,computacao,2025-05-27 02:25:04
-K4106321U5,Alvaro Heiji Miyazawa,University of York,,,,,http://lattes.cnpq.br/K4106321U5,formal verification,2025-05-27 02:41:25
-K8976059Z1,Amanda da Silva Rodrigues Cunha,,,,,,http://lattes.cnpq.br/K8976059Z1,prova de teoremas,2025-05-27 02:41:32
-K1168916J4,Amilene Bezerra do Nascimento,,,,,,http://lattes.cnpq.br/K1168916J4,linguagens de especificação,2025-05-27 02:41:44
-K2072351Z2,Amir Molzam Sharifloo,,,,,,http://lattes.cnpq.br/K2072351Z2,"formal verification, model checking",2025-05-27 02:41:27
-K4787816D2,Ana Cristina Vieira de Melo,The University Of Manchester,,,,,http://lattes.cnpq.br/K4787816D2,formal methods,2025-05-27 02:41:22
-K4787817Z4,Anamaria Martins Moreira,,,,,,http://lattes.cnpq.br/K4787817Z4,formal methods,2025-05-27 02:41:25
-K9820607P8,Anderson Alexandrino Campos,,,,,,http://lattes.cnpq.br/K9820607P8,prova de teoremas,2025-05-27 02:41:32
-K4671147U1,Andrea de Mello Gigli,Universidade de Taubaté,,,,,http://lattes.cnpq.br/K4671147U1,prova de teoremas,2025-05-27 02:41:31
-K4707599Y4,Andreas Herzig,,,,,,http://lattes.cnpq.br/K4707599Y4,"temporal logic, automated reasoning",2025-05-27 02:41:35
-K4262187E0,Andrei Rimsa Álvares,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4262187E0,static analysis,2025-05-27 02:41:37
-K4013486P8,André Bazzoni Bueno,,,,,,http://lattes.cnpq.br/K4013486P8,"temporal logic, formal semantics",2025-05-27 02:41:35
-K4564800H9,André Luís Ribeiro Didier,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4564800H9,"model checking, temporal logic",2025-05-27 02:41:30
-K4779532U1,Andréia Borges Avelar,Universidade de Brasília,,,,,http://lattes.cnpq.br/K4779532U1,formal methods,2025-05-27 02:41:24
-K4735008D7,Angelo Antonio Verri,,,,,,http://lattes.cnpq.br/K4735008D7,static analysis,2025-05-27 02:41:38
-K4219189U2,Angelo Schranko de Oliveira,Universidade Nove de Julho,,,,,http://lattes.cnpq.br/K4219189U2,static analysis,2025-05-27 02:41:38
-K4787693J1,Arnaldo Vieira Moura,University Of California Berkeley,,,,,http://lattes.cnpq.br/K4787693J1,program verification,2025-05-27 02:41:41
-K4785549D9,Arthur Ronald de Vallauris Buchsbaum,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4785549D9,automated reasoning,2025-05-27 02:41:49
-K4265782P1,Artur Oliveira Gomes,,,,,,http://lattes.cnpq.br/K4265782P1,formal methods,2025-05-27 02:41:22
-K4798847J3,Aurelio Flavio Charao,,,,,,http://lattes.cnpq.br/K4798847J3,linguagens de especificação,2025-05-27 02:41:46
-K9944107J3,Aurio Oliveira da Silva,,,,,,http://lattes.cnpq.br/K9944107J3,computacao,2025-05-27 02:25:24
-K2104977Y9,Bernd Hartmann,University of Münster,,,,,http://lattes.cnpq.br/K2104977Y9,prova de teoremas,2025-05-27 02:41:32
-K4785270J2,Braz Izaias da Silva Junior,Carnegie Mellon University,,,,,http://lattes.cnpq.br/K4785270J2,formal verification,2025-05-27 02:41:27
-K4431175J7,Bruno Ramos Mendonça,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4431175J7,formal semantics,2025-05-27 02:41:51
-K4207484D6,Camila de Oliveira Luvison,,,,,,http://lattes.cnpq.br/K4207484D6,prova de teoremas,2025-05-27 02:41:30
-K4679158P9,Carlos Alberto Hernandez Rodriguez,,,,,,http://lattes.cnpq.br/K4679158P9,prova de teoremas,2025-05-27 02:41:31
-K4315073Y2,Carlos Alberto Olarte Vega,,,,,,http://lattes.cnpq.br/K4315073Y2,temporal logic,2025-05-27 02:41:36
-K2757301D2,Carlos Caleiro,Universidade Técnica de Lisboa,,,,,http://lattes.cnpq.br/K2757301D2,temporal logic,2025-05-27 02:41:35
-K4235281H6,Carlos Ivan Castro Marquez,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4235281H6,"formal verification, model checking",2025-05-27 02:41:26
-K8138283T7,Carolina De Almeida Santos,Universidade de Guarulhos,,,,,http://lattes.cnpq.br/K8138283T7,computacao,2025-05-27 02:25:53
-K4269944U7,Christian Garcia Vieira,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4269944U7,prova de teoremas,2025-05-27 02:41:31
-K4707920Z8,Christian Jacques Rentería,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4707920Z8,temporal logic,2025-05-27 02:41:35
-K4708719E6,Christiano de Oliveira Braga,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4708719E6,formal semantics,2025-05-27 02:41:50
-K4385712D3,Claudia Simone Vieira,Fundação Getulio Vargas,,,,,http://lattes.cnpq.br/K4385712D3,computacao,2025-05-27 02:26:29
-K4781614E1,Claudionor Jose Nunes Coelho Junior,Stanford University,,,,,http://lattes.cnpq.br/K4781614E1,program verification,2025-05-27 02:41:41
-K4799021E5,Cláudia Nalon,University of Liverpool,,,,,http://lattes.cnpq.br/K4799021E5,automated reasoning,2025-05-27 02:41:47
-K4208911A9,Cláudio Saad Netto,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4208911A9,prova de teoremas,2025-05-27 02:41:31
-K8411908J8,Clélia Lucia de Souza,Universidade Federal de Goiás,,,,,http://lattes.cnpq.br/K8411908J8,computacao,2025-05-27 02:25:20
-K4789778P8,Conrado Werner Seibel,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4789778P8,formal verification,2025-05-27 02:41:27
-K4979751E7,Cristiano Forster,Universidade Estadual de Londrina,,,,,http://lattes.cnpq.br/K4979751E7,prova de teoremas,2025-05-27 02:41:33
-K4798343J9,Cristina Ururahy da Fontoura Cerqueira,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4798343J9,linguagens de especificação,2025-05-27 02:41:44
-K4330509D2,Dalay Israel de Almeida Pereira,,,,,,http://lattes.cnpq.br/K4330509D2,formal methods,2025-05-27 02:41:22
-K4965337H2,Danilo Gustavo Bispo,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4965337H2,computacao,2025-05-27 02:25:40
-K4768856U5,David Boris Paul Déharbe,,,,,,http://lattes.cnpq.br/K4768856U5,program verification,2025-05-27 02:41:42
-K4356874H6,David Kohan Marzagão,,,,,,http://lattes.cnpq.br/K4356874H6,formal methods,2025-05-27 02:41:24
-K8752730Z6,Diogenes Tadeu Rossoni Paranhos,Fundação Getúlio Vargas,,,,,http://lattes.cnpq.br/K8752730Z6,computacao,2025-05-27 02:25:01
-K4475500U7,Diogo Nunes Sampaio,,,,,,http://lattes.cnpq.br/K4475500U7,static analysis,2025-05-27 02:41:40
-K4707021P6,Dirce Bortotti Salvadori,,,,,,http://lattes.cnpq.br/K4707021P6,linguagens de especificação,2025-05-27 02:41:46
-K4701911T3,Djones Vinicius Lettnin,University of Tübingen,,,,,http://lattes.cnpq.br/K4701911T3,formal verification,2025-05-27 02:41:26
-K4723727U8,Edelweis Helena Garcez Ritt,University of Tübingen,,,,,http://lattes.cnpq.br/K4723727U8,"formal verification, model checking",2025-05-27 02:41:27
-K4789184D5,Edgardo Salomon Cheb-Terrab,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4789184D5,computacao,2025-05-27 02:26:16
-K4781726U5,Eduardo Marques,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4781726U5,computacao,2025-05-27 02:26:23
-K4648350Y3,Eduardo Rohde Eras,,,,,,http://lattes.cnpq.br/K4648350Y3,"formal methods, formal verification, model checking",2025-05-27 02:41:23
-K4787029E5,Edward Hermann Haeusler,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4787029E5,temporal logic,2025-05-27 02:41:36
-K4783332U4,Elias Humberto Alves,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4783332U4,temporal logic,2025-05-27 02:41:33
-K4775676H5,Elizabeth Amalia Boscher Torres,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4775676H5,computacao,2025-05-27 02:25:50
-K8243660H2,Emerson Wendlingger Dantas Sales,,,,,,http://lattes.cnpq.br/K8243660H2,"model checking, static analysis",2025-05-27 02:41:29
-K4227395P5,Emmanuel Sapin,,,,,,http://lattes.cnpq.br/K4227395P5,computacao,2025-05-27 02:25:27
-K4865479D2,Endi Samba Luamba,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4865479D2,static analysis,2025-05-27 02:41:37
-K4756549D9,Enrique Raúl Rentería Guerrero,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4756549D9,computacao,2025-05-27 02:25:07
-K4319906U1,Eric Javier Biagioli,,,,,,http://lattes.cnpq.br/K4319906U1,formal methods,2025-05-27 02:41:22
-K4770275D0,Eric Luis Barroso Cavalcante,,,,,,http://lattes.cnpq.br/K4770275D0,static analysis,2025-05-27 02:41:37
-K4364035A7,Erling Fjaer,,,,,,http://lattes.cnpq.br/K4364035A7,static analysis,2025-05-27 02:41:40
-K4229114P3,Erval Netto de Lima,Universidade Paranaense,,,,,http://lattes.cnpq.br/K4229114P3,computacao,2025-05-27 02:25:17
-K8548728D5,Fabiano do Amaral,Faculdade de Economia,,,,,http://lattes.cnpq.br/K8548728D5,computacao,2025-05-27 02:24:57
-K8649609T0,Francesco Maria Ferrari,,,,,,http://lattes.cnpq.br/K8649609T0,formal semantics,2025-05-27 02:41:49
-K4131169U6,Francisco Handrick Tomaz da Costa,Universidade de Brasília,,,,,http://lattes.cnpq.br/K4131169U6,static analysis,2025-05-27 02:41:37
-K4700415H1,François Monin,University of Savoie (Chambéry),,,,,http://lattes.cnpq.br/K4700415H1,"formal methods, formal verification",2025-05-27 02:41:55
-K4452687H0,Frederico Zaniolo Bertagnoli,New York University School of Education,,,,,http://lattes.cnpq.br/K4452687H0,computacao,2025-05-27 02:25:57
-K4836091U4,Frode Bjordal,University of California Santa Barbara,,,,,http://lattes.cnpq.br/K4836091U4,"temporal logic, formal semantics",2025-05-27 02:41:35
-K4229521E6,Gabriela Maria Lisboa Pinheiro,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4229521E6,linguagens de especificação,2025-05-27 02:41:42
-K4343469J3,Geisa Aparecida Ferreira,,,,,,http://lattes.cnpq.br/K4343469J3,linguagens de especificação,2025-05-27 02:41:45
-K4775012P7,Gilberto de Mello Nogueira Abdelhay,Universidade do Estado do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4775012P7,linguagens de especificação,2025-05-27 02:41:42
-K4220335J2,Girrad Mahmoud Sammour,Fundação Educacional de Barretos,,,,,http://lattes.cnpq.br/K4220335J2,prova de teoremas,2025-05-27 02:41:31
-K8672745J3,Guillermo Rodriguez-Navas,,,,,,http://lattes.cnpq.br/K8672745J3,formal verification,2025-05-27 02:41:25
-K4484402J8,Haniel Moreira Barbosa,,,,,,http://lattes.cnpq.br/K4484402J8,"program verification, automated reasoning",2025-05-27 02:41:41
-K4762347P4,Haydée Werneck Poubel,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4762347P4,linguagens de especificação,2025-05-27 02:41:45
-K4483675U0,Henrique Antunes Almeida,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4483675U0,formal semantics,2025-05-27 02:41:51
-K4427137A2,Henrique Oliveira Santos,Universidade de Fortaleza,,,,,http://lattes.cnpq.br/K4427137A2,automated reasoning,2025-05-27 02:41:49
-K4278298P9,Herbert Oliveira Rocha,Universidade Federal do Amazonas,,,,,http://lattes.cnpq.br/K4278298P9,program verification,2025-05-27 02:41:41
-K4237564Y1,Herbert Rausch Fernandes,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4237564Y1,model checking,2025-05-27 02:41:29
-K8145527U6,Hugo Daniel dos Santos Macedo,Universidade do Minho,,,,,http://lattes.cnpq.br/K8145527U6,static analysis,2025-05-27 02:41:38
-K4331146Y6,Hyghor Miranda Côrtes,FUNDACAO EDUCACIONAL INACIANA PADRE SABOIA DE MEDEIROS,,,,,http://lattes.cnpq.br/K4331146Y6,temporal logic,2025-05-27 02:41:36
-K4780157D2,Iara Augustin,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4780157D2,computacao,2025-05-27 02:25:30
-K4758020D1,Ilias Biris,University of Edinburgh,,,,,http://lattes.cnpq.br/K4758020D1,automated reasoning,2025-05-27 02:41:47
-K4708513Z5,Ivan José Varzinczak,,,,,,http://lattes.cnpq.br/K4708513Z5,automated reasoning,2025-05-27 02:41:46
-K4702804Y9,J Allan Antunes Lyrio,,,,,,http://lattes.cnpq.br/K4702804Y9,static analysis,2025-05-27 02:41:37
-K4383040D6,Jacinto Ordem,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4383040D6,prova de teoremas,2025-05-27 02:41:32
-K4221894U6,Jean-Pierre Briot,,,,,,http://lattes.cnpq.br/K4221894U6,program verification,2025-05-27 02:41:42
-K4300799A2,Jeffrey Van Baalen,,,,,,http://lattes.cnpq.br/K4300799A2,"program verification, automated reasoning",2025-05-27 02:41:40
-K4315850Y6,Jeffrey Van Baalen,,,,,,http://lattes.cnpq.br/K4315850Y6,"program verification, automated reasoning",2025-05-27 02:41:41
-K1563640Y9,Jens Otten,University of Potsdam,,,,,http://lattes.cnpq.br/K1563640Y9,automated reasoning,2025-05-27 02:41:46
-K4421498T2,Jeronimo Sirotheau de Almeida Eichler,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4421498T2,computacao,2025-05-27 02:25:11
-K4731493H8,John Mylopoulos,Princeton University,,,,,http://lattes.cnpq.br/K4731493H8,automated reasoning,2025-05-27 02:41:49
-K4784001T3,Jorge Petrúcio Viana,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4784001T3,temporal logic,2025-05-27 02:41:35
-K4727278H8,Jose Lucas Mourao Rangel Netto,University of Wisconsin - Milwaukee,,,,,http://lattes.cnpq.br/K4727278H8,linguagens de especificação,2025-05-27 02:41:44
-K2798417T0,José Alexandre D'Abruzzo Pereira,Universidade de Coimbra,,,,,http://lattes.cnpq.br/K2798417T0,static analysis,2025-05-27 02:41:38
-K8876695U6,José Luis Conradi Hoffmann,,,,,,http://lattes.cnpq.br/K8876695U6,formal methods,2025-05-27 02:41:24
-K2158691A4,José Luiz Saikali,Faculdade de Direito da USP,,,,,http://lattes.cnpq.br/K2158691A4,prova de teoremas,2025-05-27 02:41:31
-K4249947E2,João Batista Correa Gomes Moreira,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4249947E2,program verification,2025-05-27 02:41:40
-K4681856H6,João Guilherme Faccin,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4681856H6,automated reasoning,2025-05-27 02:41:49
-K4189916U5,Juan Carlos Agudelo Agudelo,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4189916U5,computacao,2025-05-27 02:25:14
-K4207569Y9,Juan Carlos Fernández-Molina,,,,,,http://lattes.cnpq.br/K4207569Y9,linguagens de especificação,2025-05-27 02:41:44
-K4702467Z0,Juliana de Melo Bezerra,,,,,,http://lattes.cnpq.br/K4702467Z0,program verification,2025-05-27 02:41:42
-K4705482Y2,Lauro Ivo Beltrão Colaço Costa,University of British Columbia,,,,,http://lattes.cnpq.br/K4705482Y2,computacao,2025-05-27 02:25:34
-K4758708J3,Lauro Massao Yamada da Silveira,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4758708J3,static analysis,2025-05-27 02:41:38
-K4791614E9,Leandro Afonso da Silva,Universidade Federal de Uberlândia,,,,,http://lattes.cnpq.br/K4791614E9,program verification,2025-05-27 02:41:42
-K4765305P5,Leonardo José Simões de Freitas,University of York,,,,,http://lattes.cnpq.br/K4765305P5,"formal methods, model checking, formal semantics",2025-05-27 02:41:22
-K4236936A9,Lorenzo Moreno Ruiz,Universidade Complutense de Madri,,,,,http://lattes.cnpq.br/K4236936A9,linguagens de especificação,2025-05-27 02:41:42
-K4430309Y6,Lourenzo Guidoni Maragni,Universidade Presbiteriana Mackenzie,,,,,http://lattes.cnpq.br/K4430309Y6,linguagens de especificação,2025-05-27 02:41:44
-K4771206Y5,Lucas Carvalho Cordeiro,University of Southampton,,,,,http://lattes.cnpq.br/K4771206Y5,"model checking, program verification",2025-05-27 02:41:30
-K4138490P4,Luciana Fregadolli Monk,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4138490P4,prova de teoremas,2025-05-27 02:41:31
-K4250530E0,Lucienno Telles,União de Escolas Superiores de Rondonópolis,,,,,http://lattes.cnpq.br/K4250530E0,computacao,2025-05-27 02:25:43
-K4767561U6,Luis Carlos de Sousa Menezes,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4767561U6,formal semantics,2025-05-27 02:41:50
-K4208283H1,Luis Henrique Bustamante de Morais,Universidade Federal do Ceará,,,,,http://lattes.cnpq.br/K4208283H1,temporal logic,2025-05-27 02:41:36
-K4177552A7,Luis José de Jesus Ribeiro,,,,,,http://lattes.cnpq.br/K4177552A7,prova de teoremas,2025-05-27 02:41:32
-K4857700Y8,Luiz Antonio Pereira da Silva,University of Kansas,,,,,http://lattes.cnpq.br/K4857700Y8,static analysis,2025-05-27 02:41:37
-K4763137D7,Luiz Antonio Pereira da Silva Junior,University of Kansas,,,,,http://lattes.cnpq.br/K4763137D7,static analysis,2025-05-27 02:41:37
-K4723218A8,Luiz Carlos Castro Guedes,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4723218A8,formal semantics,2025-05-27 02:41:50
-K4750107A6,Luiz Maurício de Oliveira Monteiro,Universidade Estadual do Norte Fluminense Darcy Ribeiro,,,,,http://lattes.cnpq.br/K4750107A6,computacao,2025-05-27 02:26:10
-K4428924Z0,Madiel de Sousa Conserva Filho,Universidade Federal do Rio Grande do Norte,,,,,http://lattes.cnpq.br/K4428924Z0,formal methods,2025-05-27 02:41:24
-K4781140J3,Manuel LOIS ANIDO,University of Southampton,,,,,http://lattes.cnpq.br/K4781140J3,program verification,2025-05-27 02:41:41
-K4337149P0,Manuel Mazzara,,,,,,http://lattes.cnpq.br/K4337149P0,"formal methods, formal semantics",2025-05-27 02:41:22
-K4760069Y6,Marcel Vinicius Medeiros Oliveira,University of York,,,,,http://lattes.cnpq.br/K4760069Y6,formal methods,2025-05-27 02:41:25
-K4769800P0,Marcelo Esteban Coniglio,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4769800P0,formal semantics,2025-05-27 02:41:50
-K4788570D8,Marcelo Finger,Imperial College of Science and Technology,,,,,http://lattes.cnpq.br/K4788570D8,temporal logic,2025-05-27 02:41:36
-K4869299T8,Marcelo Rosa,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4869299T8,formal methods,2025-05-27 02:41:25
-K4783192D1,Marcilia Andrade Campos,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4783192D1,computacao,2025-05-27 02:26:06
-K4208214Z1,Marcio Antelio Neves da Silva,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4208214Z1,temporal logic,2025-05-27 02:41:36
-K4757265E6,Marcus Vinícius Midena Ramos,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4757265E6,linguagens de especificação,2025-05-27 02:41:45
-K4793439Z6,Margarete Keiko Iwai,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4793439Z6,linguagens de especificação,2025-05-27 02:41:44
-K4787751E4,Maria Angela Weiss,City University of New York,,,,,http://lattes.cnpq.br/K4787751E4,temporal logic,2025-05-27 02:41:35
-K4781813H6,Mario Roberto Folhadela Benevides,,,,,,http://lattes.cnpq.br/K4781813H6,temporal logic,2025-05-27 02:41:34
-K1544278Z0,Marsha Chechik,Universidade de Maryland,,,,,http://lattes.cnpq.br/K1544278Z0,model checking,2025-05-27 02:41:29
-K4784283U3,Miriam Celia Bergue Alves,,,,,,http://lattes.cnpq.br/K4784283U3,"formal methods, formal verification, program verification",2025-05-27 02:41:25
-K8141363T2,Munyque Mittelmann,,,,,,http://lattes.cnpq.br/K8141363T2,automated reasoning,2025-05-27 02:41:47
-K4315412A9,Nelson de Moura Martins Gomes,,,,,,http://lattes.cnpq.br/K4315412A9,automated reasoning,2025-05-27 02:41:46
-K4798744Z1,Noberto Eiji Nawa,Nagoya University,,,,,http://lattes.cnpq.br/K4798744Z1,computacao,2025-05-27 02:26:03
-K4750510D5,Paulo Claudino Veras,,,,,,http://lattes.cnpq.br/K4750510D5,model checking,2025-05-27 02:41:30
-K4408522T6,Paulo Fernandes Filho,ESCOLA SUPERIOR DE ADMINISTRAÇÃO DE NEGÓCIOS,,,,,http://lattes.cnpq.br/K4408522T6,prova de teoremas,2025-05-27 02:41:30
-K4452414Y3,Paulo Júnio de Oliveira,Universidade Federal de Goiás,,,,,http://lattes.cnpq.br/K4452414Y3,formal semantics,2025-05-27 02:41:50
-K4787549J8,Paulo Ouvera Simon,,,,,,http://lattes.cnpq.br/K4787549J8,automated reasoning,2025-05-27 02:41:49
-K4787335A9,Paulo Roberto Godoy Bordoni,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4787335A9,computacao,2025-05-27 02:25:37
-K4711916A7,Paulo Salem da Silva,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4711916A7,"formal verification, model checking, program verification",2025-05-27 02:41:26
-K4487538H9,Pedro Ribeiro Gonçalves Antonino,University of Oxford,,,,,http://lattes.cnpq.br/K4487538H9,"formal verification, model checking",2025-05-27 02:41:27
-K4131330P0,Pedro de Carvalho Gomes,,,,,,http://lattes.cnpq.br/K4131330P0,"formal verification, static analysis, program verification",2025-05-27 02:41:27
-K4210678D4,Rachid Rebiha,,,,,,http://lattes.cnpq.br/K4210678D4,"formal methods, model checking, program verification",2025-05-27 02:41:24
-K4764286H9,Rafael Rodrigues da Silva,University of Notre Dame,,,,,http://lattes.cnpq.br/K4764286H9,formal methods,2025-05-27 02:41:23
-K4269594J1,Rafael Silveira Xavier,Universidade Presbiteriana Mackenzie,,,,,http://lattes.cnpq.br/K4269594J1,computacao,2025-05-27 02:26:19
-K4205375T3,Raquel Araújo de Oliveira,,,,,,http://lattes.cnpq.br/K4205375T3,formal verification,2025-05-27 02:41:26
-K4784459U6,Renato Perez Ribas,,,,,,http://lattes.cnpq.br/K4784459U6,temporal logic,2025-05-27 02:41:36
-K4764330H5,Renato Reder Cazangi,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4764330H5,computacao,2025-05-27 02:26:26
-K4126724A0,Ricardo Fernandes Ribeiro,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4126724A0,model checking,2025-05-27 02:41:28
-K4337685E4,Richard Bonichon,,,,,,http://lattes.cnpq.br/K4337685E4,static analysis,2025-05-27 02:41:40
-K4734187T1,Rodrigo Geraldo Ribeiro,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4734187T1,formal semantics,2025-05-27 02:41:51
-K4529314Y0,Rodrigo Pastl Pontes,,,,,,http://lattes.cnpq.br/K4529314Y0,model checking,2025-05-27 02:41:28
-K4705004A4,Rodrigo Richard Gomes,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4705004A4,linguagens de especificação,2025-05-27 02:41:45
-K4422706D6,Rossana Claudya Silverio da Silva,Escola Superior da Magistratura de Pernamabuco,,,,,http://lattes.cnpq.br/K4422706D6,prova de teoremas,2025-05-27 02:41:30
-K4779359A3,Rovilson Mezencio,Universidade Federal de Goiás,,,,,http://lattes.cnpq.br/K4779359A3,computacao,2025-05-27 02:26:13
-K4248992Y7,Rômulo Guedes Cerqueira,Universidade Federal da Bahia,,,,,http://lattes.cnpq.br/K4248992Y7,computacao,2025-05-27 02:26:00
-K4778592D7,Samarkandra Pereira dos Santos Pimentel,Universidade Federal da Paraíba,,,,,http://lattes.cnpq.br/K4778592D7,linguagens de especificação,2025-05-27 02:41:46
-K4261980Y7,Samuel Lincoln Magalhaes Barrocas,Universidade Federal do Rio Grande do Norte,,,,,http://lattes.cnpq.br/K4261980Y7,formal semantics,2025-05-27 02:41:50
-K4735806E6,Samy Soares Passos de Sá,Universidade Federal do Ceará,,,,,http://lattes.cnpq.br/K4735806E6,formal semantics,2025-05-27 02:41:51
-K4460931Z2,Sandro Márcio da Silva Preto,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4460931Z2,formal semantics,2025-05-27 02:41:51
-K4788576P6,Sergio Vale Aguiar Campos,Carnegie Mellon University,,,,,http://lattes.cnpq.br/K4788576P6,model checking,2025-05-27 02:41:29
-K8652891E2,Shichao Yi,,,,,,http://lattes.cnpq.br/K8652891E2,static analysis,2025-05-27 02:41:40
-K4765093H7,Sidi Ould Ehmety,,,,,,http://lattes.cnpq.br/K4765093H7,formal semantics,2025-05-27 02:41:49
-K4736348U6,Silvio Ranise,,,,,,http://lattes.cnpq.br/K4736348U6,automated reasoning,2025-05-27 02:41:46
-K4410811U0,Simone Carvalho Sampaio Coelho,,,,,,http://lattes.cnpq.br/K4410811U0,prova de teoremas,2025-05-27 02:41:32
-K4243469D6,Simone Hanazumi,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4243469D6,"formal verification, program verification",2025-05-27 02:41:26
-K4793946P0,Susimaurem Navarro Roque,Universidade Federal da Paraíba,,,,,http://lattes.cnpq.br/K4793946P0,prova de teoremas,2025-05-27 02:41:32
-K4357307J8,Sérgio Barza,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4357307J8,"formal methods, model checking, temporal logic",2025-05-27 02:41:24
-K4787753U2,Tarcisio Haroldo Cavalcante Pequeno,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4787753U2,automated reasoning,2025-05-27 02:41:47
-K4476168Y6,Thiago Monteiro Tuxi,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4476168Y6,model checking,2025-05-27 02:41:28
-K1190804A4,Thomas Bell Djuitchou Yaleu,University of Yaounde I,,,,,http://lattes.cnpq.br/K1190804A4,static analysis,2025-05-27 02:41:38
-K4351781Z1,Tomas Grimm,,,,,,http://lattes.cnpq.br/K4351781Z1,formal verification,2025-05-27 02:41:27
-K4787275H6,Tomasz Kowaltowski,Universidade da California em Berkeley,,,,,http://lattes.cnpq.br/K4787275H6,linguagens de especificação,2025-05-27 02:41:45
-K4728814D0,Torsten Paul Nelson,University of Waterloo,,,,,http://lattes.cnpq.br/K4728814D0,formal verification,2025-05-27 02:41:26
-K4782515H4,Vanderlei Moraes Rodrigues,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4782515H4,temporal logic,2025-05-27 02:41:33
-K4302585Z7,Victor Borges Ferreira Gomes,University of Sheffield,,,,,http://lattes.cnpq.br/K4302585Z7,program verification,2025-05-27 02:41:40
-K4414716P6,Vinícius Pereira,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4414716P6,"formal methods, formal verification, formal semantics",2025-05-27 02:41:22
-K8183619P3,Viorel Milea,Erasmus University Rotterdam,,,,,http://lattes.cnpq.br/K8183619P3,automated reasoning,2025-05-27 02:41:47
-K4799291P4,Virginia Carvalho Carneiro de Paula,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4799291P4,linguagens de especificação,2025-05-27 02:41:45
-K4816497D2,Vitor Pereira Machado,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4816497D2,temporal logic,2025-05-27 02:41:33
-K4434715J1,Vivek Nigam,,,,,,http://lattes.cnpq.br/K4434715J1,automated reasoning,2025-05-27 02:41:47
-K4202499H6,Wilerson Venceslau Calil,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4202499H6,program verification,2025-05-27 02:41:41
-K8703868E0,Yeison Andres Zabala,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K8703868E0,static analysis,2025-05-27 02:41:39
-K1797246Y9,Ângelo Antônio dos Anjos Dias,,,,,,http://lattes.cnpq.br/K1797246Y9,linguagens de especificação,2025-05-27 02:41:45
-K4339024P6,Óscar Emanuel Chaves Mealha,Universidade de Aveiro,,,,,http://lattes.cnpq.br/K4339024P6,computacao,2025-05-27 02:25:47
+K4126655U1,Abilio Azambuja Rodrigues Filho,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4126655U1,formal semantics,2025-05-27 03:07:33
+K4783118D3,Abraham Alcaim,University of London,,,,,http://lattes.cnpq.br/K4783118D3,program verification,2025-05-27 03:06:47
+K4760049Z7,Adalberto Cajueiro de Farias,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4760049Z7,model checking,2025-05-27 03:05:34
+K4766271J0,Adalberto Socorro da Silva,Faculdade de mediciina da USP,,,,,http://lattes.cnpq.br/K4766271J0,program verification,2025-05-27 03:06:46
+K8709106Z6,Adelson Dias de Araújo Júnior,University of Twente,,,,,http://lattes.cnpq.br/K8709106Z6,automated reasoning,2025-05-27 03:07:10
+K4767859T8,Adenilso da Silva Simão,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4767859T8,model checking,2025-05-27 03:05:37
+K4736428E9,Adilson Luiz Bonifácio,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4736428E9,"formal verification, model checking",2025-05-27 03:05:24
+K4761438J8,Adnan Sherif,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4761438J8,"formal verification, formal semantics",2025-05-27 03:05:20
+K4137077D2,Adriana da Silva Araujo,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4137077D2,linguagens de especificação,2025-05-27 03:07:05
+K4774802U2,Adriano Marques da Silva,Universidade Federal do Rio Grande do Norte,,,,,http://lattes.cnpq.br/K4774802U2,formal semantics,2025-05-27 03:07:27
+K4796010A9,Adriano Petry,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4796010A9,program verification,2025-05-27 03:06:41
+K4231376H8,Airton Jacob Alvares,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4231376H8,prova de teoremas,2025-05-27 03:05:43
+K4791008D5,Aldalea Figueiredo dos Santos,Universidade Federal Fluminense,,,,,http://lattes.cnpq.br/K4791008D5,linguagens de especificação,2025-05-27 03:07:07
+K4308560D7,Aldo Henrique Dias Mendes,Universidade de Brasília,,,,,http://lattes.cnpq.br/K4308560D7,automated reasoning,2025-05-27 03:07:19
+K4274774A6,Alencar Machado,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4274774A6,automated reasoning,2025-05-27 03:07:20
+K4717739A6,Alessander Botti Benevides,,,,,,http://lattes.cnpq.br/K4717739A6,formal methods,2025-05-27 03:05:13
+K4791202A0,Alessandra Conceicao Faria Aguiar Campos,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4791202A0,model checking,2025-05-27 03:05:34
+K4799333Z8,Alessandro Bezerra Trindade,Universidade Federal do Amazonas,,,,,http://lattes.cnpq.br/K4799333Z8,"formal verification, model checking",2025-05-27 03:05:24
+K4730923T6,Alessandro Boechat de Medeiros,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4730923T6,formal semantics,2025-05-27 03:07:32
+K4750167D1,Alessandro Oliveira Arantes,,,,,,http://lattes.cnpq.br/K4750167D1,static analysis,2025-05-27 03:06:30
+K4422087H5,Alex Donizeti Betez Alberto,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4422087H5,formal semantics,2025-05-27 03:07:26
+K4784948H6,Alex de Vasconcellos Garcia,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4784948H6,linguagens de especificação,2025-05-27 03:06:51
+K8611723J6,Alexander Guilherme Saturno,Universidade Nove de Julho,,,,,http://lattes.cnpq.br/K8611723J6,prova de teoremas,2025-05-27 03:05:50
+K8205200Z6,Alexandra Lehmkuhl,,,,,,http://lattes.cnpq.br/K8205200Z6,prova de teoremas,2025-05-27 03:05:43
+K4782996U3,Alexandre Agustini,Universidade Nova de Lisboa,,,,,http://lattes.cnpq.br/K4782996U3,formal methods,2025-05-27 03:05:15
+K4768882J7,Alexandre Albino Andreatta,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4768882J7,model checking,2025-05-27 03:05:39
+K4728299E5,Alexandre Cabral Mota,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4728299E5,"formal methods, formal verification, model checking, program verification, formal semantics",2025-05-27 03:05:12
+K4705574D8,Alexandre Rademaker,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4705574D8,"temporal logic, automated reasoning, formal semantics",2025-05-27 03:06:05
+K4709594J1,Alexandre Silva Cavalcante,Universidade Federal do Ceará,,,,,http://lattes.cnpq.br/K4709594J1,prova de teoremas,2025-05-27 03:05:55
+K4695365U0,Alexandre Silva de Souza,Universidade Federal Fluminense,,,,,http://lattes.cnpq.br/K4695365U0,prova de teoremas,2025-05-27 03:05:55
+K9608724H0,Alexia Cristine de Oliveira Mendonça,Universidade Federal de Uberlândia,,,,,http://lattes.cnpq.br/K9608724H0,prova de teoremas,2025-05-27 03:05:43
+K4723426P6,Alfio Ricardo de Brito Martini,,,,,,http://lattes.cnpq.br/K4723426P6,"temporal logic, formal semantics",2025-05-27 03:06:08
+K4364753P3,Aline Flávia Nonato da Costa Moro,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4364753P3,static analysis,2025-05-27 03:06:21
+K4786483H2,Aline Maria Santos Andrade,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4786483H2,"formal methods, formal verification",2025-05-27 03:05:09
+K4367441E9,Alison Roberto Panisson,Pontifícia Universidade Católica do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4367441E9,"automated reasoning, formal semantics",2025-05-27 03:07:14
+K4242048J7,Allan George de Carvalho Freitas,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4242048J7,static analysis,2025-05-27 03:06:34
+K4783115Z3,Aloysio de Castro Pinto Pedroza,,,,,,http://lattes.cnpq.br/K4783115Z3,formal verification,2025-05-27 03:05:26
+K4106321U5,Alvaro Heiji Miyazawa,University of York,,,,,http://lattes.cnpq.br/K4106321U5,formal verification,2025-05-27 03:05:20
+K4384677J4,Amanda Danielle Oliveira da Silva Dantas,Universidade Federal do Rio Grande do Norte,,,,,http://lattes.cnpq.br/K4384677J4,static analysis,2025-05-27 03:06:27
+K8976059Z1,Amanda da Silva Rodrigues Cunha,,,,,,http://lattes.cnpq.br/K8976059Z1,prova de teoremas,2025-05-27 03:05:42
+K1168916J4,Amilene Bezerra do Nascimento,,,,,,http://lattes.cnpq.br/K1168916J4,linguagens de especificação,2025-05-27 03:06:51
+K2072351Z2,Amir Molzam Sharifloo,,,,,,http://lattes.cnpq.br/K2072351Z2,"formal methods, formal verification, model checking",2025-05-27 03:05:10
+K4257695U2,Ana Carolina da Silva Caretti,Universidade Estadual Paulista Júlio de Mesquita Filho,,,,,http://lattes.cnpq.br/K4257695U2,linguagens de especificação,2025-05-27 03:07:03
+K4233847Y9,Ana Claudia de Jesus Golzio,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4233847Y9,formal semantics,2025-05-27 03:07:31
+K4787816D2,Ana Cristina Vieira de Melo,The University Of Manchester,,,,,http://lattes.cnpq.br/K4787816D2,"formal methods, formal verification, program verification",2025-05-27 03:05:03
+K4797855T8,Ana Lucia de Paula Muller,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4797855T8,formal semantics,2025-05-27 03:07:34
+K4246853H0,Ana Lúcia Pessotto dos Santos,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4246853H0,formal semantics,2025-05-27 03:07:31
+K4795487Y3,Ana Margarida de Oliveira,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4795487Y3,static analysis,2025-05-27 03:06:28
+K4763147J6,Ana Maria Ambrosio,,,,,,http://lattes.cnpq.br/K4763147J6,model checking,2025-05-27 03:05:36
+K4769304T6,Ana Paula Fontana Vianna,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4769304T6,prova de teoremas,2025-05-27 03:05:47
+K4776592H3,Ana Paula Rodrigues Cavalcante de Paiva,Fundação Oswaldo Cruz,,,,,http://lattes.cnpq.br/K4776592H3,formal methods,2025-05-27 03:05:11
+K4785321U3,Ana Teresa de Castro Martins,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4785321U3,temporal logic,2025-05-27 03:06:03
+K4787817Z4,Anamaria Martins Moreira,,,,,,http://lattes.cnpq.br/K4787817Z4,"formal methods, formal verification, formal semantics",2025-05-27 03:05:05
+K4728035E1,Anarosa Alves Franco Brandão,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4728035E1,automated reasoning,2025-05-27 03:07:25
+K9820607P8,Anderson Alexandrino Campos,,,,,,http://lattes.cnpq.br/K9820607P8,prova de teoremas,2025-05-27 03:05:42
+K4762933J2,Anderson Santana de Oliveira,,,,,,http://lattes.cnpq.br/K4762933J2,"formal verification, formal semantics",2025-05-27 03:05:27
+K4702293H8,Anderson de Rezende Rocha,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4702293H8,"program verification, automated reasoning",2025-05-27 03:06:41
+K4215971H9,Andre Felipe Saide Martins,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4215971H9,prova de teoremas,2025-05-27 03:05:45
+K4782943A8,Andre Inacio Reis,,,,,,http://lattes.cnpq.br/K4782943A8,temporal logic,2025-05-27 03:06:03
+K4133394Y7,Andre Murbach Maidl,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4133394Y7,formal semantics,2025-05-27 03:07:29
+K4771213H5,Andre Suslik Spritzer,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4771213H5,static analysis,2025-05-27 03:06:31
+K4702917Y8,Andrea Barroso Melo Monteiro de Queiroz,Universidade do Estado do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4702917Y8,program verification,2025-05-27 03:06:42
+K4788065D2,Andrea Maria Altino de Campos Loparic,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4788065D2,"temporal logic, formal semantics",2025-05-27 03:06:12
+K4671147U1,Andrea de Mello Gigli,Universidade de Taubaté,,,,,http://lattes.cnpq.br/K4671147U1,prova de teoremas,2025-05-27 03:05:42
+K4707599Y4,Andreas Herzig,,,,,,http://lattes.cnpq.br/K4707599Y4,"temporal logic, automated reasoning",2025-05-27 03:06:01
+K4262187E0,Andrei Rimsa Álvares,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4262187E0,static analysis,2025-05-27 03:06:18
+K4315061Y6,Andressa Bernardo da Silva,Universidade Federal de São Carlos,,,,,http://lattes.cnpq.br/K4315061Y6,linguagens de especificação,2025-05-27 03:06:59
+K4029895Y4,Andrew Koster,,,,,,http://lattes.cnpq.br/K4029895Y4,formal semantics,2025-05-27 03:07:34
+K4217581P6,André Almeida Garcia,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4217581P6,prova de teoremas,2025-05-27 03:05:44
+K4013486P8,André Bazzoni Bueno,,,,,,http://lattes.cnpq.br/K4013486P8,"formal methods, temporal logic, formal semantics",2025-05-27 03:05:12
+K4702553D2,André Luiz Galdino,Universidade de Brasília,,,,,http://lattes.cnpq.br/K4702553D2,formal verification,2025-05-27 03:05:23
+K4564800H9,André Luís Ribeiro Didier,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4564800H9,"model checking, temporal logic, formal semantics",2025-05-27 03:05:31
+K4779532U1,Andréia Borges Avelar,Universidade de Brasília,,,,,http://lattes.cnpq.br/K4779532U1,"formal methods, formal verification",2025-05-27 03:05:04
+K9097156D0,Andréia Pereira Marques,,,,,,http://lattes.cnpq.br/K9097156D0,linguagens de especificação,2025-05-27 03:06:54
+K4794433T6,Andrés Pablo Salanova,,,,,,http://lattes.cnpq.br/K4794433T6,formal semantics,2025-05-27 03:07:34
+K4357183T5,Anelize Cini,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4357183T5,static analysis,2025-05-27 03:06:27
+K4735008D7,Angelo Antonio Verri,,,,,,http://lattes.cnpq.br/K4735008D7,static analysis,2025-05-27 03:06:19
+K4219189U2,Angelo Schranko de Oliveira,Universidade Nove de Julho,,,,,http://lattes.cnpq.br/K4219189U2,static analysis,2025-05-27 03:06:19
+K4215496D7,Antonino Alves Feitosa Neto,Universidade Federal do Rio Grande do Norte,,,,,http://lattes.cnpq.br/K4215496D7,automated reasoning,2025-05-27 03:07:12
+K4470794E8,Antonio Morimoto Junior,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4470794E8,prova de teoremas,2025-05-27 03:05:46
+K4133365U7,Antonio da Silva Andrade,Universidade de La Coruña,,,,,http://lattes.cnpq.br/K4133365U7,linguagens de especificação,2025-05-27 03:07:06
+K4106943U6,Antonio da Silva Campos Junior,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4106943U6,prova de teoremas,2025-05-27 03:05:56
+K4709911P1,Aparecido Valdemir de Freitas,Escola Politécnica da Usp,,,,,http://lattes.cnpq.br/K4709911P1,linguagens de especificação,2025-05-27 03:06:57
+K4465001U8,Ariane Alves Almeida,Universidade de Brasília,,,,,http://lattes.cnpq.br/K4465001U8,formal verification,2025-05-27 03:05:27
+K4787693J1,Arnaldo Vieira Moura,University Of California Berkeley,,,,,http://lattes.cnpq.br/K4787693J1,"formal methods, formal verification, program verification",2025-05-27 03:05:11
+K4248434Z6,Arthur Gomes Dantas de Araújo,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4248434Z6,prova de teoremas,2025-05-27 03:05:53
+K4785549D9,Arthur Ronald de Vallauris Buchsbaum,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4785549D9,automated reasoning,2025-05-27 03:07:11
+K4265782P1,Artur Oliveira Gomes,,,,,,http://lattes.cnpq.br/K4265782P1,"formal methods, model checking",2025-05-27 03:05:02
+K4123421D4,Artur Thompsen Carpes,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4123421D4,prova de teoremas,2025-05-27 03:05:52
+K4787057H4,Augusto Cezar Alves Sampaio,University of Oxford,,,,,http://lattes.cnpq.br/K4787057H4,"formal methods, formal verification, program verification, formal semantics",2025-05-27 03:05:07
+K4798847J3,Aurelio Flavio Charao,,,,,,http://lattes.cnpq.br/K4798847J3,linguagens de especificação,2025-05-27 03:06:52
+K4781728E0,Autran Macêdo,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4781728E0,"formal verification, model checking",2025-05-27 03:05:25
+K4792377Y5,Benedito Jose Imbiriba Carneiro,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4792377Y5,prova de teoremas,2025-05-27 03:05:44
+K4247586H8,Benedito Leandro Neto,Universidade de Brasília,,,,,http://lattes.cnpq.br/K4247586H8,static analysis,2025-05-27 03:06:21
+K4781894T3,Bernardo Lula Júnior,,,,,,http://lattes.cnpq.br/K4781894T3,temporal logic,2025-05-27 03:06:11
+K2104977Y9,Bernd Hartmann,University of Münster,,,,,http://lattes.cnpq.br/K2104977Y9,prova de teoremas,2025-05-27 03:05:43
+K4341714H4,Bin Tang,Dalian University of Technology,,,,,http://lattes.cnpq.br/K4341714H4,static analysis,2025-05-27 03:06:23
+K4785270J2,Braz Izaias da Silva Junior,Carnegie Mellon University,,,,,http://lattes.cnpq.br/K4785270J2,"formal verification, model checking, temporal logic",2025-05-27 03:05:21
+K4164928Z6,Breno Alexandro Ferreira de Miranda,,,,,,http://lattes.cnpq.br/K4164928Z6,program verification,2025-05-27 03:06:38
+K4816490J9,Brian Wayne Slafer,University of California,,,,,http://lattes.cnpq.br/K4816490J9,formal methods,2025-05-27 03:05:11
+K4440357A4,Bruno Bertoni Cunha,Universidade Federal de Uberlândia,,,,,http://lattes.cnpq.br/K4440357A4,prova de teoremas,2025-05-27 03:05:46
+K4742045D6,Bruno Bogaz Zarpelão,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4742045D6,program verification,2025-05-27 03:06:44
+K4235546U4,Bruno Ferreira,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4235546U4,model checking,2025-05-27 03:05:32
+K4094129A2,Bruno Marinho Santos,Universidade Federal de São Carlos,,,,,http://lattes.cnpq.br/K4094129A2,model checking,2025-05-27 03:05:32
+K4431175J7,Bruno Ramos Mendonça,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4431175J7,formal semantics,2025-05-27 03:07:26
+K4296066D1,Bárbara Yuri Katahira,Universidade Federal do Paraná,,,,,http://lattes.cnpq.br/K4296066D1,linguagens de especificação,2025-05-27 03:06:53
+K4736867P2,Börje Felipe Fernandes Karlsson,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4736867P2,automated reasoning,2025-05-27 03:07:18
+K8592758T3,Camila Kamimura Silva Prado,Universidade Federal de São Carlos,,,,,http://lattes.cnpq.br/K8592758T3,linguagens de especificação,2025-05-27 03:07:00
+K4730395J5,Camila de Araújo,Universidade Federal do Rio Grande do Norte,,,,,http://lattes.cnpq.br/K4730395J5,formal verification,2025-05-27 03:05:22
+K4207484D6,Camila de Oliveira Luvison,,,,,,http://lattes.cnpq.br/K4207484D6,prova de teoremas,2025-05-27 03:05:40
+K8219250Y9,Camila de Paula de Lima,Edith Cowan University,,,,,http://lattes.cnpq.br/K8219250Y9,static analysis,2025-05-27 03:06:34
+K4776310U0,Camilo Jose D Avila Couto,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4776310U0,prova de teoremas,2025-05-27 03:05:54
+K4791811T7,Carlos Alberto Bones,,,,,,http://lattes.cnpq.br/K4791811T7,program verification,2025-05-27 03:06:42
+K4679158P9,Carlos Alberto Hernandez Rodriguez,,,,,,http://lattes.cnpq.br/K4679158P9,prova de teoremas,2025-05-27 03:05:41
+K4315073Y2,Carlos Alberto Olarte Vega,,,,,,http://lattes.cnpq.br/K4315073Y2,"formal verification, model checking, temporal logic, formal semantics",2025-05-27 03:05:27
+K4789840A6,Carlos Becker Westphall,,,,,,http://lattes.cnpq.br/K4789840A6,program verification,2025-05-27 03:06:45
+K2757301D2,Carlos Caleiro,Universidade Técnica de Lisboa,,,,,http://lattes.cnpq.br/K2757301D2,temporal logic,2025-05-27 03:06:01
+K4788576D6,Carlos Camarão de Figueiredo,University of Manchester,,,,,http://lattes.cnpq.br/K4788576D6,linguagens de especificação,2025-05-27 03:07:08
+K4489981E5,Carlos Diego Nascimento Damasceno,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4489981E5,model checking,2025-05-27 03:05:35
+K4791032J7,Carlos Henrique Cabral Duarte,University of London,,,,,http://lattes.cnpq.br/K4791032J7,program verification,2025-05-27 03:06:38
+K4091502J6,Carlos Henrique Lima de Castro,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4091502J6,static analysis,2025-05-27 03:06:20
+K4235281H6,Carlos Ivan Castro Marquez,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4235281H6,"formal methods, formal verification, model checking",2025-05-27 03:05:07
+K4139630J6,Carlos Julian Menezes Araujo,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4139630J6,program verification,2025-05-27 03:06:43
+K4777510Z0,Carlos Luciano Montagnoli,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4777510Z0,linguagens de especificação,2025-05-27 03:07:01
+K1182747J6,Carlos Zoete Gomes da Costa,FACULDADE TEOLOGICA DO ESTADO DE SÃO PAULO,,,,,http://lattes.cnpq.br/K1182747J6,prova de teoremas,2025-05-27 03:05:52
+K4706120U5,Celso Martins Rosa,PONTIFICIA UNIVERSIDADE CATOLICA DE SAO PAULO,,,,,http://lattes.cnpq.br/K4706120U5,linguagens de especificação,2025-05-27 03:06:53
+K4781000P3,Cezar Augusto Mortari,,,,,,http://lattes.cnpq.br/K4781000P3,temporal logic,2025-05-27 03:06:06
+K4269944U7,Christian Garcia Vieira,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4269944U7,prova de teoremas,2025-05-27 03:05:41
+K4707920Z8,Christian Jacques Rentería,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4707920Z8,temporal logic,2025-05-27 03:06:01
+K4708719E6,Christiano de Oliveira Braga,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4708719E6,"formal methods, formal verification, temporal logic, automated reasoning, formal semantics",2025-05-27 03:05:14
+K4090062J1,Ciro Morais Medeiros,Universidade Federal do Rio Grande do Norte,,,,,http://lattes.cnpq.br/K4090062J1,linguagens de especificação,2025-05-27 03:07:02
+K4753521Z6,Claudia Fernanda Oliveira Kiermes Tavares,,,,,,http://lattes.cnpq.br/K4753521Z6,formal methods,2025-05-27 03:05:06
+K4781614E1,Claudionor Jose Nunes Coelho Junior,Stanford University,,,,,http://lattes.cnpq.br/K4781614E1,"formal verification, program verification",2025-05-27 03:05:25
+K4795433D9,Clauirton de Albuquerque Siebra,University of Edinburgh,,,,,http://lattes.cnpq.br/K4795433D9,automated reasoning,2025-05-27 03:07:23
+K4469862H8,Cleison Henrique de Paula,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4469862H8,static analysis,2025-05-27 03:06:22
+K4707593J6,Cleonice Rodrigues Casarin da Rocha,,,,,,http://lattes.cnpq.br/K4707593J6,prova de teoremas,2025-05-27 03:05:50
+K4799021E5,Cláudia Nalon,University of Liverpool,,,,,http://lattes.cnpq.br/K4799021E5,"temporal logic, automated reasoning",2025-05-27 03:06:05
+K4718272D9,Cláudio Elízio Calazans Campelo,University of Leeds,,,,,http://lattes.cnpq.br/K4718272D9,automated reasoning,2025-05-27 03:07:16
+K4208911A9,Cláudio Saad Netto,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4208911A9,prova de teoremas,2025-05-27 03:05:42
+K4789778P8,Conrado Werner Seibel,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4789778P8,formal verification,2025-05-27 03:05:21
+K4711185D7,Cristiano Bertolini,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4711185D7,program verification,2025-05-27 03:06:45
+K4795269E6,Cristiano Damiani Vasconcellos,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4795269E6,linguagens de especificação,2025-05-27 03:06:58
+K4979751E7,Cristiano Forster,Universidade Estadual de Londrina,,,,,http://lattes.cnpq.br/K4979751E7,prova de teoremas,2025-05-27 03:05:43
+K4238149E5,Cristie Graziottin Noschang,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4238149E5,model checking,2025-05-27 03:05:34
+K4764249J4,Cristina Meinhardt,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4764249J4,temporal logic,2025-05-27 03:06:13
+K4798343J9,Cristina Ururahy da Fontoura Cerqueira,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4798343J9,linguagens de especificação,2025-05-27 03:06:50
+K4272866J1,Cynthia dos Santos Hentschke,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4272866J1,model checking,2025-05-27 03:05:39
+K4476908H3,Cyntia Vilasboas Calixto Casnici,Fundação Getúlio Vargas,,,,,http://lattes.cnpq.br/K4476908H3,formal methods,2025-05-27 03:05:19
+K4793137P2,Célia Ghedini Ralha,University of Leeds,,,,,http://lattes.cnpq.br/K4793137P2,automated reasoning,2025-05-27 03:07:20
+K4732601J9,César Augusto Lins de Oliveira,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4732601J9,model checking,2025-05-27 03:05:33
+K4769532A8,Cícero Saraiva Sobrinho,Universidade Federal do Ceará,,,,,http://lattes.cnpq.br/K4769532A8,temporal logic,2025-05-27 03:06:09
+K2047754D6,Daiana Cristina Pereira,Universidade Feevale,,,,,http://lattes.cnpq.br/K2047754D6,prova de teoremas,2025-05-27 03:05:48
+K4330509D2,Dalay Israel de Almeida Pereira,,,,,,http://lattes.cnpq.br/K4330509D2,formal methods,2025-05-27 03:05:05
+K4739675U3,Dale Miller,Carnegie Mellon University,,,,,http://lattes.cnpq.br/K4739675U3,automated reasoning,2025-05-27 03:07:12
+K4796677A3,Dalton Dario Serey Guerrero,Universidade Federal da Paraíba,,,,,http://lattes.cnpq.br/K4796677A3,"model checking, program verification",2025-05-27 03:05:36
+K4205577Z7,Daniel Arvage Nagase,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4205577Z7,formal semantics,2025-05-27 03:07:30
+K4769836J6,Daniel Câmara,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4769836J6,formal verification,2025-05-27 03:05:25
+K4339761H8,Daniel Roger Marie Gerard Vanderveken,,,,,,http://lattes.cnpq.br/K4339761H8,formal semantics,2025-05-27 03:07:30
+K4425385D5,Daniela Akiko Nomura,,,,,,http://lattes.cnpq.br/K4425385D5,static analysis,2025-05-27 03:06:23
+K4238796U1,Daniela Santos de Farias,Universidade Estadual Paulista Júlio de Mesquita Filho,,,,,http://lattes.cnpq.br/K4238796U1,linguagens de especificação,2025-05-27 03:07:03
+K4481630T0,Daniele Nantes Sobrinho,Universidade de Brasília,,,,,http://lattes.cnpq.br/K4481630T0,"formal methods, automated reasoning, formal semantics",2025-05-27 03:05:18
+K4909645D2,Danielle Maciel Carvas,Pontifícia Universidade Católica,,,,,http://lattes.cnpq.br/K4909645D2,prova de teoremas,2025-05-27 03:05:55
+K4496705Z7,Danilo Filgueira Mendonça,,,,,,http://lattes.cnpq.br/K4496705Z7,model checking,2025-05-27 03:05:32
+K4425521U5,Danniella Fernandes dos Santos,Sociedade Inernacional e Psicanálise de São Paulo,,,,,http://lattes.cnpq.br/K4425521U5,prova de teoremas,2025-05-27 03:05:49
+K4227844Z5,Darisa Leonora Pereira de Matos,Universidade Federal Fluminense,,,,,http://lattes.cnpq.br/K4227844Z5,linguagens de especificação,2025-05-27 03:07:06
+K4769242U9,Davi Romero de Vasconcelos,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4769242U9,temporal logic,2025-05-27 03:06:07
+K4768856U5,David Boris Paul Déharbe,,,,,,http://lattes.cnpq.br/K4768856U5,"formal methods, formal verification, model checking, program verification",2025-05-27 03:05:06
+K4356874H6,David Kohan Marzagão,,,,,,http://lattes.cnpq.br/K4356874H6,formal methods,2025-05-27 03:05:04
+K4763107J5,David Shepherd,University of Durham,,,,,http://lattes.cnpq.br/K4763107J5,formal methods,2025-05-27 03:05:15
+K4730768H8,Davidson Rodrigo Boccardo,Faculdade de Engenharia de Ilha Solteira UNESP,,,,,http://lattes.cnpq.br/K4730768H8,program verification,2025-05-27 03:06:43
+K4707267D2,Delcino Picinin Júnior,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4707267D2,"formal methods, model checking",2025-05-27 03:05:11
+K4791595H1,Denilson José Ribeiro Sodré,,,,,,http://lattes.cnpq.br/K4791595H1,static analysis,2025-05-27 03:06:28
+K4257316U2,Denis Deratani Mauá,,,,,,http://lattes.cnpq.br/K4257316U2,temporal logic,2025-05-27 03:06:09
+K4707269T5,Denis Teixeira Franco,,,,,,http://lattes.cnpq.br/K4707269T5,model checking,2025-05-27 03:05:37
+K4761998J4,Diego Munk London,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4761998J4,linguagens de especificação,2025-05-27 03:06:54
+K4236650U8,Diogo Assumpção Rezende de Almeida,Universidade do Estado do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4236650U8,prova de teoremas,2025-05-27 03:05:51
+K4615307A9,Diogo João Cardoso,Universidade Federal de Pelotas,,,,,http://lattes.cnpq.br/K4615307A9,"formal verification, formal semantics",2025-05-27 03:05:28
+K4475500U7,Diogo Nunes Sampaio,,,,,,http://lattes.cnpq.br/K4475500U7,static analysis,2025-05-27 03:06:20
+K4463070E0,Dionatan Augusto Guimarães Cieslak,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4463070E0,automated reasoning,2025-05-27 03:07:12
+K4707021P6,Dirce Bortotti Salvadori,,,,,,http://lattes.cnpq.br/K4707021P6,linguagens de especificação,2025-05-27 03:06:52
+K4701911T3,Djones Vinicius Lettnin,University of Tübingen,,,,,http://lattes.cnpq.br/K4701911T3,"formal methods, formal verification",2025-05-27 03:05:11
+K4455810H8,Dora Maria Vendramini Barreto,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4455810H8,prova de teoremas,2025-05-27 03:05:52
+K4290838D6,Douglas Mori,Prefectural University of Hiroshima,,,,,http://lattes.cnpq.br/K4290838D6,program verification,2025-05-27 03:06:39
+K2138402P7,Dr Kaly,,,,,,http://lattes.cnpq.br/K2138402P7,linguagens de especificação,2025-05-27 03:07:05
+K4795534U8,Dário Vieira Conceição,,,,,,http://lattes.cnpq.br/K4795534U8,program verification,2025-05-27 03:06:47
+K4769146H0,Eddie Batista de Lima Filho,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4769146H0,"formal verification, model checking, program verification",2025-05-27 03:05:29
+K4723727U8,Edelweis Helena Garcez Ritt,University of Tübingen,,,,,http://lattes.cnpq.br/K4723727U8,"formal verification, model checking, temporal logic, formal semantics",2025-05-27 03:05:21
+K4798434Y6,Edjard de Souza Mota,The University Of Edinburgh,,,,,http://lattes.cnpq.br/K4798434Y6,"formal methods, formal verification, temporal logic, program verification",2025-05-27 03:05:13
+K4781912H8,Edmundo Carvalho Mauad,UNIFESP - Escola Paulista de Medicina,,,,,http://lattes.cnpq.br/K4781912H8,program verification,2025-05-27 03:06:41
+K4778117Z2,Eduard Ayguadé,,,,,,http://lattes.cnpq.br/K4778117Z2,static analysis,2025-05-27 03:06:26
+K4439035T4,Eduardo Alexandre Ferreira Silva,Universidade Federal do Rio Grande do Norte,,,,,http://lattes.cnpq.br/K4439035T4,"formal verification, model checking",2025-05-27 03:05:26
+K4301062D9,Eduardo Almeida Soares,Lancaster University,,,,,http://lattes.cnpq.br/K4301062D9,automated reasoning,2025-05-27 03:07:19
+K4689766J6,Eduardo Antonio Wink de Menezes,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4689766J6,static analysis,2025-05-27 03:06:32
+K4213585T9,Eduardo Cabral Balreira,Notre Dame University,,,,,http://lattes.cnpq.br/K4213585T9,model checking,2025-05-27 03:05:32
+K8952129E9,Eduardo Gabriel Cortes,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K8952129E9,model checking,2025-05-27 03:05:39
+K4784770E9,Eduardo Rodrigues Capocchi,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4784770E9,prova de teoremas,2025-05-27 03:05:45
+K4648350Y3,Eduardo Rohde Eras,,,,,,http://lattes.cnpq.br/K4648350Y3,"formal methods, formal verification, model checking",2025-05-27 03:05:04
+K4298562P8,Eduardo Simões Lopes Gastal,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4298562P8,program verification,2025-05-27 03:06:38
+K4750406T4,Eduardo Zambon,University of Twente,,,,,http://lattes.cnpq.br/K4750406T4,model checking,2025-05-27 03:05:36
+K4787029E5,Edward Hermann Haeusler,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4787029E5,"temporal logic, formal semantics",2025-05-27 03:06:01
+K4364220T5,Edwin Fabian Garcia Aristizabal,Kyoto University,,,,,http://lattes.cnpq.br/K4364220T5,static analysis,2025-05-27 03:06:33
+K4784683J6,Elaine Gouvêa Pimentel,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4784683J6,automated reasoning,2025-05-27 03:07:15
+K4265038Y6,Eldânae Nogueira Teixeira,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4265038Y6,program verification,2025-05-27 03:06:46
+K4717093E5,Eliana Beatriz Pereira,Pontifícia Universidade Católica do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4717093E5,model checking,2025-05-27 03:05:35
+K4785885Y4,Eliana de Mattos Pinto Coelho,,,,,,http://lattes.cnpq.br/K4785885Y4,"formal methods, prova de teoremas",2025-05-27 03:05:06
+K4460059P6,Elias Adriano Nogueira da Silva,,,,,,http://lattes.cnpq.br/K4460059P6,formal methods,2025-05-27 03:05:13
+K4783332U4,Elias Humberto Alves,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4783332U4,temporal logic,2025-05-27 03:05:57
+K1149448J3,Elisangela Rodrigues de Mattos,Universidade Federal de Mato Grosso,,,,,http://lattes.cnpq.br/K1149448J3,linguagens de especificação,2025-05-27 03:06:57
+K4727984A9,Elizabeth Maria Ziani,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4727984A9,linguagens de especificação,2025-05-27 03:06:59
+K4369054U5,Emanoel Di Tarso dos Santos Sousa,Universidade Federal de Viçosa,,,,,http://lattes.cnpq.br/K4369054U5,temporal logic,2025-05-27 03:06:18
+K4750580J4,Emerson Loureiro,University College Dublin,,,,,http://lattes.cnpq.br/K4750580J4,model checking,2025-05-27 03:05:39
+K8243660H2,Emerson Wendlingger Dantas Sales,,,,,,http://lattes.cnpq.br/K8243660H2,"model checking, static analysis",2025-05-27 03:05:30
+K4769237U2,Emilia Villani,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4769237U2,program verification,2025-05-27 03:06:47
+K4251864A0,Emilio de Camargo Francesquini,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4251864A0,program verification,2025-05-27 03:06:43
+K4865479D2,Endi Samba Luamba,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4865479D2,static analysis,2025-05-27 03:06:18
+K4339704D6,Eraylson Galdino da Silva,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4339704D6,temporal logic,2025-05-27 03:06:12
+K4319906U1,Eric Javier Biagioli,,,,,,http://lattes.cnpq.br/K4319906U1,formal methods,2025-05-27 03:05:02
+K4770275D0,Eric Luis Barroso Cavalcante,,,,,,http://lattes.cnpq.br/K4770275D0,static analysis,2025-05-27 03:06:18
+K4137081E1,Erica Akemi Goto,University of California,,,,,http://lattes.cnpq.br/K4137081E1,formal methods,2025-05-27 03:05:11
+K4364035A7,Erling Fjaer,,,,,,http://lattes.cnpq.br/K4364035A7,static analysis,2025-05-27 03:06:24
+K8974969E6,Eurico Augusto Rodrigues de Seabra,Universidade do Minho,,,,,http://lattes.cnpq.br/K8974969E6,static analysis,2025-05-27 03:06:25
+K4498041A0,Evelin Helena Silva Cardoso,Universidade Federal do Pará,,,,,http://lattes.cnpq.br/K4498041A0,temporal logic,2025-05-27 03:06:15
+K4266357D1,Evellin Cristine Souza Cardoso,Universidade de Trento,,,,,http://lattes.cnpq.br/K4266357D1,automated reasoning,2025-05-27 03:07:13
+K4207538D8,FAGOT BÉAREZ Alain,,,,,,http://lattes.cnpq.br/K4207538D8,model checking,2025-05-27 03:05:31
+K4757383J6,Fabiano Cutigi Ferrari,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4757383J6,"program verification, automated reasoning",2025-05-27 03:06:46
+K4420393D2,Fabien Georges Jacques SCHANG,Universidade de Nancy 2,,,,,http://lattes.cnpq.br/K4420393D2,formal semantics,2025-05-27 03:07:28
+K4294970J7,Fabio Araujo Guilherme da Silva,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4294970J7,temporal logic,2025-05-27 03:06:06
+K4797179E9,Fabio Gagliardi Cozman,Carnegie Mellon University,,,,,http://lattes.cnpq.br/K4797179E9,"temporal logic, automated reasoning",2025-05-27 03:06:17
+K4710190U8,Fabio Rogério Piva,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4710190U8,formal verification,2025-05-27 03:05:22
+K4794524H6,Fabio Tirelo,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4794524H6,linguagens de especificação,2025-05-27 03:06:56
+K4762562P9,Fabrício Vale de Azevedo Guerra,Universidade Federal de Campina Grande,,,,,http://lattes.cnpq.br/K4762562P9,"formal methods, formal verification",2025-05-27 03:05:08
+K4765172H8,Fabrício Vivas Andrade,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4765172H8,formal verification,2025-05-27 03:05:23
+K8720610H6,Fatima Luana Matos Furtado,Piauí,,,,,http://lattes.cnpq.br/K8720610H6,linguagens de especificação,2025-05-27 03:06:54
+K4701128E9,Felipe Rech Meneguzzi,University of Southampton,,,,,http://lattes.cnpq.br/K4701128E9,automated reasoning,2025-05-27 03:07:14
+K4428845Y8,Felipe Sobreira Abrahão,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4428845Y8,formal methods,2025-05-27 03:05:17
+K4739819U2,Fernanda Alcântara Andaló,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4739819U2,program verification,2025-05-27 03:06:37
+K4764187H9,Fernanda Lustosa Leite,Carnegie Mellon University,,,,,http://lattes.cnpq.br/K4764187H9,automated reasoning,2025-05-27 03:07:18
+K4679002P3,Fernando Bento Silva,Universidade Federal de Uberlândia,,,,,http://lattes.cnpq.br/K4679002P3,static analysis,2025-05-27 03:06:25
+K4746014T7,Fernando Braga Damasceno,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4746014T7,prova de teoremas,2025-05-27 03:05:52
+K4782513J6,Fernando Luís Dotti,,,,,,http://lattes.cnpq.br/K4782513J6,formal methods,2025-05-27 03:05:19
+K4468677J6,Fernando Maciano de Paula Neto,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4468677J6,program verification,2025-05-27 03:06:42
+K4762727Z6,Fernando Magno Quintão Pereira,University of California Los Angeles,,,,,http://lattes.cnpq.br/K4762727Z6,"static analysis, program verification",2025-05-27 03:06:25
+K4904771E3,Fernando Manuel Pereira da Costa Brito e Abreu,,,,,,http://lattes.cnpq.br/K4904771E3,model checking,2025-05-27 03:05:38
+K4779657J7,Fernando Náufel do Amaral,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4779657J7,"temporal logic, formal semantics",2025-05-27 03:06:05
+K4711984T6,Fernando Silvano Gonçalves,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4711984T6,formal verification,2025-05-27 03:05:28
+K4293698P1,Filipe Fabian Buscariolo,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4293698P1,static analysis,2025-05-27 03:06:23
+K4757821J4,Flavia Aparecida Amorim,Escola Superior de Agricultura Luis de Queiroz,,,,,http://lattes.cnpq.br/K4757821J4,program verification,2025-05-27 03:06:40
+K4702592U8,Flavio Protasio Ribeiro,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4702592U8,automated reasoning,2025-05-27 03:07:12
+K4781644J4,Flavio Soares Correa da Silva,University Of Edinburgh,,,,,http://lattes.cnpq.br/K4781644J4,automated reasoning,2025-05-27 03:07:13
+K4794552A9,Flavio Tonidandel,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4794552A9,automated reasoning,2025-05-27 03:07:23
+K4798311E6,Flávio Bortolozzi,,,,,,http://lattes.cnpq.br/K4798311E6,program verification,2025-05-27 03:06:43
+K4796523E1,Flávio Leonardo Cavalcanti de Moura,Universidade de Brasília,,,,,http://lattes.cnpq.br/K4796523E1,"formal methods, formal verification",2025-05-27 03:05:05
+K8649609T0,Francesco Maria Ferrari,,,,,,http://lattes.cnpq.br/K8649609T0,formal semantics,2025-05-27 03:07:25
+K4495449E8,Francielle Alves Vargas,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4495449E8,automated reasoning,2025-05-27 03:07:17
+K4310150J0,Franciny Medeiros Barreto,Universidade Federal de Uberlândia,,,,,http://lattes.cnpq.br/K4310150J0,formal methods,2025-05-27 03:05:17
+K4761134D8,Francisca Ferreira Gomes,,,,,,http://lattes.cnpq.br/K4761134D8,linguagens de especificação,2025-05-27 03:07:09
+K4249569D6,Francisco Alves Cangerana Neto,Faculdade de Direito da USP,,,,,http://lattes.cnpq.br/K4249569D6,prova de teoremas,2025-05-27 03:05:44
+K4782954T9,Francisco Assis Moreira do Nascimento,Pontifícia Universidade Católica do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4782954T9,formal verification,2025-05-27 03:05:29
+K4131169U6,Francisco Handrick Tomaz da Costa,Universidade de Brasília,,,,,http://lattes.cnpq.br/K4131169U6,static analysis,2025-05-27 03:06:18
+K8760623H5,Francisco José Plácido da Cunha,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K8760623H5,model checking,2025-05-27 03:05:38
+K8271584A6,Francisco Martínez Capel,,,,,,http://lattes.cnpq.br/K8271584A6,temporal logic,2025-05-27 03:06:17
+K4240562T0,Francisco Rosito,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4240562T0,prova de teoremas,2025-05-27 03:05:51
+K4321501Y2,Francisco de Assis Pereira Januario,Universidade Federal do Amazonas,,,,,http://lattes.cnpq.br/K4321501Y2,model checking,2025-05-27 03:05:37
+K4760255H6,Franklin de Souza Ramalho,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4760255H6,formal semantics,2025-05-27 03:07:31
+K4700415H1,François Monin,University of Savoie (Chambéry),,,,,http://lattes.cnpq.br/K4700415H1,"formal methods, formal verification",2025-05-27 03:05:02
+K4218847T7,Frederico Chaves Sampaio Junior,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4218847T7,prova de teoremas,2025-05-27 03:05:56
+K4184357H9,Fritz Walter Mohn,Universidade Federal de Itajubá,,,,,http://lattes.cnpq.br/K4184357H9,static analysis,2025-05-27 03:06:32
+K4836091U4,Frode Bjordal,University of California Santa Barbara,,,,,http://lattes.cnpq.br/K4836091U4,"temporal logic, formal semantics",2025-05-27 03:06:01
+K4780746A1,Fuad Gattaz Sobrinho,University System of Maryland,,,,,http://lattes.cnpq.br/K4780746A1,formal semantics,2025-05-27 03:07:29
+K2780886Y9,Fábio Costa Soares,Universidade do Estado do Rio de Janeiro,,,,,http://lattes.cnpq.br/K2780886Y9,prova de teoremas,2025-05-27 03:05:45
+K4365102A5,Gabriel Ferreira Alvarenga,Universidade Federal de Itajubá,,,,,http://lattes.cnpq.br/K4365102A5,static analysis,2025-05-27 03:06:23
+K4844483T2,Gabriel Ferreira Silva,Universidade de Brasília,,,,,http://lattes.cnpq.br/K4844483T2,formal methods,2025-05-27 03:05:11
+K4784113U1,Gabriel de Andrade Junqueira Filho,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4784113U1,linguagens de especificação,2025-05-27 03:07:03
+K4229521E6,Gabriela Maria Lisboa Pinheiro,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4229521E6,linguagens de especificação,2025-05-27 03:06:50
+K4241326E0,Gabriela Toledo Silva,Fundação Getulio Vargas - SP,,,,,http://lattes.cnpq.br/K4241326E0,linguagens de especificação,2025-05-27 03:06:59
+K4723341P7,Garibaldi Monteiro Sarmento,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4723341P7,formal semantics,2025-05-27 03:07:27
+K4343469J3,Geisa Aparecida Ferreira,,,,,,http://lattes.cnpq.br/K4343469J3,linguagens de especificação,2025-05-27 03:06:52
+K4705735H1,Genaina Nunes Rodrigues,University College of London,,,,,http://lattes.cnpq.br/K4705735H1,"model checking, program verification",2025-05-27 03:05:34
+K4294431P8,Germano de Souza Fonseca,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4294431P8,static analysis,2025-05-27 03:06:22
+K4793982Y4,Gertrud Friedrich Frahm,Lancaster University,,,,,http://lattes.cnpq.br/K4793982Y4,formal methods,2025-05-27 03:05:19
+K4760799E4,Giancarlo Guizzardi,University of Twente,,,,,http://lattes.cnpq.br/K4760799E4,formal semantics,2025-05-27 03:07:34
+K4763818Z6,Gilberto Shigueo Nakamiti,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4763818Z6,automated reasoning,2025-05-27 03:07:15
+K4775012P7,Gilberto de Mello Nogueira Abdelhay,Universidade do Estado do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4775012P7,linguagens de especificação,2025-05-27 03:06:51
+K4183531T7,Gilson Vieira,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4183531T7,formal methods,2025-05-27 03:05:14
+K8477857J8,Giorgio Carbone,University of York,,,,,http://lattes.cnpq.br/K8477857J8,formal methods,2025-05-27 03:05:06
+K8701758Y9,Giorgio Venturi,,,,,,http://lattes.cnpq.br/K8701758Y9,formal semantics,2025-05-27 03:07:31
+K4384149J3,Giovanni Freitas Gomes,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4384149J3,model checking,2025-05-27 03:05:40
+K4799800A6,Giovanny Fernando Lucero Palma,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4799800A6,formal semantics,2025-05-27 03:07:33
+K4220335J2,Girrad Mahmoud Sammour,Fundação Educacional de Barretos,,,,,http://lattes.cnpq.br/K4220335J2,prova de teoremas,2025-05-27 03:05:41
+K4243036T5,Gisele Helena Barboni Miranda,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4243036T5,temporal logic,2025-05-27 03:06:08
+K8064800H7,Giselle de Martin Truzzi,Universidade Federal de São Paulo,,,,,http://lattes.cnpq.br/K8064800H7,formal methods,2025-05-27 03:05:18
+K4218276P4,Giuliano Giova,Escola Politécnica da Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4218276P4,prova de teoremas,2025-05-27 03:05:56
+K4322792A4,Glauber Miranda Silva,,,,,,http://lattes.cnpq.br/K4322792A4,prova de teoremas,2025-05-27 03:05:46
+K4701431H6,Glaucia Campos Guimarães,Universidade do Estado do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4701431H6,linguagens de especificação,2025-05-27 03:06:58
+K4759719T6,Glendo de Freitas Guimarães,Universidade Federal do Ceará,,,,,http://lattes.cnpq.br/K4759719T6,temporal logic,2025-05-27 03:06:14
+K4331111T2,Gonzalo Guillermo Moreno Contreras,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4331111T2,static analysis,2025-05-27 03:06:31
+K8178231Y8,Grazielle Leite Pereira de Oliveira,Universidade Estadual do Norte Fluminense Darcy Ribeiro,,,,,http://lattes.cnpq.br/K8178231Y8,static analysis,2025-05-27 03:06:24
+K4449253D8,Gregório Edoardo Raphael Selingardi Guardia,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4449253D8,prova de teoremas,2025-05-27 03:06:00
+K4212561D9,Greissi Gomes Oliveira,Universidade Federal de São Carlos,,,,,http://lattes.cnpq.br/K4212561D9,linguagens de especificação,2025-05-27 03:07:00
+K4781740U9,Guido Costa Souza de Araújo,Princeton University,,,,,http://lattes.cnpq.br/K4781740U9,program verification,2025-05-27 03:06:46
+K4354845H4,Guido José Rey Alt,Stockholm University,,,,,http://lattes.cnpq.br/K4354845H4,temporal logic,2025-05-27 03:06:09
+K4763167H6,Guilherme Albuquerque Pinto,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4763167H6,formal verification,2025-05-27 03:05:22
+K4487350H6,Guilherme Augusto Ferreira Lima,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4487350H6,automated reasoning,2025-05-27 03:07:14
+K4746409J6,Guilherme Bertoldo,Universidade Federal do Paraná,,,,,http://lattes.cnpq.br/K4746409J6,program verification,2025-05-27 03:06:37
+K4480643T3,Guilherme Micheli Bedini Moreira,,,,,,http://lattes.cnpq.br/K4480643T3,program verification,2025-05-27 03:06:47
+K4760971T1,Guilherme Salum Rangel,,,,,,http://lattes.cnpq.br/K4760971T1,"formal verification, model checking",2025-05-27 03:05:24
+K4826294Y0,Guillaume Pierre Yves Thomas,,,,,,http://lattes.cnpq.br/K4826294Y0,formal semantics,2025-05-27 03:07:32
+K8672745J3,Guillermo Rodriguez-Navas,,,,,,http://lattes.cnpq.br/K8672745J3,formal verification,2025-05-27 03:05:19
+K4736251Y1,Gurvan Nicolas Huiban,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4736251Y1,static analysis,2025-05-27 03:06:29
+K4139621H6,Gustavo Cipriano Mota Sousa,,,,,,http://lattes.cnpq.br/K4139621H6,linguagens de especificação,2025-05-27 03:06:58
+K4734595T8,Gustavo Henrique Porto de Carvalho,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4734595T8,"formal methods, formal verification",2025-05-27 03:05:07
+K8754298J6,Gustavo Luz Xavier da Costa,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K8754298J6,static analysis,2025-05-27 03:06:32
+K4484402J8,Haniel Moreira Barbosa,,,,,,http://lattes.cnpq.br/K4484402J8,"formal methods, formal verification, temporal logic, program verification, automated reasoning",2025-05-27 03:05:06
+K4782514T1,Hao Chi Wong,Carnegie Mellon University,,,,,http://lattes.cnpq.br/K4782514T1,"formal methods, model checking",2025-05-27 03:05:17
+K4762347P4,Haydée Werneck Poubel,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4762347P4,linguagens de especificação,2025-05-27 03:06:53
+K4756178E5,Helga Gonzaga Martins,Universidade Federal de Itajubá,,,,,http://lattes.cnpq.br/K4756178E5,temporal logic,2025-05-27 03:06:06
+K4783179Z5,Heloisa de Arruda Camargo,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4783179Z5,automated reasoning,2025-05-27 03:07:16
+K4483675U0,Henrique Antunes Almeida,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4483675U0,formal semantics,2025-05-27 03:07:27
+K4713862D9,Henrique Emanuel Mostaert Rebêlo,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4713862D9,model checking,2025-05-27 03:05:36
+K4946036D6,Henrique Ewbank de Miranda Vieira,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4946036D6,temporal logic,2025-05-27 03:06:16
+K8735549Z0,Henrique Jerônimo Bezerra Marcos,Maastricht University,,,,,http://lattes.cnpq.br/K8735549Z0,automated reasoning,2025-05-27 03:07:22
+K4427137A2,Henrique Oliveira Santos,Universidade de Fortaleza,,,,,http://lattes.cnpq.br/K4427137A2,automated reasoning,2025-05-27 03:07:11
+K4463910U5,Henrique Prado de Sá Sousa,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4463910U5,program verification,2025-05-27 03:06:48
+K4440394J1,Henry Borrero Guerrero,Universidade de São Paulo -  Escola de Engenharia de São Carlos,,,,,http://lattes.cnpq.br/K4440394J1,temporal logic,2025-05-27 03:06:17
+K4278298P9,Herbert Oliveira Rocha,Universidade Federal do Amazonas,,,,,http://lattes.cnpq.br/K4278298P9,"formal verification, model checking, program verification",2025-05-27 03:05:25
+K4237564Y1,Herbert Rausch Fernandes,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4237564Y1,model checking,2025-05-27 03:05:30
+K4208702E4,Herman Wagner de Freitas Regis,Universidade Católica de Pernambuco,,,,,http://lattes.cnpq.br/K4208702E4,prova de teoremas,2025-05-27 03:05:47
+K4777658J2,Hermann Wilhelm Dommel,,,,,,http://lattes.cnpq.br/K4777658J2,static analysis,2025-05-27 03:06:32
+K8764016Z8,Heron Omar Arraya Cazón,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K8764016Z8,linguagens de especificação,2025-05-27 03:07:00
+K4831408Z6,Hervé Panetto,,,,,,http://lattes.cnpq.br/K4831408Z6,"automated reasoning, formal semantics",2025-05-27 03:07:18
+K4705490Z3,Hisham Hashem Muhammad,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4705490Z3,linguagens de especificação,2025-05-27 03:07:08
+K4788414Z0,Hubert Ahlert,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4788414Z0,prova de teoremas,2025-05-27 03:05:44
+K8145527U6,Hugo Daniel dos Santos Macedo,Universidade do Minho,,,,,http://lattes.cnpq.br/K8145527U6,static analysis,2025-05-27 03:06:19
+K4481606T2,Hugo Faria Melo,Universidade Federal do Rio Grande do Norte,,,,,http://lattes.cnpq.br/K4481606T2,static analysis,2025-05-27 03:06:22
+K4095066A6,Hugo Musso Gualandi,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4095066A6,linguagens de especificação,2025-05-27 03:06:57
+K4736623H7,Hugo Pasin Neto,Universidade Nove de Julho,,,,,http://lattes.cnpq.br/K4736623H7,static analysis,2025-05-27 03:06:33
+K4331146Y6,Hyghor Miranda Côrtes,FUNDACAO EDUCACIONAL INACIANA PADRE SABOIA DE MEDEIROS,,,,,http://lattes.cnpq.br/K4331146Y6,temporal logic,2025-05-27 03:06:02
+K4480719P5,Héctor Edonis Pinedo Tapia,,,,,,http://lattes.cnpq.br/K4480719P5,prova de teoremas,2025-05-27 03:05:47
+K4707665E5,Hércules de Araujo Feitosa,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4707665E5,temporal logic,2025-05-27 03:06:03
+K4772256Y6,Ignacio de Loyola Benedicto Ottoni,Universidade Federal de Juiz de Fora,,,,,http://lattes.cnpq.br/K4772256Y6,prova de teoremas,2025-05-27 03:05:47
+K4446156H6,Ilana Muller,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4446156H6,prova de teoremas,2025-05-27 03:05:52
+K4758020D1,Ilias Biris,University of Edinburgh,,,,,http://lattes.cnpq.br/K4758020D1,automated reasoning,2025-05-27 03:07:12
+K4760176J8,Isabel Tonin,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4760176J8,prova de teoremas,2025-05-27 03:05:49
+K4787513U6,Itala Maria Loffredo D'Ottaviano,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4787513U6,temporal logic,2025-05-27 03:06:09
+K4440987P4,Iury Valente de Bessa,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4440987P4,"formal verification, program verification",2025-05-27 03:05:29
+K4708513Z5,Ivan José Varzinczak,,,,,,http://lattes.cnpq.br/K4708513Z5,"automated reasoning, formal semantics",2025-05-27 03:07:10
+K4279543Y5,Ivone Passos Ferreira,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4279543Y5,static analysis,2025-05-27 03:06:23
+K4702804Y9,J Allan Antunes Lyrio,,,,,,http://lattes.cnpq.br/K4702804Y9,static analysis,2025-05-27 03:06:18
+K1140917P2,J N Reddy,The University of Alabama,,,,,http://lattes.cnpq.br/K1140917P2,static analysis,2025-05-27 03:06:22
+K4771012P9,Jacinta Pereira Matias,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4771012P9,prova de teoremas,2025-05-27 03:05:54
+K4383040D6,Jacinto Ordem,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4383040D6,prova de teoremas,2025-05-27 03:05:42
+K4760878A5,Jacques Pierre Louis Robin,Columbia University,,,,,http://lattes.cnpq.br/K4760878A5,"automated reasoning, formal semantics",2025-05-27 03:07:24
+K4781151U0,Jaelson Freire Brelaz de Castro,,,,,,http://lattes.cnpq.br/K4781151U0,program verification,2025-05-27 03:06:42
+K4786956A4,Jair Minoro Abe,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4786956A4,"temporal logic, automated reasoning",2025-05-27 03:06:05
+K4760588H6,Jairo Galindo,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4760588H6,linguagens de especificação,2025-05-27 03:07:02
+K8109641J1,James ferreira da silva,,,,,,http://lattes.cnpq.br/K8109641J1,prova de teoremas,2025-05-27 03:05:46
+K4254489H2,Janderson Rocha Rodrigues,,,,,,http://lattes.cnpq.br/K4254489H2,static analysis,2025-05-27 03:06:31
+K4328180A3,Jandson Santos Ribeiro Santos,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4328180A3,model checking,2025-05-27 03:05:34
+K4750079Y3,Janice Magalhães Lamas,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4750079Y3,automated reasoning,2025-05-27 03:07:17
+K2797636D6,Jean Carlos Rangel Gavidia,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K2797636D6,static analysis,2025-05-27 03:06:34
+K4701151U8,Jean Everson Martina,University of Cambridge,,,,,http://lattes.cnpq.br/K4701151U8,"formal verification, program verification",2025-05-27 03:05:29
+K4221894U6,Jean-Pierre Briot,,,,,,http://lattes.cnpq.br/K4221894U6,program verification,2025-05-27 03:06:36
+K4796284Y8,Jefferson Oliveira Andrade,,,,,,http://lattes.cnpq.br/K4796284Y8,model checking,2025-05-27 03:05:33
+K4300799A2,Jeffrey Van Baalen,,,,,,http://lattes.cnpq.br/K4300799A2,"program verification, automated reasoning",2025-05-27 03:06:35
+K4315850Y6,Jeffrey Van Baalen,,,,,,http://lattes.cnpq.br/K4315850Y6,"program verification, automated reasoning",2025-05-27 03:06:36
+K1563640Y9,Jens Otten,University of Potsdam,,,,,http://lattes.cnpq.br/K1563640Y9,automated reasoning,2025-05-27 03:07:10
+K4706313H0,Jerusa Marchi,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4706313H0,temporal logic,2025-05-27 03:06:16
+K4739939D6,Jim Douglas Jr,Rice University,,,,,http://lattes.cnpq.br/K4739939D6,formal methods,2025-05-27 03:05:07
+K4751078P9,Joabe Bezerra de Jesus Júnior,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4751078P9,"formal methods, formal verification",2025-05-27 03:05:09
+K4781878Z6,Joao Camargo Neto,University of Nebraska-Lincoln,,,,,http://lattes.cnpq.br/K4781878Z6,program verification,2025-05-27 03:06:37
+K4796142Z2,Joao Carlos Damasceno Lima,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4796142Z2,automated reasoning,2025-05-27 03:07:24
+K4785003U9,Joao Carlos Pereira da Silva,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4785003U9,automated reasoning,2025-05-27 03:07:22
+K4792102E1,Joao Fernando Lima Alcântara,Universidade Nova de Lisboa,,,,,http://lattes.cnpq.br/K4792102E1,temporal logic,2025-05-27 03:06:02
+K4796453P5,Joao Marcos de Almeida,Universidade Técnica de Lisboa,,,,,http://lattes.cnpq.br/K4796453P5,"automated reasoning, formal semantics",2025-05-27 03:07:17
+K4731493H8,John Mylopoulos,Princeton University,,,,,http://lattes.cnpq.br/K4731493H8,"program verification, automated reasoning",2025-05-27 03:06:38
+K4795241E1,Jomi Fred Hübner,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4795241E1,automated reasoning,2025-05-27 03:07:25
+K4481275J4,Jonas Deyson Brito dos Santos,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4481275J4,linguagens de especificação,2025-05-27 03:07:04
+K4746763E3,Jonas Rafael Becker Arenhart,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4746763E3,temporal logic,2025-05-27 03:06:13
+K4891047H0,Jonne Rógeres Dias de Oliveira,Universidade Federal do Espírito Santo,,,,,http://lattes.cnpq.br/K4891047H0,prova de teoremas,2025-05-27 03:05:50
+K4771880H3,Jordana Colman,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4771880H3,formal methods,2025-05-27 03:05:15
+K4781570P1,Jorge Lopes de Souza Leão,,,,,,http://lattes.cnpq.br/K4781570P1,formal verification,2025-05-27 03:05:28
+K4383715H5,Jorge Luiz Pierobon,Sociedade Internacional de Psicanálise de São Paulo,,,,,http://lattes.cnpq.br/K4383715H5,linguagens de especificação,2025-05-27 03:07:01
+K4784001T3,Jorge Petrúcio Viana,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4784001T3,temporal logic,2025-05-27 03:06:01
+K4706871T5,Jorgiano Márcio Bruno Vidal,,,,,,http://lattes.cnpq.br/K4706871T5,model checking,2025-05-27 03:05:37
+K4781225D7,Jose Antonio Monteiro de Queiroz,,,,,,http://lattes.cnpq.br/K4781225D7,formal verification,2025-05-27 03:05:23
+K4788864A1,Jose Carlos Maldonado,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4788864A1,program verification,2025-05-27 03:06:45
+K4727278H8,Jose Lucas Mourao Rangel Netto,University of Wisconsin - Milwaukee,,,,,http://lattes.cnpq.br/K4727278H8,linguagens de especificação,2025-05-27 03:06:50
+K4377010E4,Jose Renato Amaral de Souza,,,,,,http://lattes.cnpq.br/K4377010E4,prova de teoremas,2025-05-27 03:05:50
+K4362151U6,Josias Gomes Lima,Universidade Federal do Amazonas,,,,,http://lattes.cnpq.br/K4362151U6,static analysis,2025-05-27 03:06:30
+K4472787Y6,Josynélia Tavares Raiol,,,,,,http://lattes.cnpq.br/K4472787Y6,prova de teoremas,2025-05-27 03:05:43
+K2798417T0,José Alexandre D'Abruzzo Pereira,Universidade de Coimbra,,,,,http://lattes.cnpq.br/K2798417T0,static analysis,2025-05-27 03:06:19
+K4784061U9,José Carlos Magossi,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4784061U9,temporal logic,2025-05-27 03:06:14
+K4254556P6,José Dihego da Silva Oliveira,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4254556P6,model checking,2025-05-27 03:05:39
+K2542074T2,José Gonçalves Veloso,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K2542074T2,prova de teoremas,2025-05-27 03:05:48
+K8876695U6,José Luis Conradi Hoffmann,,,,,,http://lattes.cnpq.br/K8876695U6,"formal methods, formal verification",2025-05-27 03:05:04
+K2158691A4,José Luiz Saikali,Faculdade de Direito da USP,,,,,http://lattes.cnpq.br/K2158691A4,prova de teoremas,2025-05-27 03:05:41
+K4850549Y7,José Manuel Molina López,,,,,,http://lattes.cnpq.br/K4850549Y7,automated reasoning,2025-05-27 03:07:22
+K4379396A3,José Mateus Simões Moita,,,,,,http://lattes.cnpq.br/K4379396A3,static analysis,2025-05-27 03:06:29
+K4784867T4,José Pacheco de Almeida Prado,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4784867T4,automated reasoning,2025-05-27 03:07:21
+K4252766H5,José Paulo Camargo Magano,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4252766H5,prova de teoremas,2025-05-27 03:05:55
+K4799893J5,José Ricardo Pelaquim Mendes,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4799893J5,automated reasoning,2025-05-27 03:07:24
+K4452689U9,João Antonio Dutra Marcondes Bastos,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4452689U9,linguagens de especificação,2025-05-27 03:06:53
+K8535803E2,João Antônio Cánovas Bottazzo Ganacin,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K8535803E2,prova de teoremas,2025-05-27 03:05:45
+K4249947E2,João Batista Correa Gomes Moreira,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4249947E2,program verification,2025-05-27 03:06:35
+K4408226P3,João Batista de Souza Neto,Universidade Federal do Rio Grande do Norte,,,,,http://lattes.cnpq.br/K4408226P3,formal methods,2025-05-27 03:05:06
+K4758203U5,João Carlos Xavier Júnior,Universidade Federal do Rio Grande do Norte,,,,,http://lattes.cnpq.br/K4758203U5,automated reasoning,2025-05-27 03:07:19
+K4243675E0,João Fausto Lorenzato de Oliveira,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4243675E0,automated reasoning,2025-05-27 03:07:21
+K4681856H6,João Guilherme Faccin,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4681856H6,automated reasoning,2025-05-27 03:07:11
+K4707587P6,João Inácio da Silva Filho,Escola Politécnica da Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4707587P6,temporal logic,2025-05-27 03:06:13
+K4795985T9,João Marcos Bastos Cavalcanti,University of Edinburgh,,,,,http://lattes.cnpq.br/K4795985T9,temporal logic,2025-05-27 03:06:05
+K4275542U1,João Paulo Gomes Antunes Costa,Escola de Engenharia de Lorena - USP,,,,,http://lattes.cnpq.br/K4275542U1,static analysis,2025-05-27 03:06:30
+K4456412D8,João Paulo de Souza Aires,Pontifícia Universidade Católica do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4456412D8,temporal logic,2025-05-27 03:06:07
+K4207569Y9,Juan Carlos Fernández-Molina,,,,,,http://lattes.cnpq.br/K4207569Y9,linguagens de especificação,2025-05-27 03:06:51
+K4766897Z5,Judson Santos Santiago,,,,,,http://lattes.cnpq.br/K4766897Z5,formal methods,2025-05-27 03:05:08
+K4762042U3,Juliana Bueno,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4762042U3,formal semantics,2025-05-27 03:07:29
+K4766378A2,Juliana Carpes Imperial,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4766378A2,program verification,2025-05-27 03:06:37
+K4702467Z0,Juliana de Melo Bezerra,,,,,,http://lattes.cnpq.br/K4702467Z0,program verification,2025-05-27 03:06:36
+K4763104E4,Juliano Manabu Iyoda,University of Cambridge,,,,,http://lattes.cnpq.br/K4763104E4,"formal methods, model checking, program verification, automated reasoning, formal semantics",2025-05-27 03:05:14
+K4768359E4,Julio Cesar Cardoso Tesolin,,,,,,http://lattes.cnpq.br/K4768359E4,automated reasoning,2025-05-27 03:07:15
+K4582621D1,Julio Cesar Vale Neves,Pontifícia Universidade Católica de Minas Gerais,,,,,http://lattes.cnpq.br/K4582621D1,formal methods,2025-05-27 03:05:10
+K4324652T6,Júlia Borges dos Santos,Universidade de Brasília,,,,,http://lattes.cnpq.br/K4324652T6,program verification,2025-05-27 03:06:42
+K4004731U6,Kaio César Borges Benedetti,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4004731U6,static analysis,2025-05-27 03:06:29
+K4762935A6,Karina Girardi Roggia,,,,,,http://lattes.cnpq.br/K4762935A6,formal semantics,2025-05-27 03:07:32
+K4750794A4,Karina Veronica Molsing,Pontifícia Universidade Católica do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4750794A4,formal semantics,2025-05-27 03:07:28
+K4782155J1,Kleber Xavier Sampaio de Souza,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4782155J1,formal methods,2025-05-27 03:05:17
+K4295259H1,Kleidson Êglicio Carvalho da Silva Oliveira,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4295259H1,formal semantics,2025-05-27 03:07:34
+K4210348P0,Larissa Rocha Soares Bastos,Universidade Federal da Bahia,,,,,http://lattes.cnpq.br/K4210348P0,automated reasoning,2025-05-27 03:07:17
+K4389056E0,Larissa de Almeida Carneiro,Faculdade de Odontologia de Bauru - USP,,,,,http://lattes.cnpq.br/K4389056E0,program verification,2025-05-27 03:06:49
+K4758708J3,Lauro Massao Yamada da Silveira,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4758708J3,static analysis,2025-05-27 03:06:19
+K4791614E9,Leandro Afonso da Silva,Universidade Federal de Uberlândia,,,,,http://lattes.cnpq.br/K4791614E9,program verification,2025-05-27 03:06:36
+K4766554T7,Leandro Dias da Silva,Universidade Federal de Campina Grande,,,,,http://lattes.cnpq.br/K4766554T7,"formal verification, program verification",2025-05-27 03:05:28
+K4247800U6,Leandro Maia Silva,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4247800U6,formal verification,2025-05-27 03:05:22
+K4105526E2,Leandro Zafalon Pieper,Universidade Católica de Pelotas,,,,,http://lattes.cnpq.br/K4105526E2,program verification,2025-05-27 03:06:49
+K4782474E1,Leila Ribeiro,,,,,,http://lattes.cnpq.br/K4782474E1,"formal methods, formal verification, formal semantics",2025-05-27 03:05:08
+K4484915D0,Lena Patricia Souza Rodrigues,Universidade do Porto,,,,,http://lattes.cnpq.br/K4484915D0,temporal logic,2025-05-27 03:06:13
+K4765305P5,Leonardo José Simões de Freitas,University of York,,,,,http://lattes.cnpq.br/K4765305P5,"formal methods, model checking, formal semantics",2025-05-27 03:05:03
+K4337512Z4,Leonardo Lima Sampaio,Universidade Federal do Estado do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4337512Z4,prova de teoremas,2025-05-27 03:05:46
+K4223031T3,Leonardo Vieira dos Santos Reis,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4223031T3,"linguagens de especificação, formal semantics",2025-05-27 03:07:00
+K4179275T3,Leopoldo Motta Teixeira,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4179275T3,automated reasoning,2025-05-27 03:07:22
+K4770318Y4,Lidia Lima da Silva,Faculdade de Filosofia,,,,,http://lattes.cnpq.br/K4770318Y4,formal semantics,2025-05-27 03:07:36
+K4764595Z6,Lilian Kawakami Carvalho,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4764595Z6,program verification,2025-05-27 03:06:38
+K4231744T5,Livy Maria Real Coelho,Universidade Federal do Paraná,,,,,http://lattes.cnpq.br/K4231744T5,automated reasoning,2025-05-27 03:07:21
+K4236936A9,Lorenzo Moreno Ruiz,Universidade Complutense de Madri,,,,,http://lattes.cnpq.br/K4236936A9,linguagens de especificação,2025-05-27 03:06:49
+K4430309Y6,Lourenzo Guidoni Maragni,Universidade Presbiteriana Mackenzie,,,,,http://lattes.cnpq.br/K4430309Y6,linguagens de especificação,2025-05-27 03:06:50
+K4267078E2,Lucas Albertins de Lima,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4267078E2,"formal methods, formal verification, formal semantics",2025-05-27 03:05:08
+K4771206Y5,Lucas Carvalho Cordeiro,University of Southampton,,,,,http://lattes.cnpq.br/K4771206Y5,"formal methods, formal verification, model checking, program verification, automated reasoning",2025-05-27 03:05:18
+K4239940Y3,Lucas Coelho Ambrozio,,,,,,http://lattes.cnpq.br/K4239940Y3,static analysis,2025-05-27 03:06:33
+K4706230J6,Lucas Kiyoharu Sanches Oda,Universidade Federal de São Paulo,,,,,http://lattes.cnpq.br/K4706230J6,linguagens de especificação,2025-05-27 03:06:59
+K4231570P4,Lucas Ribeiro Vollet,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4231570P4,formal semantics,2025-05-27 03:07:29
+K4774440Y6,Lucia Maria Salvia Coelho,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4774440Y6,prova de teoremas,2025-05-27 03:05:56
+K4760412J5,Luciana Akemi Burgareli,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4760412J5,formal verification,2025-05-27 03:05:27
+K4251842Z4,Luciana Brasil Rebelo dos Santos,,,,,,http://lattes.cnpq.br/K4251842Z4,"formal methods, formal verification, model checking",2025-05-27 03:05:09
+K4138490P4,Luciana Fregadolli Monk,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4138490P4,prova de teoremas,2025-05-27 03:05:41
+K4206982P3,Luciana Fregadolli Monk,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4206982P3,prova de teoremas,2025-05-27 03:05:51
+K4250556U2,Luciana Maria da Silva,Universidade Federal do Paraná,,,,,http://lattes.cnpq.br/K4250556U2,temporal logic,2025-05-27 03:06:08
+K4702634D3,Luciana Mariz,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4702634D3,linguagens de especificação,2025-05-27 03:07:07
+K4137773T9,Luciana Sanchez Mendes,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4137773T9,formal semantics,2025-05-27 03:07:30
+K4797576P3,Luciano Amaury dos Santos,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4797576P3,program verification,2025-05-27 03:06:40
+K4679286Y8,Luciano Augusto Marchezan de Paula,,,,,,http://lattes.cnpq.br/K4679286Y8,model checking,2025-05-27 03:05:33
+K4704781Z4,Luciene de Oliveira Marin,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4704781Z4,automated reasoning,2025-05-27 03:07:14
+K4268491P5,Lucimara Domingues de Oliveira,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4268491P5,prova de teoremas,2025-05-27 03:05:51
+K4701320Y0,Lucio Mauro Duarte,University of London,,,,,http://lattes.cnpq.br/K4701320Y0,"formal methods, model checking",2025-05-27 03:05:16
+K4791584E1,Lucília Camarão de Figueiredo,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4791584E1,linguagens de especificação,2025-05-27 03:07:02
+K4240738Z3,Ludmila Giardini Noronha,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4240738Z3,prova de teoremas,2025-05-27 03:05:53
+K4784745J9,Luis Allan Künzle,,,,,,http://lattes.cnpq.br/K4784745J9,"temporal logic, automated reasoning",2025-05-27 03:06:17
+K4767561U6,Luis Carlos de Sousa Menezes,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4767561U6,formal semantics,2025-05-27 03:07:26
+K4208283H1,Luis Henrique Bustamante de Morais,Universidade Federal do Ceará,,,,,http://lattes.cnpq.br/K4208283H1,temporal logic,2025-05-27 03:06:02
+K4177552A7,Luis José de Jesus Ribeiro,,,,,,http://lattes.cnpq.br/K4177552A7,prova de teoremas,2025-05-27 03:05:43
+K4336788D1,Luis Renato Chiarelli,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4336788D1,static analysis,2025-05-27 03:06:33
+K4774616Y3,Luisandro Mendes de Souza,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4774616Y3,formal semantics,2025-05-27 03:07:33
+K4783941E4,Luiz Alberto Nicolaci da Costa,Harvard University,,,,,http://lattes.cnpq.br/K4783941E4,program verification,2025-05-27 03:06:42
+K4857700Y8,Luiz Antonio Pereira da Silva,University of Kansas,,,,,http://lattes.cnpq.br/K4857700Y8,static analysis,2025-05-27 03:06:17
+K4763137D7,Luiz Antonio Pereira da Silva Junior,University of Kansas,,,,,http://lattes.cnpq.br/K4763137D7,static analysis,2025-05-27 03:06:18
+K4723218A8,Luiz Carlos Castro Guedes,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4723218A8,formal semantics,2025-05-27 03:07:25
+K4781644T6,Luiz Carlos Montez Monte,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4781644T6,linguagens de especificação,2025-05-27 03:06:55
+K4738271E8,Luiz Carlos Silveira Zanatta,Universidade de Guarulhos,,,,,http://lattes.cnpq.br/K4738271E8,static analysis,2025-05-27 03:06:32
+K4973169U2,Luiz Fernando Ferreira,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4973169U2,"formal methods, formal semantics",2025-05-27 03:05:15
+K4730493A7,Luiz Rafael dos Santos,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4730493A7,formal methods,2025-05-27 03:05:13
+K4380328E8,Luís Augusto Mesquita de Castro,Universidade Federal do Pará,,,,,http://lattes.cnpq.br/K4380328E8,temporal logic,2025-05-27 03:06:10
+K4125038J0,Luís Felipe Netto Lauer,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4125038J0,formal semantics,2025-05-27 03:07:32
+K4259468J2,Luís Fernando de Moraes Manzano,Faculdade de Direito da Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4259468J2,prova de teoremas,2025-05-27 03:05:56
+K4790357H1,Luís Flávio Sieczkowski,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4790357H1,linguagens de especificação,2025-05-27 03:06:54
+K4723437T8,Luís da Cunha Lamb,Imperial College London University Of London,,,,,http://lattes.cnpq.br/K4723437T8,automated reasoning,2025-05-27 03:07:13
+K4200581D8,Líbia da Graça Pires,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4200581D8,prova de teoremas,2025-05-27 03:05:46
+K4272315U5,Lúcio de Abreu Corrêa,,,,,,http://lattes.cnpq.br/K4272315U5,static analysis,2025-05-27 03:06:27
+K4428924Z0,Madiel de Sousa Conserva Filho,Universidade Federal do Rio Grande do Norte,,,,,http://lattes.cnpq.br/K4428924Z0,"formal methods, formal verification, model checking",2025-05-27 03:05:04
+K4737189E4,Manfredo Veloso Borges Correia Lima,Universidade Federal da Paraíba - Centro de Tecnologia,,,,,http://lattes.cnpq.br/K4737189E4,static analysis,2025-05-27 03:06:33
+K4781546D0,Manoel Fernando da Mota Tenorio,University of Southern California,,,,,http://lattes.cnpq.br/K4781546D0,automated reasoning,2025-05-27 03:07:13
+K4781140J3,Manuel LOIS ANIDO,University of Southampton,,,,,http://lattes.cnpq.br/K4781140J3,program verification,2025-05-27 03:06:37
+K4337149P0,Manuel Mazzara,,,,,,http://lattes.cnpq.br/K4337149P0,"formal methods, formal semantics",2025-05-27 03:05:03
+K2448670P6,Maqsood Alam,Universidade Federal do Ceará,,,,,http://lattes.cnpq.br/K2448670P6,static analysis,2025-05-27 03:06:21
+K4793010Z8,Mara Abel,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4793010Z8,automated reasoning,2025-05-27 03:07:21
+K4760069Y6,Marcel Vinicius Medeiros Oliveira,University of York,,,,,http://lattes.cnpq.br/K4760069Y6,"formal methods, formal verification, formal semantics",2025-05-27 03:05:05
+K4240059D5,Marcela Quispe Cruz,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4240059D5,prova de teoremas,2025-05-27 03:05:50
+K4781240Z1,Marcelino Pequeno,University of London,,,,,http://lattes.cnpq.br/K4781240Z1,formal semantics,2025-05-27 03:07:34
+K4744849Y1,Marcelo Barra Ferreira,,,,,,http://lattes.cnpq.br/K4744849Y1,formal semantics,2025-05-27 03:07:28
+K4799758T1,Marcelo Bezerra d'Amorim,University of Illinois at Urbana-Champaign,,,,,http://lattes.cnpq.br/K4799758T1,"model checking, static analysis",2025-05-27 03:05:36
+K4769800P0,Marcelo Esteban Coniglio,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4769800P0,"automated reasoning, formal semantics",2025-05-27 03:07:20
+K4721433Z8,Marcelo Fagundes Felix,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4721433Z8,linguagens de especificação,2025-05-27 03:06:56
+K4704966J7,Marcelo Fernando Selli,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4704966J7,linguagens de especificação,2025-05-27 03:07:09
+K4788570D8,Marcelo Finger,Imperial College of Science and Technology,,,,,http://lattes.cnpq.br/K4788570D8,"temporal logic, automated reasoning",2025-05-27 03:06:01
+K4783453H7,Marcelo Ladeira,Universidade de Lisboa,,,,,http://lattes.cnpq.br/K4783453H7,automated reasoning,2025-05-27 03:07:23
+K4717575Y9,Marcelo Pinto da Silva,Pontifícia Universidade Católica do Paraná,,,,,http://lattes.cnpq.br/K4717575Y9,static analysis,2025-05-27 03:06:22
+K4869299T8,Marcelo Rosa,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4869299T8,formal methods,2025-05-27 03:05:05
+K4798850D0,Marcelo Rudek,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4798850D0,automated reasoning,2025-05-27 03:07:16
+K4306247H8,Marcelo de Oliveira,Universidade Tecnológica Federal do Paraná,,,,,http://lattes.cnpq.br/K4306247H8,temporal logic,2025-05-27 03:06:14
+K4768650U0,Marcia Roberta Falcao de Farias,Universidade Federal do Ceará,,,,,http://lattes.cnpq.br/K4768650U0,formal verification,2025-05-27 03:05:22
+K4787003T2,Marcia de Barros Correia,,,,,,http://lattes.cnpq.br/K4787003T2,linguagens de especificação,2025-05-27 03:07:04
+K4208214Z1,Marcio Antelio Neves da Silva,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4208214Z1,temporal logic,2025-05-27 03:06:02
+K4793191D3,Marcio Biczyk do Amaral,National University,,,,,http://lattes.cnpq.br/K4793191D3,automated reasoning,2025-05-27 03:07:18
+K4721179Y2,Marcio Kléos Freire Pereira,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4721179Y2,temporal logic,2025-05-27 03:06:10
+K4787835Z9,Marcio Lobo Netto,,,,,,http://lattes.cnpq.br/K4787835Z9,automated reasoning,2025-05-27 03:07:25
+K4765946P5,Marco Antonio Saraiva Marzo,,,,,,http://lattes.cnpq.br/K4765946P5,program verification,2025-05-27 03:06:40
+K4761307D4,Marco Antônio Alba Winckler,,,,,,http://lattes.cnpq.br/K4761307D4,"formal methods, formal verification, program verification",2025-05-27 03:05:10
+K4798880Z1,Marcos Alexandre Castilho,,,,,,http://lattes.cnpq.br/K4798880Z1,"temporal logic, automated reasoning",2025-05-27 03:06:16
+K4456901P6,Marcos Antonio de Oliveira Junior,Universidade Federal de Pelotas,,,,,http://lattes.cnpq.br/K4456901P6,formal methods,2025-05-27 03:05:15
+K4488678H6,Marcos Didonet Del Fabro,,,,,,http://lattes.cnpq.br/K4488678H6,model checking,2025-05-27 03:05:38
+K4744295A2,Marcos Evandro Cintra,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4744295A2,formal methods,2025-05-27 03:05:15
+K4228545A7,Marcos Luiz Alves de Melo,,,,,,http://lattes.cnpq.br/K4228545A7,prova de teoremas,2025-05-27 03:05:50
+K4798837T7,Marcos Renato da Silveira,,,,,,http://lattes.cnpq.br/K4798837T7,automated reasoning,2025-05-27 03:07:19
+K4757265E6,Marcus Vinícius Midena Ramos,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4757265E6,linguagens de especificação,2025-05-27 03:06:52
+K4793439Z6,Margarete Keiko Iwai,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4793439Z6,linguagens de especificação,2025-05-27 03:06:50
+K4787751E4,Maria Angela Weiss,City University of New York,,,,,http://lattes.cnpq.br/K4787751E4,temporal logic,2025-05-27 03:06:01
+K4295624P5,Maria Cristina Xavier de Oliveira,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4295624P5,linguagens de especificação,2025-05-27 03:07:03
+K4559452E5,Maria Del Mar Reyes Valiante,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4559452E5,static analysis,2025-05-27 03:06:27
+K4333488T8,Maria Eduarda Azambuja Amaral,Pontifícia Universidade Católica do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4333488T8,prova de teoremas,2025-05-27 03:05:54
+K4790047Z8,Maria Elizabeth de Castro Lopes,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4790047Z8,prova de teoremas,2025-05-27 03:05:47
+K4248837U9,Maria Helena Mendonça Sampaio,Universidade Federal do Ceará,,,,,http://lattes.cnpq.br/K4248837U9,prova de teoremas,2025-05-27 03:05:52
+K4701885T1,Maria Lucia Cavalli Neder,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4701885T1,linguagens de especificação,2025-05-27 03:06:56
+K4207868P6,Maria Viviane de Menezes,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4207868P6,"model checking, temporal logic, automated reasoning",2025-05-27 03:05:33
+K4789455U8,Maria de Fátima Mattiello-Francisco,,,,,,http://lattes.cnpq.br/K4789455U8,program verification,2025-05-27 03:06:37
+K4779043U5,Maria de Jesus das Dores Alves Carvalho Patatas,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4779043U5,linguagens de especificação,2025-05-27 03:07:06
+K4254775Y0,Maria do Carmo Milito Gama,Universidade Federal de Alagoas,,,,,http://lattes.cnpq.br/K4254775Y0,prova de teoremas,2025-05-27 03:05:49
+K8508796D5,Mariana Bernardes,Universidade Federal de Itajubá,,,,,http://lattes.cnpq.br/K8508796D5,formal methods,2025-05-27 03:05:16
+K4315568E7,Mariana Gomes Da Motta Macedo,University of Exeter,,,,,http://lattes.cnpq.br/K4315568E7,temporal logic,2025-05-27 03:06:10
+K4770977U4,Mariana Matulovic da Silva Rodrigueiro,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4770977U4,temporal logic,2025-05-27 03:06:15
+K2013586H5,Marie-Claude L'HOMME,,,,,,http://lattes.cnpq.br/K2013586H5,formal semantics,2025-05-27 03:07:28
+K4139873D1,Marilene Andréia Mantovani,,,,,,http://lattes.cnpq.br/K4139873D1,static analysis,2025-05-27 03:06:26
+K4424158T4,Marina Casaril,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4424158T4,prova de teoremas,2025-05-27 03:05:54
+K4209995Y7,Marinalva Firmino Ferreira,,,,,,http://lattes.cnpq.br/K4209995Y7,prova de teoremas,2025-05-27 03:05:51
+K4784319H1,Mario Antonio do Nascimento,Southern Methodist University,,,,,http://lattes.cnpq.br/K4784319H1,temporal logic,2025-05-27 03:06:13
+K4781813H6,Mario Roberto Folhadela Benevides,,,,,,http://lattes.cnpq.br/K4781813H6,"model checking, temporal logic",2025-05-27 03:05:39
+K4770797D1,Marisa Ganança Teixeira da Silva,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4770797D1,linguagens de especificação,2025-05-27 03:06:55
+K4782058T4,Marisa de Lemos,Universidade Federal de São Paulo,,,,,http://lattes.cnpq.br/K4782058T4,prova de teoremas,2025-05-27 03:05:52
+K4218952D8,Marise Leão Ciríaco,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4218952D8,linguagens de especificação,2025-05-27 03:07:00
+K4758117U8,Marivone Zanella Fank,Universidade Federal de Campina Grande,,,,,http://lattes.cnpq.br/K4758117U8,prova de teoremas,2025-05-27 03:05:54
+K4798613U6,Mark Alan Junho Song,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4798613U6,"formal methods, formal verification, model checking",2025-05-27 03:05:09
+K4246824U6,Marlo Vieira dos Santos e Souza,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4246824U6,"temporal logic, automated reasoning",2025-05-27 03:06:03
+K1544278Z0,Marsha Chechik,Universidade de Maryland,,,,,http://lattes.cnpq.br/K1544278Z0,"formal methods, formal verification, model checking",2025-05-27 03:05:09
+K1172859Y4,Martha Cecilia Leon Garzon,UNIVERSIDADE CATOLICA SANTO ANTONIO DE MURCIA,,,,,http://lattes.cnpq.br/K1172859Y4,static analysis,2025-05-27 03:06:35
+K4727948H8,Martin Alejandro Musicante,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4727948H8,formal semantics,2025-05-27 03:07:27
+K4831410T7,Massimo De Gregorio,,,,,,http://lattes.cnpq.br/K4831410T7,automated reasoning,2025-05-27 03:07:15
+K4244247T0,Mateus Fernandes Venâncio,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4244247T0,formal methods,2025-05-27 03:05:16
+K4294721T5,Mateus Krepsky Ludwich,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4294721T5,formal verification,2025-05-27 03:05:22
+K4806642P4,Matheus Dalpra de Oliveira,Universidade Federal Fluminense,,,,,http://lattes.cnpq.br/K4806642P4,static analysis,2025-05-27 03:06:34
+K4443632U6,Mathias Felipe de Lima Santos,,,,,,http://lattes.cnpq.br/K4443632U6,model checking,2025-05-27 03:05:35
+K4799743E5,Mauricio Ayala Rincon,,,,,,http://lattes.cnpq.br/K4799743E5,"program verification, automated reasoning",2025-05-27 03:06:47
+K4458291Y4,Mauro Lopes de Freitas,,,,,,http://lattes.cnpq.br/K4458291Y4,model checking,2025-05-27 03:05:31
+K8709530Z6,Michael jeremie Poss,,,,,,http://lattes.cnpq.br/K8709530Z6,static analysis,2025-05-27 03:06:26
+K4769909U8,Miguel Schumacher Mainieri,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4769909U8,linguagens de especificação,2025-05-27 03:07:07
+K4355080T1,Mikhail Yasha Ramalho Gadelha,University of Southampton,,,,,http://lattes.cnpq.br/K4355080T1,model checking,2025-05-27 03:05:31
+K4792240A2,Mirela Sechi Moretti Annoni Notare,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4792240A2,program verification,2025-05-27 03:06:45
+K4784283U3,Miriam Celia Bergue Alves,,,,,,http://lattes.cnpq.br/K4784283U3,"formal methods, formal verification, model checking, program verification",2025-05-27 03:05:05
+K4785552J5,Mirian Halfeld Ferrari Alves,,,,,,http://lattes.cnpq.br/K4785552J5,temporal logic,2025-05-27 03:06:14
+K4856114J1,Misael Souto de Oliveira,Universidade Federal de Campina Grande,,,,,http://lattes.cnpq.br/K4856114J1,prova de teoremas,2025-05-27 03:05:56
+K4700204P6,Moysés de Araujo,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4700204P6,linguagens de especificação,2025-05-27 03:07:12
+K8141363T2,Munyque Mittelmann,,,,,,http://lattes.cnpq.br/K8141363T2,automated reasoning,2025-05-27 03:07:10
+K4495550U8,Murillo Vinicius Bento Santana,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4495550U8,static analysis,2025-05-27 03:06:29
+K8572069P6,Márcia Luciana da Costa Peixoto,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K8572069P6,static analysis,2025-05-27 03:06:29
+K4799899T7,Márcio Lopes Cornélio,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4799899T7,"formal methods, formal semantics",2025-05-27 03:05:09
+K4485186U1,Mônica Deitos Stedile Monawar,Pontifícia Universidade Católica do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4485186U1,formal semantics,2025-05-27 03:07:30
+K4787372H9,Nancy Alessio Magalhães,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4787372H9,linguagens de especificação,2025-05-27 03:06:57
+K4787839Y9,Narpat Singh Gehlot,Faculty of Engineering,,,,,http://lattes.cnpq.br/K4787839Y9,static analysis,2025-05-27 03:06:28
+K8153609U6,Natanna Santana de Morais,Universidade Federal da Paraíba,,,,,http://lattes.cnpq.br/K8153609U6,linguagens de especificação,2025-05-27 03:07:05
+K4272517Y1,Nayara Longo Sartor,Universidade Estadual Paulista Júlio de Mesquita Filho,,,,,http://lattes.cnpq.br/K4272517Y1,temporal logic,2025-05-27 03:06:03
+K4315412A9,Nelson de Moura Martins Gomes,,,,,,http://lattes.cnpq.br/K4315412A9,automated reasoning,2025-05-27 03:07:09
+K4139710Z4,Newton Marques Peron,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4139710Z4,formal semantics,2025-05-27 03:07:30
+K4787165A0,Newton da Costa,Universidade Federal do Paraná,,,,,http://lattes.cnpq.br/K4787165A0,temporal logic,2025-05-27 03:06:02
+K4790925H9,Nina Edelweiss,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4790925H9,temporal logic,2025-05-27 03:06:06
+K1193523J6,Odon Roman Sanchez Ccoyllo,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K1193523J6,program verification,2025-05-27 03:06:39
+K4793961Z6,Olinto Jose Varela Furtado,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4793961Z6,linguagens de especificação,2025-05-27 03:06:58
+K4760513J6,Olivio Pereira de Oliveira Junior,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4760513J6,program verification,2025-05-27 03:06:50
+K4713711J8,Omar Paranaiba Vilela Neto,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4713711J8,temporal logic,2025-05-27 03:06:12
+K2120157P9,Onur Baysal,,,,,,http://lattes.cnpq.br/K2120157P9,temporal logic,2025-05-27 03:06:06
+K4783540P6,Orlando Afonso Valle do Amaral,University of Sheffield,,,,,http://lattes.cnpq.br/K4783540P6,static analysis,2025-05-27 03:06:28
+K4777486D0,Osmar Marchi dos Santos,University of York,,,,,http://lattes.cnpq.br/K4777486D0,formal verification,2025-05-27 03:05:26
+K4786128E7,Osvaldo Luiz de Oliveira,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4786128E7,automated reasoning,2025-05-27 03:07:18
+K4783540J5,Oswaldo Chateaubriand Filho,University of California System,,,,,http://lattes.cnpq.br/K4783540J5,temporal logic,2025-05-27 03:06:12
+K4787458J6,Otavio Santos Cupertino Durão,Pennsylvania State University,,,,,http://lattes.cnpq.br/K4787458J6,program verification,2025-05-27 03:06:46
+K4365848E6,Oyvind Hellan,,,,,,http://lattes.cnpq.br/K4365848E6,static analysis,2025-05-27 03:06:24
+K8243509A2,POURIA Bahrami Ataabadi,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K8243509A2,static analysis,2025-05-27 03:06:23
+K8615831Y5,Parisa Ghodous,,,,,,http://lattes.cnpq.br/K8615831Y5,automated reasoning,2025-05-27 03:07:15
+K4723625U6,Patricia Duarte de Lima Machado,University of Edinburgh,,,,,http://lattes.cnpq.br/K4723625U6,formal methods,2025-05-27 03:05:13
+K4763999H6,Patricia Nogueira Hubler,Pontifícia Universidade Católica do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4763999H6,temporal logic,2025-05-27 03:06:13
+K4246993P0,Patricia Seixas Alves Santos,Universidade Federal do Pará,,,,,http://lattes.cnpq.br/K4246993P0,static analysis,2025-05-27 03:06:34
+K4275720A6,Patrícia Aparecida Espinar,Universidade de Salamanca,,,,,http://lattes.cnpq.br/K4275720A6,prova de teoremas,2025-05-27 03:05:53
+K4708557P6,Patrícia Nascimento Pena,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4708557P6,program verification,2025-05-27 03:06:46
+K4504157T3,Paul Denis Etienne Regnier,Universidade Federal da Bahia,,,,,http://lattes.cnpq.br/K4504157T3,"formal verification, model checking",2025-05-27 03:05:25
+K4750510D5,Paulo Claudino Veras,,,,,,http://lattes.cnpq.br/K4750510D5,model checking,2025-05-27 03:05:30
+K4766416T0,Paulo Coelho Ventura Pinto,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4766416T0,model checking,2025-05-27 03:05:31
+K4791726D0,Paulo Eduardo Santos,,,,,,http://lattes.cnpq.br/K4791726D0,"temporal logic, automated reasoning",2025-05-27 03:06:09
+K4779759E6,Paulo Eduardo e Silva Barbosa,Universidade Federal de Campina Grande,,,,,http://lattes.cnpq.br/K4779759E6,"model checking, formal semantics",2025-05-27 03:05:38
+K4408522T6,Paulo Fernandes Filho,ESCOLA SUPERIOR DE ADMINISTRAÇÃO DE NEGÓCIOS,,,,,http://lattes.cnpq.br/K4408522T6,prova de teoremas,2025-05-27 03:05:40
+K4778321Y1,Paulo Francisco Butzen,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4778321Y1,temporal logic,2025-05-27 03:06:10
+K4787683Z7,Paulo Henrique Viana de Barros,Associação Instituto Nacional de Matemática Pura e Aplicada,,,,,http://lattes.cnpq.br/K4787683Z7,formal methods,2025-05-27 03:05:18
+K4452414Y3,Paulo Júnio de Oliveira,Universidade Federal de Goiás,,,,,http://lattes.cnpq.br/K4452414Y3,formal semantics,2025-05-27 03:07:25
+K4787549J8,Paulo Ouvera Simon,,,,,,http://lattes.cnpq.br/K4787549J8,automated reasoning,2025-05-27 03:07:10
+K4711916A7,Paulo Salem da Silva,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4711916A7,"formal verification, model checking, program verification",2025-05-27 03:05:22
+K4792967Z6,Paulo Sérgio Custódio,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4792967Z6,linguagens de especificação,2025-05-27 03:07:03
+K4227707P6,Paulo de Tarso Guerra Oliveira,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4227707P6,temporal logic,2025-05-27 03:06:03
+K4486922Z6,Pedro Espíndola Neto,Recognition Automacao Bancaria,,,,,http://lattes.cnpq.br/K4486922Z6,linguagens de especificação,2025-05-27 03:07:09
+K4421500E2,Pedro Henrique Carrasqueira Zanei,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4421500E2,formal semantics,2025-05-27 03:07:31
+K4259716Z3,Pedro Ivo Gricoli Iokoi,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4259716Z3,prova de teoremas,2025-05-27 03:05:47
+K4209084Z1,Pedro Jorge do Nascimento Costa,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4209084Z1,prova de teoremas,2025-05-27 03:05:52
+K4769722A8,Pedro Manuel Gonzalez del Foyo,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4769722A8,"formal methods, formal verification",2025-05-27 03:05:13
+K4487538H9,Pedro Ribeiro Gonçalves Antonino,University of Oxford,,,,,http://lattes.cnpq.br/K4487538H9,"formal verification, model checking, static analysis",2025-05-27 03:05:20
+K4131330P0,Pedro de Carvalho Gomes,,,,,,http://lattes.cnpq.br/K4131330P0,"formal verification, model checking, static analysis, program verification, formal semantics",2025-05-27 03:05:20
+K4311241Z4,Pieter Albertus Maria Seuren,Utrecht University,,,,,http://lattes.cnpq.br/K4311241Z4,formal semantics,2025-05-27 03:07:33
+K4431905J0,Plinio Antonio Guerra Filho,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4431905J0,temporal logic,2025-05-27 03:06:15
+K4742453H1,Plácido Antonio de Souza Neto,Universidade Federal do Rio Grande do Norte,,,,,http://lattes.cnpq.br/K4742453H1,program verification,2025-05-27 03:06:41
+K4202072D2,Rachel Tavares de Morais,Universidade Federal do Rio Grande do Norte,,,,,http://lattes.cnpq.br/K4202072D2,linguagens de especificação,2025-05-27 03:07:08
+K4210678D4,Rachid Rebiha,,,,,,http://lattes.cnpq.br/K4210678D4,"formal methods, formal verification, model checking, program verification",2025-05-27 03:05:04
+K4704582U4,Rafael Brandão de Rezende Borges,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4704582U4,formal methods,2025-05-27 03:05:19
+K4334437D1,Rafael Cauê Cardoso,Pontifícia Universidade Católica do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4334437D1,formal verification,2025-05-27 03:05:23
+K4791439T4,Rafael Heitor Bordini,University College London (University of London),,,,,http://lattes.cnpq.br/K4791439T4,"automated reasoning, formal semantics",2025-05-27 03:07:27
+K4764286H9,Rafael Rodrigues da Silva,University of Notre Dame,,,,,http://lattes.cnpq.br/K4764286H9,formal methods,2025-05-27 03:05:03
+K4781002U5,Rafael Santos Mendes,,,,,,http://lattes.cnpq.br/K4781002U5,temporal logic,2025-05-27 03:06:12
+K4421152Y9,Rafael Serapilha Durelli,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4421152Y9,model checking,2025-05-27 03:05:34
+K4205375T3,Raquel Araújo de Oliveira,,,,,,http://lattes.cnpq.br/K4205375T3,formal verification,2025-05-27 03:05:20
+K4260620Y7,Raquel Fialho de Queiroz Lafetá,Universidade Federal de Uberlândia,,,,,http://lattes.cnpq.br/K4260620Y7,static analysis,2025-05-27 03:06:27
+K1124503J0,Rebecca Kristine Napolitano,Princeton University,,,,,http://lattes.cnpq.br/K1124503J0,static analysis,2025-05-27 03:06:33
+K4299769A8,Regina Braz da Silva Santos Rocha,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4299769A8,linguagens de especificação,2025-05-27 03:06:55
+K4790032Z4,Regivan Hugo Nunes Santiago,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4790032Z4,automated reasoning,2025-05-27 03:07:20
+K4620257T6,Renan Luigi Martins Guarese,Royal Melbourne Institute of Technology University,,,,,http://lattes.cnpq.br/K4620257T6,formal methods,2025-05-27 03:05:13
+K4795401A3,Renata Wassermann,,,,,,http://lattes.cnpq.br/K4795401A3,"temporal logic, automated reasoning",2025-05-27 03:06:10
+K4270778T3,Renato Caruso Vieira,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4270778T3,formal semantics,2025-05-27 03:07:30
+K4701499P3,Renato Marques Correa da Silva,University of London - University College London(1997)Assistente de Gerente Executivo do Petróleo Brasileiro - Rio de Janeiro - Matriz,,,,,http://lattes.cnpq.br/K4701499P3,program verification,2025-05-27 03:06:39
+K4784459U6,Renato Perez Ribas,,,,,,http://lattes.cnpq.br/K4784459U6,temporal logic,2025-05-27 03:06:02
+K4323255H4,Rennan Ferreira Dantas,Universidade Federal do Ceará,,,,,http://lattes.cnpq.br/K4323255H4,linguagens de especificação,2025-05-27 03:07:09
+K2793569H7,Ricardo Caires dos Santos,,,,,,http://lattes.cnpq.br/K2793569H7,prova de teoremas,2025-05-27 03:05:46
+K4852643U3,Ricardo Diniz Caldas,Chalmers University of Technology,,,,,http://lattes.cnpq.br/K4852643U3,formal verification,2025-05-27 03:05:24
+K4126724A0,Ricardo Fernandes Ribeiro,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4126724A0,model checking,2025-05-27 03:05:29
+K4761319J2,Ricardo Ferreira Martins,Universidade do Estado de Santa Catarina,,,,,http://lattes.cnpq.br/K4761319J2,formal verification,2025-05-27 03:05:25
+K4707331E2,Ricardo Galdino da Silva,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4707331E2,static analysis,2025-05-27 03:06:28
+K4765882U5,Ricardo Lourenco Correia Ogando,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4765882U5,program verification,2025-05-27 03:06:38
+K4784867H7,Ricardo Luís de Freitas,Escola Politécnica da Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4784867H7,automated reasoning,2025-05-27 03:07:16
+K4993070Z3,Ricardo Maciel Gazoni,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4993070Z3,linguagens de especificação,2025-05-27 03:07:02
+K4790018Z8,Ricardo Primi,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4790018Z8,automated reasoning,2025-05-27 03:07:23
+K4775465A3,Ricardo Rodrigues Rangel,,,,,,http://lattes.cnpq.br/K4775465A3,linguagens de especificação,2025-05-27 03:07:03
+K4483682T4,Ricardo Silva Carvalho,Simon Fraser University,,,,,http://lattes.cnpq.br/K4483682T4,model checking,2025-05-27 03:05:34
+K4791619H4,Ricardo Wagner de Araujo,Universidade Federal do Rio Grande do Norte,,,,,http://lattes.cnpq.br/K4791619H4,formal verification,2025-05-27 03:05:23
+K4701376P4,Ricardo de Oliveira Alves,Wisconsin International University,,,,,http://lattes.cnpq.br/K4701376P4,temporal logic,2025-05-27 03:06:16
+K4337685E4,Richard Bonichon,,,,,,http://lattes.cnpq.br/K4337685E4,"formal verification, static analysis, formal semantics",2025-05-27 03:05:29
+K4718020J7,Robert Degeneff,,,,,,http://lattes.cnpq.br/K4718020J7,program verification,2025-05-27 03:06:48
+K4367598T1,Roberta Delasta Lazzari,Universidade Nove de Julho,,,,,http://lattes.cnpq.br/K4367598T1,static analysis,2025-05-27 03:06:29
+K4791714T8,Roberta Hernandes Alves,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4791714T8,linguagens de especificação,2025-05-27 03:07:04
+K4782153U9,Roberta Pires de Oliveira,,,,,,http://lattes.cnpq.br/K4782153U9,formal semantics,2025-05-27 03:07:28
+K4792268A1,Roberto Milton Scheffel,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4792268A1,"formal verification, formal semantics",2025-05-27 03:05:24
+K4788515H6,Roberto Souto Maior de Barros,The University of Glasgow,,,,,http://lattes.cnpq.br/K4788515H6,formal methods,2025-05-27 03:05:18
+K8238435P2,Roberto Tommasetti,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K8238435P2,temporal logic,2025-05-27 03:06:12
+K4763313H9,Roberto Velasco Kopp Junior,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4763313H9,linguagens de especificação,2025-05-27 03:07:05
+K4783533H6,Roberto da Silva Bigonha,University of California,,,,,http://lattes.cnpq.br/K4783533H6,formal semantics,2025-05-27 03:07:32
+K4336816J6,Rodolfo Araya,,,,,,http://lattes.cnpq.br/K4336816J6,static analysis,2025-05-27 03:06:32
+K4283195U3,Rodolpho Freire,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4283195U3,temporal logic,2025-05-27 03:06:07
+K4324131H5,Rodrigo Alves de Oliveira,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4324131H5,model checking,2025-05-27 03:05:37
+K4469990J2,Rodrigo Benedito Otoni,,,,,,http://lattes.cnpq.br/K4469990J2,model checking,2025-05-27 03:05:32
+K4767788P3,Rodrigo Bonifacio de Almeida,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4767788P3,program verification,2025-05-27 03:06:49
+K4328700P5,Rodrigo Costa Moura,,,,,,http://lattes.cnpq.br/K4328700P5,formal methods,2025-05-27 03:05:10
+K4734187T1,Rodrigo Geraldo Ribeiro,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4734187T1,"formal methods, formal verification, formal semantics",2025-05-27 03:05:12
+K4213919J1,Rodrigo Lange,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4213919J1,static analysis,2025-05-27 03:06:23
+K4706925Z7,Rodrigo Machado,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4706925Z7,model checking,2025-05-27 03:05:38
+K4529314Y0,Rodrigo Pastl Pontes,,,,,,http://lattes.cnpq.br/K4529314Y0,model checking,2025-05-27 03:05:29
+K4705004A4,Rodrigo Richard Gomes,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4705004A4,linguagens de especificação,2025-05-27 03:06:52
+K4261900J9,Rodrigo Tacla Saad,,,,,,http://lattes.cnpq.br/K4261900J9,"model checking, formal semantics",2025-05-27 03:05:31
+K4736336H6,Rodrigo Teixeira Ramos,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4736336H6,model checking,2025-05-27 03:05:33
+K4492996P6,Rodrigo de Böer Trujillo,Pontifícia Universidade Católica do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4492996P6,linguagens de especificação,2025-05-27 03:06:59
+K4787764A6,Rogerio Drummond Burnier Pessoa de Mello Filho,Cornell University,,,,,http://lattes.cnpq.br/K4787764A6,linguagens de especificação,2025-05-27 03:07:04
+K8551962J9,Rogerio Naim Sawaia,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K8551962J9,prova de teoremas,2025-05-27 03:05:49
+K4773557U5,Rogério Melo Nepomuceno,Universidade Federal Fluminense,,,,,http://lattes.cnpq.br/K4773557U5,linguagens de especificação,2025-05-27 03:06:58
+K8804109T5,Rogério da Costa Albandes,Universidade Federal de Pelotas,,,,,http://lattes.cnpq.br/K8804109T5,automated reasoning,2025-05-27 03:07:20
+K4762550P8,Rohit Gheyi,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4762550P8,"formal methods, model checking, program verification",2025-05-27 03:05:13
+K4780110E3,Romanelli Lodron Zuim,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4780110E3,formal verification,2025-05-27 03:05:23
+K4341932H6,Ronildo Silva Messias,Universidade Federal do Pará,,,,,http://lattes.cnpq.br/K4341932H6,prova de teoremas,2025-05-27 03:05:48
+K4746945Z4,Rosianita Balena,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4746945Z4,static analysis,2025-05-27 03:06:29
+K4422706D6,Rossana Claudya Silverio da Silva,Escola Superior da Magistratura de Pernamabuco,,,,,http://lattes.cnpq.br/K4422706D6,prova de teoremas,2025-05-27 03:05:40
+K4795725U6,Rovedy Aparecida Busquim e Silva,,,,,,http://lattes.cnpq.br/K4795725U6,formal verification,2025-05-27 03:05:22
+K4730804E6,Roverli Pereira Ziwich,Universidade Federal do Paraná,,,,,http://lattes.cnpq.br/K4730804E6,model checking,2025-05-27 03:05:38
+K4704234A9,Rudolphus Antonius de By,Twente University of Technology,,,,,http://lattes.cnpq.br/K4704234A9,formal semantics,2025-05-27 03:07:28
+K4268988Z6,Rudy Matela Braquehais,University of York,,,,,http://lattes.cnpq.br/K4268988Z6,automated reasoning,2025-05-27 03:07:21
+K4850618D1,Rui Gustavo Camargo Viana,Faculdade de Direito da USP,,,,,http://lattes.cnpq.br/K4850618D1,prova de teoremas,2025-05-27 03:05:49
+K4768664E9,Ruiter Braga Caldas,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4768664E9,"formal verification, program verification",2025-05-27 03:05:26
+K4792965U7,Rômulo César Silva,Universidade Federal do Paraná,,,,,http://lattes.cnpq.br/K4792965U7,linguagens de especificação,2025-05-27 03:06:56
+K4778592D7,Samarkandra Pereira dos Santos Pimentel,Universidade Federal da Paraíba,,,,,http://lattes.cnpq.br/K4778592D7,linguagens de especificação,2025-05-27 03:06:52
+K4261980Y7,Samuel Lincoln Magalhaes Barrocas,Universidade Federal do Rio Grande do Norte,,,,,http://lattes.cnpq.br/K4261980Y7,"formal methods, model checking, formal semantics",2025-05-27 03:05:09
+K4836356U5,Samuel Solgon Santos,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4836356U5,model checking,2025-05-27 03:05:32
+K4559969E4,Samuel da Silva Feitosa,Universidade Federal de Pelotas,,,,,http://lattes.cnpq.br/K4559969E4,formal semantics,2025-05-27 03:07:33
+K4735806E6,Samy Soares Passos de Sá,Universidade Federal do Ceará,,,,,http://lattes.cnpq.br/K4735806E6,formal semantics,2025-05-27 03:07:26
+K4781103P9,Sandra Aparecida Sandri,,,,,,http://lattes.cnpq.br/K4781103P9,"temporal logic, automated reasoning",2025-05-27 03:06:08
+K4791545U6,Sandra Aparecida de Amo,,,,,,http://lattes.cnpq.br/K4791545U6,temporal logic,2025-05-27 03:06:10
+K4730242D9,Sandra Cristina Porsche,Universidade do Vale do Rio dos Sinos,,,,,http://lattes.cnpq.br/K4730242D9,prova de teoremas,2025-05-27 03:05:48
+K4460931Z2,Sandro Márcio da Silva Preto,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4460931Z2,"formal verification, formal semantics",2025-05-27 03:05:28
+K4700695E9,Sandro Rigo,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4700695E9,program verification,2025-05-27 03:06:38
+K4295772J5,Saulo Rodrigues e Silva,Universidade do Minho,,,,,http://lattes.cnpq.br/K4295772J5,"formal methods, formal verification, model checking",2025-05-27 03:05:06
+K8049127E9,Sergio Di Camillo Fava,,,,,,http://lattes.cnpq.br/K8049127E9,prova de teoremas,2025-05-27 03:05:55
+K4788576P6,Sergio Vale Aguiar Campos,Carnegie Mellon University,,,,,http://lattes.cnpq.br/K4788576P6,"formal methods, formal verification, model checking, program verification",2025-05-27 03:05:16
+K4787856J6,Sergio Vianna Fialho,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4787856J6,"formal methods, formal verification",2025-05-27 03:05:16
+K4787847Z8,Sergio de Mello Schneider,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4787847Z8,linguagens de especificação,2025-05-27 03:06:56
+K1113445Z8,Shahram Danaei,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K1113445Z8,static analysis,2025-05-27 03:06:28
+K4727186Z4,Sheila Regina Murgel Veloso,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4727186Z4,"formal methods, temporal logic, formal semantics",2025-05-27 03:05:15
+K8652891E2,Shichao Yi,,,,,,http://lattes.cnpq.br/K8652891E2,static analysis,2025-05-27 03:06:19
+K4765093H7,Sidi Ould Ehmety,,,,,,http://lattes.cnpq.br/K4765093H7,formal semantics,2025-05-27 03:07:24
+K4762268E8,Sidney de Carvalho Nogueira,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4762268E8,"formal methods, formal verification",2025-05-27 03:05:15
+K4123427Z7,Silvio Manea,,,,,,http://lattes.cnpq.br/K4123427Z7,program verification,2025-05-27 03:06:44
+K4736348U6,Silvio Ranise,,,,,,http://lattes.cnpq.br/K4736348U6,automated reasoning,2025-05-27 03:07:09
+K4410811U0,Simone Carvalho Sampaio Coelho,,,,,,http://lattes.cnpq.br/K4410811U0,prova de teoremas,2025-05-27 03:05:42
+K4243469D6,Simone Hanazumi,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4243469D6,"formal verification, program verification",2025-05-27 03:05:20
+K4704578H1,Simone Trento,Universidade Federal do Paraná,,,,,http://lattes.cnpq.br/K4704578H1,prova de teoremas,2025-05-27 03:05:56
+K4795680D2,Sofia Rumiko Hirakuri,Washington University in St. Louis,,,,,http://lattes.cnpq.br/K4795680D2,program verification,2025-05-27 03:06:43
+K4728891H9,Sonia Oliveira do Amparo,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4728891H9,prova de teoremas,2025-05-27 03:05:55
+K4704769U3,Stefan Paul Schulz,,,,,,http://lattes.cnpq.br/K4704769U3,automated reasoning,2025-05-27 03:07:17
+K4796960H1,Stéphane Julia,,,,,,http://lattes.cnpq.br/K4796960H1,temporal logic,2025-05-27 03:06:14
+K4718230T6,Sueli da Costa,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4718230T6,linguagens de especificação,2025-05-27 03:07:08
+K4793946P0,Susimaurem Navarro Roque,Universidade Federal da Paraíba,,,,,http://lattes.cnpq.br/K4793946P0,prova de teoremas,2025-05-27 03:05:42
+K4780235J3,Sussumu Niyama,,,,,,http://lattes.cnpq.br/K4780235J3,prova de teoremas,2025-05-27 03:05:47
+K4992034E0,Suzana Araújo Vieira de Melo,,,,,,http://lattes.cnpq.br/K4992034E0,prova de teoremas,2025-05-27 03:05:51
+K4357307J8,Sérgio Barza,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4357307J8,"formal methods, model checking, temporal logic",2025-05-27 03:05:05
+K4321962Y6,Tania Lis Tizzoni Nogueira,Pontifícia Universidade Católica de São Paulo,,,,,http://lattes.cnpq.br/K4321962Y6,prova de teoremas,2025-05-27 03:05:46
+K4787753U2,Tarcisio Haroldo Cavalcante Pequeno,Pontifícia Universidade Católica do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4787753U2,"formal methods, automated reasoning, formal semantics",2025-05-27 03:05:17
+K4445985Y3,Tatiana Fernanda Canata,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4445985Y3,temporal logic,2025-05-27 03:06:16
+K4268629Z3,Thaís Muraro,Universidade Federal de Santa Catarina,,,,,http://lattes.cnpq.br/K4268629Z3,static analysis,2025-05-27 03:06:24
+K4327960U4,Thiago Alves Lima,Universidade Federal do Ceará,,,,,http://lattes.cnpq.br/K4327960U4,static analysis,2025-05-27 03:06:32
+K4292149T3,Thiago Alves Rocha,Universidade Federal do Ceará,,,,,http://lattes.cnpq.br/K4292149T3,model checking,2025-05-27 03:05:37
+K4702592P7,Thiago Carvalho de Sousa,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4702592P7,"formal methods, formal semantics",2025-05-27 03:05:19
+K4421178U2,Thiago Gottardi,,,,,,http://lattes.cnpq.br/K4421178U2,model checking,2025-05-27 03:05:31
+K4568178Y9,Thiago Mael de Castro,Universidade de Brasília,,,,,http://lattes.cnpq.br/K4568178Y9,model checking,2025-05-27 03:05:32
+K4432738H8,Thiago Mendonça Ferreira Ramos,Universidade de Brasília,,,,,http://lattes.cnpq.br/K4432738H8,formal verification,2025-05-27 03:05:21
+K4476168Y6,Thiago Monteiro Tuxi,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4476168Y6,model checking,2025-05-27 03:05:29
+K4137775U5,Thiago Souza Pereira de Brito,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4137775U5,temporal logic,2025-05-27 03:06:06
+K1190804A4,Thomas Bell Djuitchou Yaleu,University of Yaounde I,,,,,http://lattes.cnpq.br/K1190804A4,static analysis,2025-05-27 03:06:19
+K8283454P1,Thomas Isidro Benjamin Miras,,,,,,http://lattes.cnpq.br/K8283454P1,static analysis,2025-05-27 03:06:35
+K4869494Z5,Tiago Cavalcanti da Rocha,Universidade Federal do Rio Grande do Norte,,,,,http://lattes.cnpq.br/K4869494Z5,static analysis,2025-05-27 03:06:30
+K4774252Z4,Tiago Figueiredo Vieira,,,,,,http://lattes.cnpq.br/K4774252Z4,formal verification,2025-05-27 03:05:27
+K4702433P3,Tiago Francesconi,Pontifícia Universidade Católica do Paraná,,,,,http://lattes.cnpq.br/K4702433P3,program verification,2025-05-27 03:06:48
+K4351781Z1,Tomas Grimm,,,,,,http://lattes.cnpq.br/K4351781Z1,"formal methods, formal verification",2025-05-27 03:05:05
+K4787275H6,Tomasz Kowaltowski,Universidade da California em Berkeley,,,,,http://lattes.cnpq.br/K4787275H6,linguagens de especificação,2025-05-27 03:06:52
+K4728814D0,Torsten Paul Nelson,University of Waterloo,,,,,http://lattes.cnpq.br/K4728814D0,formal verification,2025-05-27 03:05:20
+K4788234A1,Ulrich Schiel,,,,,,http://lattes.cnpq.br/K4788234A1,temporal logic,2025-05-27 03:06:11
+K4796767A9,Valdivino Alexandre de Santiago Júnior,,,,,,http://lattes.cnpq.br/K4796767A9,"formal methods, formal verification, model checking",2025-05-27 03:05:16
+K4763311Z6,Valeri Vlassov Vladimirovich,,,,,,http://lattes.cnpq.br/K4763311Z6,program verification,2025-05-27 03:06:40
+K4787753P8,Valeria Correa Vaz de Paiva,University of Cambridge,,,,,http://lattes.cnpq.br/K4787753P8,automated reasoning,2025-05-27 03:07:14
+K4761755Y1,Valeria Magalhães Pequeno,Universidade Nova de Lisboa,,,,,http://lattes.cnpq.br/K4761755Y1,formal semantics,2025-05-27 03:07:35
+K4753225P2,Valeska Figueiredo,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4753225P2,linguagens de especificação,2025-05-27 03:06:53
+K4267139J8,Valéria Caldeira de Melo Balestra,,,,,,http://lattes.cnpq.br/K4267139J8,prova de teoremas,2025-05-27 03:05:45
+K4710389H7,Valério Gutemberg de Medeiros Júnior,Universidade Federal do Rio Grande do Norte,,,,,http://lattes.cnpq.br/K4710389H7,"formal methods, formal verification",2025-05-27 03:05:09
+K4404311Y3,Vandemberg Simão Saraiva,Universidade Federal do Ceará,,,,,http://lattes.cnpq.br/K4404311Y3,linguagens de especificação,2025-05-27 03:07:06
+K4782515H4,Vanderlei Moraes Rodrigues,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4782515H4,temporal logic,2025-05-27 03:05:57
+K4254442D4,Vanderson Hafemann Fragal,Halmstad University,,,,,http://lattes.cnpq.br/K4254442D4,formal methods,2025-05-27 03:05:06
+K4783934P6,Vera Maria Araujo Pigozzi de Araujo,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4783934P6,linguagens de especificação,2025-05-27 03:06:55
+K4457401Z5,Veronica Silva de Albuquerque,Universidade do Estado de Mato Grosso,,,,,http://lattes.cnpq.br/K4457401Z5,prova de teoremas,2025-05-27 03:05:51
+K4893560A5,Victor Antonio Seixas de Menezes Paiva,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4893560A5,static analysis,2025-05-27 03:06:22
+K4302585Z7,Victor Borges Ferreira Gomes,University of Sheffield,,,,,http://lattes.cnpq.br/K4302585Z7,program verification,2025-05-27 03:06:34
+K4486290Z1,Victor Silva Rodrigues,Universidade Federal de São Paulo,,,,,http://lattes.cnpq.br/K4486290Z1,linguagens de especificação,2025-05-27 03:07:01
+K4215493H7,Vilson Sebastião Ferreira,Universidade Federal Fluminense,,,,,http://lattes.cnpq.br/K4215493H7,linguagens de especificação,2025-05-27 03:07:01
+K1141216Y3,Vinay Kumar,,,,,,http://lattes.cnpq.br/K1141216Y3,static analysis,2025-05-27 03:06:31
+K4713843Z5,Vinicius Alves Fernandes,,,,,,http://lattes.cnpq.br/K4713843Z5,static analysis,2025-05-27 03:06:27
+K4730194U4,Vinícius Bassaneze,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4730194U4,temporal logic,2025-05-27 03:06:16
+K4414716P6,Vinícius Pereira,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4414716P6,"formal methods, formal verification, temporal logic, formal semantics",2025-05-27 03:05:03
+K8183619P3,Viorel Milea,Erasmus University Rotterdam,,,,,http://lattes.cnpq.br/K8183619P3,automated reasoning,2025-05-27 03:07:12
+K4799291P4,Virginia Carvalho Carneiro de Paula,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4799291P4,"linguagens de especificação, formal semantics",2025-05-27 03:06:51
+K4417468H6,Vitor Lia de Paula Ramos,Universidade Federal do Rio Grande do Sul,,,,,http://lattes.cnpq.br/K4417468H6,prova de teoremas,2025-05-27 03:05:47
+K4816497D2,Vitor Pereira Machado,Universidade Federal do Rio de Janeiro,,,,,http://lattes.cnpq.br/K4816497D2,temporal logic,2025-05-27 03:05:57
+K4434715J1,Vivek Nigam,,,,,,http://lattes.cnpq.br/K4434715J1,"formal verification, program verification, automated reasoning",2025-05-27 03:05:26
+K4706872H9,Vladislav Gavrilovich Polnikov,,,,,,http://lattes.cnpq.br/K4706872H9,model checking,2025-05-27 03:05:35
+K4267010E2,Waldemar Pires Ferreira Neto,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K4267010E2,model checking,2025-05-27 03:05:40
+K4795034E5,Walkyria Krysthie Arruda Gonçalves Martins,Universidade Federal de Uberlândia,,,,,http://lattes.cnpq.br/K4795034E5,static analysis,2025-05-27 03:06:24
+K4787169P1,Walter Alexandre Carnielli,Universidade Estadual de Campinas,,,,,http://lattes.cnpq.br/K4787169P1,"automated reasoning, formal semantics",2025-05-27 03:07:14
+K4781455T6,Wang Jiang Chau,Syracuse University,,,,,http://lattes.cnpq.br/K4781455T6,formal verification,2025-05-27 03:05:27
+K4306719H9,Welky Klefson Ferreira de Brito,Universidade Federal da Paraíba,,,,,http://lattes.cnpq.br/K4306719H9,static analysis,2025-05-27 03:06:26
+K4422435D6,Wesley Rodrigues de Oliveira,,,,,,http://lattes.cnpq.br/K4422435D6,program verification,2025-05-27 03:06:42
+K4333901H1,Wiebe Roelf Pestman,University of Groningen,,,,,http://lattes.cnpq.br/K4333901H1,model checking,2025-05-27 03:05:34
+K4184580Z5,Wildeberg Cal Moreira,Fundação Oswaldo Cruz,,,,,http://lattes.cnpq.br/K4184580Z5,program verification,2025-05-27 03:06:48
+K4215973Z3,Wildney Wallacy da Silva Vieira,Universidade Federal do Pará,,,,,http://lattes.cnpq.br/K4215973Z3,static analysis,2025-05-27 03:06:31
+K4202499H6,Wilerson Venceslau Calil,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K4202499H6,program verification,2025-05-27 03:06:36
+K8869359J4,William Takenobu Akamine,Universidade Presbiteriana Mackenzie,,,,,http://lattes.cnpq.br/K8869359J4,linguagens de especificação,2025-05-27 03:07:00
+K4750516A2,Wilton Bezerra de Fraga,Universidade Federal do Ceará,,,,,http://lattes.cnpq.br/K4750516A2,temporal logic,2025-05-27 03:06:14
+K4460073E6,Wuilton de Paiva Ricardo,Universidade Federal de Juiz de Fora,,,,,http://lattes.cnpq.br/K4460073E6,linguagens de especificação,2025-05-27 03:07:03
+K8711268E9,Xinglan Bai,Ocean University of China,,,,,http://lattes.cnpq.br/K8711268E9,static analysis,2025-05-27 03:06:22
+K4386378H7,Yasmin El-Hage,Universidade Nove de Julho,,,,,http://lattes.cnpq.br/K4386378H7,static analysis,2025-05-27 03:06:31
+K8703868E0,Yeison Andres Zabala,Universidade de São Paulo,,,,,http://lattes.cnpq.br/K8703868E0,static analysis,2025-05-27 03:06:19
+K8451274P7,Yelina González Pérez,Universidade Federal de Pernambuco,,,,,http://lattes.cnpq.br/K8451274P7,program verification,2025-05-27 03:06:39
+K2840343E6,Yolanda Sais,Universidade do Estado de Santa Catarina,,,,,http://lattes.cnpq.br/K2840343E6,linguagens de especificação,2025-05-27 03:06:55
+K4790812Z8,Yvone Inez Ricci Boaventura,Universidade Federal de Mato Grosso,,,,,http://lattes.cnpq.br/K4790812Z8,linguagens de especificação,2025-05-27 03:06:54
+K4442176P6,Álvaro Alvares de Carvalho César Sobrinho,Universidade Federal de Campina Grande,,,,,http://lattes.cnpq.br/K4442176P6,program verification,2025-05-27 03:06:46
+K4526542E2,Álvaro Antônio Bueno de Camargo,Universidade Presbiteriana Mackenzie,,,,,http://lattes.cnpq.br/K4526542E2,program verification,2025-05-27 03:06:49
+K4782996H8,Álvaro Freitas Moreira,University of Edinburgh,,,,,http://lattes.cnpq.br/K4782996H8,"temporal logic, linguagens de especificação, formal semantics",2025-05-27 03:06:05
+K1797246Y9,Ângelo Antônio dos Anjos Dias,,,,,,http://lattes.cnpq.br/K1797246Y9,linguagens de especificação,2025-05-27 03:06:51
+K4454591E3,Érica Drumond Fontes Silva,Universidade Federal de Minas Gerais,,,,,http://lattes.cnpq.br/K4454591E3,linguagens de especificação,2025-05-27 03:07:08
