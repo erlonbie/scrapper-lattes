@@ -1,0 +1,509 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html>
+<head>
+	<title>Busca Textual - Currículo Lattes</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>	
+	<link rel="Shortcut Icon" href="images/v2/fav_ico_lattes.ico"/>
+	
+	<link rel="stylesheet" href="css/tooltip.css" />
+	
+    <script src="js/util.js" language="Javascript" ></script>
+    <script src="js/tooltip.js" language="Javascript" ></script>
+    <script src="js/resultados.js" language="Javascript" ></script>  
+    <script src="js/busca_textual.js" language="Javascript" ></script>
+    <script src="js/comum.js" language="Javascript" ></script>
+
+	<!-- Imports Novos -->
+	<link rel="stylesheet" href="css/import.css" />
+	<script src="js/jquery.min.js" ></script>
+	<script src="js/tooltip-position.js"></script>
+	<script src="js/jquery.tipsy.js"></script>
+	<script src="js/actions-jquery.js"></script>
+	<script src="js/font-size.js"></script>
+	<script src="js/jquery.cookie.js"></script>
+ 	<script src="js/acessibilidade.js" language="Javascript" ></script>
+
+	
+	  
+    <!--[if IE]>
+		<style>
+			.holder ul input[type="checkbox"] {margin:-2px 5px}
+		</style>
+    <![endif]-->
+    
+    <script language="javaScript" type="text/javascript">
+    	setContexto('/buscatextual'+'/');
+    </script>
+    
+    <script>
+
+	    function chamarFuncaoAbreCV(){
+	    	window.frames["frameModalPreview"].abreCV();
+	    }
+	    
+    </script>
+<!-- Analytics - Inicio -->
+
+		<script type="text/javascript">
+		
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-35652740-1']);
+		  _gaq.push(['_trackPageview']);
+		
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		
+		</script>
+		
+<!-- Analytics - Fim -->
+</head>
+<body>
+
+	<form name="buscaForm" method="POST" action="/buscatextual/busca.do">
+		<input type="hidden" name="metodo" value="forwardPaginaResultados" id="metodo">
+		<input type="hidden" name="acao" value="" id="acao">      
+		<!-- valores da consulta anterior -->
+		<input type="hidden" name="filtros.paisAtividade" value="0">
+		<input type="hidden" name="filtros.regiaoAtividade" value="0">
+		<input type="hidden" name="filtros.ufAtividade" value="0">
+		<input type="hidden" name="filtros.siglaInstAtividade" value="">
+		<input type="hidden" name="filtros.nomeInstAtividade" value="">
+		<input type="hidden" name="filtros.naturezaAtividade" value="0">
+		<input type="hidden" name="filtros.atividadeAtual" value="false"> 
+		<input type="hidden" name="filtros.paisFormacao" value="0">
+		<input type="hidden" name="filtros.regiaoFormacao" value="0">
+		<input type="hidden" name="filtros.ufFormacao" value="0">      
+		<input type="hidden" name="filtros.siglaInstFormacao" value="">
+		<input type="hidden" name="filtros.nomeInstFormacao" value="">      
+		<input type="hidden" name="filtros.nivelFormacao" value="0">
+		<input type="hidden" name="filtros.grdAreaFormacao" value="0">      
+		<input type="hidden" name="filtros.areaFormacao" value="0">
+		<input type="hidden" name="filtros.idioma" value="0">      
+		<input type="hidden" name="filtros.proeficienciaLeitura" value="">
+		<input type="hidden" name="filtros.proeficienciaEscrita" value="">      
+		<input type="hidden" name="filtros.proeficienciaFala" value="">
+		<input type="hidden" name="filtros.proeficienciaCompreensao" value="">      
+		<input type="hidden" name="filtros.grandeAreaAtuacao" value="0">
+		<input type="hidden" name="filtros.areaAtuacao" value="0">      
+		<input type="hidden" name="filtros.subareaAtuacao" value="0">
+		<input type="hidden" name="filtros.especialidadeAtuacao" value="0">      
+		<input type="hidden" name="filtros.codigoGrandeAreaAtuacao" value="0">
+		<input type="hidden" name="filtros.codigoAreaAtuacao" value="0">      
+		<input type="hidden" name="filtros.codigoSubareaAtuacao" value="0">
+		<input type="hidden" name="filtros.codigoEspecialidadeAtuacao" value="0">      
+		<input type="hidden" name="filtros.grandeAreaProducao" value="0">
+		<input type="hidden" name="filtros.areaProducao" value="0">      
+		<input type="hidden" name="filtros.setorProducao" value="0">
+		<input type="hidden" name="filtros.subSetorProducao" value="0">      
+		<input type="hidden" name="filtros.tipoRelacao" value="AND">
+		<input type="hidden" name="filtros.categoriaNivelBolsa" value="">      
+		<input type="hidden" name="filtros.orientadorCNPq" value="">
+		<input type="hidden" name="filtros.conceitoCurso" value="">      
+		<input type="hidden" name="filtros.participaDGP" value="false">
+		<input type="hidden" name="filtros.modalidadeBolsa" value="0" id="modalidadeBolsa">     
+		<input type="hidden" name="filtros.buscaNome" value="false" id="buscaNome">
+		<input type="hidden" name="filtros.buscaAssunto" value="false" id="buscaAssunto">      
+		<input type="hidden" name="filtros.buscaCPF" value="false" id="buscaCPF">
+		<input type="hidden" name="filtros.buscaAtuacao" value="false">      
+		<input type="hidden" name="filtros.tipoOrdenacao" value="SCR">
+		<input type="hidden" name="filtros.atualizacaoCurriculo" value="48">     
+		<input type="hidden" name="filtros.quantidadeRegistros" value="25">
+		<input type="hidden" name="filtros.registroInicial" value="1">     
+		<input type="hidden" name="filtros.registroFinal" value="25">
+		<input type="hidden" name="textoBuscaTodas" value="">
+		<input type="hidden" name="textoBuscaFrase" value="">
+		<input type="hidden" name="textoBuscaQualquer" value="">
+		<input type="hidden" name="textoBuscaNenhuma" value="">
+		<input type="hidden" name="textoExpressao" value="">
+		<input type="hidden" name="particaoProcura" value="">
+		<input type="hidden" name="buscarDoutores" value="false">
+		<input type="hidden" name="buscarDemais" value="false">
+		<input type="hidden" name="buscarDoutoresAvancada" value="false">
+		<input type="hidden" name="buscarDemaisAvancada" value="false">
+		<input type="hidden" name="textoBuscaAssunto" value="">
+		<input type="hidden" name="tipoConector" value="AND">
+		<input type="hidden" name="resumoFormacao" value="">
+		<input type="hidden" name="resumoAtividade" value="">
+		<input type="hidden" name="resumoAtuacao" value="">
+		<input type="hidden" name="resumoProducao" value="">
+		<input type="hidden" name="resumoPesquisador" value="">
+		<input type="hidden" name="resumoIdioma" value="">
+		<input type="hidden" name="resumoPresencaDGP" value="">
+		<input type="hidden" name="resumoModalidade" value="">
+		<input type="hidden" name="intCPaginaAtual" value="1">
+		<input type="hidden" name="parametrosBusca" value="">
+		<input type="hidden" name="strCNavegador" value="">
+		<input type="hidden" name="strCSistemaOperacional" value="">
+		<input type="hidden" name="strCIP" value="">
+		<input type="hidden" name="buscaAvancada" value="0">
+		<input type="hidden" name="moduloIndicacaoAdhoc" value="false">
+		<input type="hidden" name="query" value="(+idx_assunto:(computacao)+idx_particao:1)">
+		<input type="hidden" name="modoIndAdhoc" value="null">      
+		<input type="hidden" name="buscarBrasileirosAvancada" value="false">
+		<input type="hidden" name="buscarEstrangeirosAvancada" value="false">
+		<input type="hidden" name="buscarBrasileiros" value="false">
+		<input type="hidden" name="buscarEstrangeiros" value="false">
+		
+		<div class="page min-width" >
+			<div class="header">
+			   <div class="header-content max-width">
+			       <div class="identity center">
+			       
+				        
+
+
+
+
+
+
+
+
+	<div class="combo">
+	   <a target="_blank" title="Currículo Lattes" href="http://lattes.cnpq.br/"><img src="/buscatextual/images/titulo-sistema.png" alt="Currículo Lattes" title="Currículo Lattes" /> </a>
+	</div>
+	<div class="logo">
+		<a href="http://www.cnpq.br" target="_blank" title="CNPq - Conselho Nacional de Desenvolvimento Científico e Tecnológico"> </a>
+	</div>
+	<div class="menu-header">
+		<span>
+            <div style="font-size: 11px; color: rgb(0,99,148); font-weight: bold; padding: 6px; text-align: right">
+            	Vers&atilde;o: 2.0.14.94-5
+            </div>
+        </span>
+		<div>
+		<a title="Aumentar a fonte"  href="javascript:void(0)" class="bt-menu-header titBottom fontMais icons-top icons-top-fontMais"> </a>
+		<a title="Fonte padrão" href="javascript:void(0)" class="bt-menu-header titBottom fontMenos icons-top icons-top-fontMenos "> </a>
+
+		
+			
+			
+				<a title="Alto contraste" href="javascript:void(0)" class="bt-menu-header titBottom contraste icons-top icons-top-contraste" ></a>
+				<a href="javascript:void(0)" id="idBandeira" onclick="mudarIdioma()" class="bt-menu-header titBottom icons-top icons-top-enUK" title="Click here to change the language to english"> </a>
+			
+		
+		<a title="Ajuda"  href="http://ajuda.cnpq.br/index.php/Página_principal" target="_blank" class="bt-menu-header titBottom  icons-top icons-top-help"> </a>
+		</div>
+	</div>
+
+				         
+				 	</div>
+				 </div>
+			  </div>
+					
+			  <div class="navigation-wrapper">
+			    <div class="max-width center navigation-wrapper-line"> 
+			      <!--Local para o menu--> 
+			    </div>
+			  </div>
+				
+			  <div class="content-wrapper">
+			    <div class="main-content max-width  min-width center"> 
+			      <div class="layout-cell layout-cell-12">
+			        <div class="layout-cell-pad-main">
+			          <div class="layout-cell layout-cell-6" >
+			            <div class="layout-cell-pad">
+			              <div class="title-wrapper" id="busca2_simples">
+							 <h1>Buscar Currículo Lattes (Busca Simples)</h1>
+						  </div>
+	           			  <div class="title-wrapper" id="busca2_avancada" style="display:none">
+							 <h1>Busca Avançada (por Assunto)</h1>
+						  </div>
+	           			</div>
+	          		 </div>
+	          		 <div class="layout-cell layout-cell-6">
+	          			 <div class="layout-cell-pad">
+              				<div class="control-bar-top" id="tit2_simples">
+				          	  <a class="button" href="javascript:void(0)" onclick="javascript:novaBusca()">
+				             	<span class="mini-ico mini-ico-lupa"></span>Busca Simples
+				              </a>
+				            </div>
+				            <div class="control-bar-top" id="tit2_avancada" style="display:none">
+				          	  <a class="button" href="javascript:void(0)" onclick="javascript:novaBusca()">
+				             	<span class="mini-ico mini-ico-lupa"></span>Busca Avançada
+				              </a>
+				            </div>
+				         </div>
+				      </div>      
+					  <div class="layout-cell layout-cell-12">
+				          <div class="layout-cell-pad">
+				              <div class="tit_form">
+									
+										Resultados de 
+										21 - 30
+										dos
+										<b>15635</b>
+										encontrados para: 
+										<b> </b>
+									
+								</div>
+								<div class="paginacao">
+									<script language='JavaScript'>
+var intLTotReg = 15635;
+var intLRegInicio = 20;
+var intLRegPagina = 10;
+var strLQuery = '&query=%28%2Bidx_assunto%3A%28computacao%29%2Bidx_particao%3A1%29&analise=cv';
+var intLPagina = 1 
+var intLPaginaIni = intLPagina; 
+var strLParPag = ''; 
+document.write("");
+if (intLRegInicio > 0) { 
+intLRegInicio = (intLPagina * intLRegPagina) - intLRegPagina; 
+} 
+if (intLPagina > 1) { 
+document.write("... <a data-role='paginacao' href='/buscatextual/busca.do?metodo=forwardPaginaResultados&?numeroPagina=" 
++ (intLPagina - 10) + "&registros=" + (intLRegInicio - intLRegPagina) 
++ ";" + intLRegPagina + strLQuery + "&tipoOrdenacao=null&paginaOrigem=index.do&mostrarScore=true&mostrarBandeira=true&modoIndAdhoc=null'>anterior</a>&nbsp"); 
+strLParPag = "&numeroPagina=" + intLPagina; 
+} 
+document.write("&nbsp;&nbsp;"); 
+while ((intLPaginaIni < intLPagina + 11) && (intLRegInicio < intLTotReg)) { 
+if (20 == intLRegInicio) { 
+document.write("<a data-role='paginacao' href='/buscatextual/busca.do?metodo=forwardPaginaResultados&registros="+ intLRegInicio + ";" + intLRegPagina + strLQuery + strLParPag + "&tipoOrdenacao=null&paginaOrigem=index.do&mostrarScore=true&mostrarBandeira=true&modoIndAdhoc=null'><font color='#ff0000'>" + intLPaginaIni + "</font></a>&nbsp;");
+} else { 
+document.write("<a data-role='paginacao' href='/buscatextual/busca.do?metodo=forwardPaginaResultados&registros="
++ intLRegInicio + ";" + intLRegPagina + strLQuery + strLParPag + "&tipoOrdenacao=null&paginaOrigem=index.do&mostrarScore=true&mostrarBandeira=true&modoIndAdhoc=null'>"
++ intLPaginaIni + "</a>&nbsp;"); 
+} 
+intLRegInicio += intLRegPagina; 
+intLPaginaIni++; 
+} 
+document.write("&nbsp;&nbsp;"); 
+if (intLRegInicio < intLTotReg) { 
+document.write("<a data-role='paginacao' href='/buscatextual/busca.do?metodo=forwardPaginaResultados&?numeroPagina="
++ (intLPagina + 10) + "&registros=" + intLRegInicio 
++ ";" + intLRegPagina + strLQuery + "&tipoOrdenacao=null&paginaOrigem=index.do&mostrarScore=true&mostrarBandeira=true&modoIndAdhoc=null'>pr&oacute;ximo</a> ..."); 
+} 
+document.write("");
+</script> 
+									
+								</div>
+								<div class="resultado">
+									<ol type='1' start="21" >
+										<li><div class='relevancia tooltip' alt='Score: indicador da freqüência relativa dos termos de busca sobre o(s) currículo(s) encontrados.'><div class='barra'><div style='width:66%'></div></div><div class='porcentagem' style='font-size:9px; font-weight:normal' >66%</div></div><B><a href="javascript:abreDetalhe('K4248992Y7','Rômulo_Guedes_Cerqueira',11744588,)">Rômulo Guedes Cerqueira</a></B>&nbsp;<img  alt='Brasil' title='País de nacionalidade: Brasil'src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA
+IGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAI1SURBVHjapJNLSFRh
+GIaf/5yjc5xxnEaHaWwqJEWFSaaMiNy2aVNktO+yqiykZVBGO3eBixatgmhXtoqIEJGGJswQJRqs
+xrIa5+IFzbmcy5zztxG1y0b8Nt/i/Xh4+XhfIaVkJyOAWqB+fW9nLKCoAYGzz+4U/lYlYDoKIPAo
+DkL8SxjuvRvWAJ/jOsTDrRuCLRUUJMcjyyhC8ibXRNUV1Cruxs1UIQ3g0wDVdh3WrDKLlSKGo9IW
+WOPMvjxNpgAJkehnhn/uJrXkp05zaKqrx3YdAFUDMG2LQrlC0SrR25LldHSJocc9jL7bA1VJd1eW
+mxeTvGoI8iTdjCNVTNsCQAMoGyaRcI7zsQ90RfK8SJ5ithLnWA/kl0qMvN9P0DvP7f4xund952H6
+ILMLWwAtnkUG4lM06AWwVe4/KjI6kcIfdGmOetnbEeBHKUx1JUNn6BsD/jmuLcRJAgrAZEHlciLG
+5Hwj6BUOdWRwqx5K5SpfZn4x+nyFwwfyaIEyH3MB+hIxkllt04FpGLzONZDIHuFq7CtXzr1leibE
+y2QbqAonjn7iZPdThibauTfdio2PWmN1E2AZBl7FS7kqGJxsZ2Q+xI3+MW5dSIAUrAYtrqdiJDIh
+fDVVfJpN2TC2OLAsdCS6pqJrktRyiL7xRi51zuGpcXkw3kLFVgnVOYCKi8S0Np9oScdlJZ39I2UV
+YHBGB0BXcwghMf8TZwEEgCjg32YX1oCMANT1IqnbBDiAJXZa598DAP+m5+4+KeCCAAAAAElFTkSu
+QmCC' /><BR/>Doutorado em Mecatrônica pela Universidade Federal da Bahia, Brasil(2020)<BR/>Pesquisador do Serviço Nacional de Aprendizagem Industrial , Brasil<BR/><BR/></li>
+<li><div class='relevancia tooltip' alt='Score: indicador da freqüência relativa dos termos de busca sobre o(s) currículo(s) encontrados.'><div class='barra'><div style='width:65%'></div></div><div class='porcentagem' style='font-size:9px; font-weight:normal' >65%</div></div><B><a href="javascript:abreDetalhe('K4798744Z1','Noberto_Eiji_Nawa',368118,)">Noberto Eiji Nawa</a></B>&nbsp;<img  alt='Brasil' title='País de nacionalidade: Brasil'src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA
+IGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAI1SURBVHjapJNLSFRh
+GIaf/5yjc5xxnEaHaWwqJEWFSaaMiNy2aVNktO+yqiykZVBGO3eBixatgmhXtoqIEJGGJswQJRqs
+xrIa5+IFzbmcy5zztxG1y0b8Nt/i/Xh4+XhfIaVkJyOAWqB+fW9nLKCoAYGzz+4U/lYlYDoKIPAo
+DkL8SxjuvRvWAJ/jOsTDrRuCLRUUJMcjyyhC8ibXRNUV1Cruxs1UIQ3g0wDVdh3WrDKLlSKGo9IW
+WOPMvjxNpgAJkehnhn/uJrXkp05zaKqrx3YdAFUDMG2LQrlC0SrR25LldHSJocc9jL7bA1VJd1eW
+mxeTvGoI8iTdjCNVTNsCQAMoGyaRcI7zsQ90RfK8SJ5ithLnWA/kl0qMvN9P0DvP7f4xund952H6
+ILMLWwAtnkUG4lM06AWwVe4/KjI6kcIfdGmOetnbEeBHKUx1JUNn6BsD/jmuLcRJAgrAZEHlciLG
+5Hwj6BUOdWRwqx5K5SpfZn4x+nyFwwfyaIEyH3MB+hIxkllt04FpGLzONZDIHuFq7CtXzr1leibE
+y2QbqAonjn7iZPdThibauTfdio2PWmN1E2AZBl7FS7kqGJxsZ2Q+xI3+MW5dSIAUrAYtrqdiJDIh
+fDVVfJpN2TC2OLAsdCS6pqJrktRyiL7xRi51zuGpcXkw3kLFVgnVOYCKi8S0Np9oScdlJZ39I2UV
+YHBGB0BXcwghMf8TZwEEgCjg32YX1oCMANT1IqnbBDiAJXZa598DAP+m5+4+KeCCAAAAAElFTkSu
+QmCC' /><BR/>Mestrado em Information Engineering pela Nagoya University, Japão(1999)<BR/><BR/></li>
+<li><div class='relevancia tooltip' alt='Score: indicador da freqüência relativa dos termos de busca sobre o(s) currículo(s) encontrados.'><div class='barra'><div style='width:65%'></div></div><div class='porcentagem' style='font-size:9px; font-weight:normal' >65%</div></div><B><a href="javascript:abreDetalhe('K4783192D1','Marcilia_Andrade_Campos',4717,)">Marcilia Andrade Campos</a></B>&nbsp;<img  alt='Brasil' title='País de nacionalidade: Brasil'src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA
+IGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAI1SURBVHjapJNLSFRh
+GIaf/5yjc5xxnEaHaWwqJEWFSaaMiNy2aVNktO+yqiykZVBGO3eBixatgmhXtoqIEJGGJswQJRqs
+xrIa5+IFzbmcy5zztxG1y0b8Nt/i/Xh4+XhfIaVkJyOAWqB+fW9nLKCoAYGzz+4U/lYlYDoKIPAo
+DkL8SxjuvRvWAJ/jOsTDrRuCLRUUJMcjyyhC8ibXRNUV1Cruxs1UIQ3g0wDVdh3WrDKLlSKGo9IW
+WOPMvjxNpgAJkehnhn/uJrXkp05zaKqrx3YdAFUDMG2LQrlC0SrR25LldHSJocc9jL7bA1VJd1eW
+mxeTvGoI8iTdjCNVTNsCQAMoGyaRcI7zsQ90RfK8SJ5ithLnWA/kl0qMvN9P0DvP7f4xund952H6
+ILMLWwAtnkUG4lM06AWwVe4/KjI6kcIfdGmOetnbEeBHKUx1JUNn6BsD/jmuLcRJAgrAZEHlciLG
+5Hwj6BUOdWRwqx5K5SpfZn4x+nyFwwfyaIEyH3MB+hIxkllt04FpGLzONZDIHuFq7CtXzr1leibE
+y2QbqAonjn7iZPdThibauTfdio2PWmN1E2AZBl7FS7kqGJxsZ2Q+xI3+MW5dSIAUrAYtrqdiJDIh
+fDVVfJpN2TC2OLAsdCS6pqJrktRyiL7xRi51zuGpcXkw3kLFVgnVOYCKi8S0Np9oScdlJZ39I2UV
+YHBGB0BXcwghMf8TZwEEgCjg32YX1oCMANT1IqnbBDiAJXZa598DAP+m5+4+KeCCAAAAAElFTkSu
+QmCC' /><BR/>Doutorado em Ciências da Computação pela Universidade Federal de Pernambuco, Brasil(1997)<BR/>Professor Associado 2 da Universidade Federal de Pernambuco , Brasil<BR/><BR/></li>
+<li><div class='relevancia tooltip' alt='Score: indicador da freqüência relativa dos termos de busca sobre o(s) currículo(s) encontrados.'><div class='barra'><div style='width:65%'></div></div><div class='porcentagem' style='font-size:9px; font-weight:normal' >65%</div></div><B><a href="javascript:abreDetalhe('K4750107A6','Luiz_Maurício_de_Oliveira_Monteiro',619772,)">Luiz Maurício de Oliveira Monteiro</a></B>&nbsp;<img  alt='Brasil' title='País de nacionalidade: Brasil'src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA
+IGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAI1SURBVHjapJNLSFRh
+GIaf/5yjc5xxnEaHaWwqJEWFSaaMiNy2aVNktO+yqiykZVBGO3eBixatgmhXtoqIEJGGJswQJRqs
+xrIa5+IFzbmcy5zztxG1y0b8Nt/i/Xh4+XhfIaVkJyOAWqB+fW9nLKCoAYGzz+4U/lYlYDoKIPAo
+DkL8SxjuvRvWAJ/jOsTDrRuCLRUUJMcjyyhC8ibXRNUV1Cruxs1UIQ3g0wDVdh3WrDKLlSKGo9IW
+WOPMvjxNpgAJkehnhn/uJrXkp05zaKqrx3YdAFUDMG2LQrlC0SrR25LldHSJocc9jL7bA1VJd1eW
+mxeTvGoI8iTdjCNVTNsCQAMoGyaRcI7zsQ90RfK8SJ5ithLnWA/kl0qMvN9P0DvP7f4xund952H6
+ILMLWwAtnkUG4lM06AWwVe4/KjI6kcIfdGmOetnbEeBHKUx1JUNn6BsD/jmuLcRJAgrAZEHlciLG
+5Hwj6BUOdWRwqx5K5SpfZn4x+nyFwwfyaIEyH3MB+hIxkllt04FpGLzONZDIHuFq7CtXzr1leibE
+y2QbqAonjn7iZPdThibauTfdio2PWmN1E2AZBl7FS7kqGJxsZ2Q+xI3+MW5dSIAUrAYtrqdiJDIh
+fDVVfJpN2TC2OLAsdCS6pqJrktRyiL7xRi51zuGpcXkw3kLFVgnVOYCKi8S0Np9oScdlJZ39I2UV
+YHBGB0BXcwghMf8TZwEEgCjg32YX1oCMANT1IqnbBDiAJXZa598DAP+m5+4+KeCCAAAAAElFTkSu
+QmCC' /><BR/>Doutorado em Produção Vegetal pela Universidade Estadual do Norte Fluminense Darcy Ribeiro, Brasil(2013)<BR/>Professor Titular do Instituto Federal Fluminense , Brasil<BR/><BR/></li>
+<li><div class='relevancia tooltip' alt='Score: indicador da freqüência relativa dos termos de busca sobre o(s) currículo(s) encontrados.'><div class='barra'><div style='width:65%'></div></div><div class='porcentagem' style='font-size:9px; font-weight:normal' >65%</div></div><B><a href="javascript:abreDetalhe('K4779359A3','Rovilson_Mezencio',432973,)">Rovilson Mezencio</a></B>&nbsp;<img  alt='Brasil' title='País de nacionalidade: Brasil'src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA
+IGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAI1SURBVHjapJNLSFRh
+GIaf/5yjc5xxnEaHaWwqJEWFSaaMiNy2aVNktO+yqiykZVBGO3eBixatgmhXtoqIEJGGJswQJRqs
+xrIa5+IFzbmcy5zztxG1y0b8Nt/i/Xh4+XhfIaVkJyOAWqB+fW9nLKCoAYGzz+4U/lYlYDoKIPAo
+DkL8SxjuvRvWAJ/jOsTDrRuCLRUUJMcjyyhC8ibXRNUV1Cruxs1UIQ3g0wDVdh3WrDKLlSKGo9IW
+WOPMvjxNpgAJkehnhn/uJrXkp05zaKqrx3YdAFUDMG2LQrlC0SrR25LldHSJocc9jL7bA1VJd1eW
+mxeTvGoI8iTdjCNVTNsCQAMoGyaRcI7zsQ90RfK8SJ5ithLnWA/kl0qMvN9P0DvP7f4xund952H6
+ILMLWwAtnkUG4lM06AWwVe4/KjI6kcIfdGmOetnbEeBHKUx1JUNn6BsD/jmuLcRJAgrAZEHlciLG
+5Hwj6BUOdWRwqx5K5SpfZn4x+nyFwwfyaIEyH3MB+hIxkllt04FpGLzONZDIHuFq7CtXzr1leibE
+y2QbqAonjn7iZPdThibauTfdio2PWmN1E2AZBl7FS7kqGJxsZ2Q+xI3+MW5dSIAUrAYtrqdiJDIh
+fDVVfJpN2TC2OLAsdCS6pqJrktRyiL7xRi51zuGpcXkw3kLFVgnVOYCKi8S0Np9oScdlJZ39I2UV
+YHBGB0BXcwghMf8TZwEEgCjg32YX1oCMANT1IqnbBDiAJXZa598DAP+m5+4+KeCCAAAAAElFTkSu
+QmCC' /><BR/>Doutorado em Pós Graduação Engenharia Mecânica, Elétrica e Computacão pela Universidade Federal de Goiás, Brasil(2022)<BR/>Especialista em Requisitos do Tahto OI BTCC , Brasil<BR/><BR/></li>
+<li><div class='relevancia tooltip' alt='Score: indicador da freqüência relativa dos termos de busca sobre o(s) currículo(s) encontrados.'><div class='barra'><div style='width:65%'></div></div><div class='porcentagem' style='font-size:9px; font-weight:normal' >65%</div></div><B><a href="javascript:abreDetalhe('K4789184D5','Edgardo_Salomon_Cheb-Terrab',45996,)">Edgardo Salomon Cheb-Terrab</a></B>&nbsp;<img  alt='Argentina' title='País de nacionalidade: Argentina'src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA
+IGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE9SURBVHjapJM7TgMx
+EIY/xybKkqAVQkRCVCgFSHAEGkrOQMEZuAUdJS0tJ+AO9CkAUSKk8FAgWbPreMcULIk2C8Umv2SN
+PI9/7HmoEALLQAFNoFPIOnDA2ADx2U1/sEj2i+P9rgHaeYDdjXat4Lu3BKBtAD1ynvd0wkc6KTkF
+VPHPcp3i1goj5wG0AdAiOC9M8vmC/l1g5wUtMr33rLWhArFB7FWQ5DIEGVbM1toA9AxAlmVEUVTK
+krt7vl7PCeKIugeY6LBkz7IMAAOQpmnlmbq5Q2f9lBAyVGuvYv+NMQAn17esbm6ReplzOyrkY3F+
+0DIN7MvzjGA4TpBYcLnMTZkqelDWe4HPcTIj0JITmQaRafzT9ao+kXxK4MR7Bg/9RYbRKSAGtoG1
+msEj4EkBulgkXZMgB5xadp2/BwBxeaU3XAVeRQAAAABJRU5ErkJggg==' /><BR/>Doutorado em Física pela Universidade Federal do Rio de Janeiro, Brasil(1992)<BR/>Team Lead - Mathematical Software do Maplesoft , Canadá<BR/><BR/></li>
+<li><div class='relevancia tooltip' alt='Score: indicador da freqüência relativa dos termos de busca sobre o(s) currículo(s) encontrados.'><div class='barra'><div style='width:65%'></div></div><div class='porcentagem' style='font-size:9px; font-weight:normal' >65%</div></div><B><a href="javascript:abreDetalhe('K4269594J1','Rafael_Silveira_Xavier',8040849,)">Rafael Silveira Xavier</a></B>&nbsp;<img  alt='Brasil' title='País de nacionalidade: Brasil'src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA
+IGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAI1SURBVHjapJNLSFRh
+GIaf/5yjc5xxnEaHaWwqJEWFSaaMiNy2aVNktO+yqiykZVBGO3eBixatgmhXtoqIEJGGJswQJRqs
+xrIa5+IFzbmcy5zztxG1y0b8Nt/i/Xh4+XhfIaVkJyOAWqB+fW9nLKCoAYGzz+4U/lYlYDoKIPAo
+DkL8SxjuvRvWAJ/jOsTDrRuCLRUUJMcjyyhC8ibXRNUV1Cruxs1UIQ3g0wDVdh3WrDKLlSKGo9IW
+WOPMvjxNpgAJkehnhn/uJrXkp05zaKqrx3YdAFUDMG2LQrlC0SrR25LldHSJocc9jL7bA1VJd1eW
+mxeTvGoI8iTdjCNVTNsCQAMoGyaRcI7zsQ90RfK8SJ5ithLnWA/kl0qMvN9P0DvP7f4xund952H6
+ILMLWwAtnkUG4lM06AWwVe4/KjI6kcIfdGmOetnbEeBHKUx1JUNn6BsD/jmuLcRJAgrAZEHlciLG
+5Hwj6BUOdWRwqx5K5SpfZn4x+nyFwwfyaIEyH3MB+hIxkllt04FpGLzONZDIHuFq7CtXzr1leibE
+y2QbqAonjn7iZPdThibauTfdio2PWmN1E2AZBl7FS7kqGJxsZ2Q+xI3+MW5dSIAUrAYtrqdiJDIh
+fDVVfJpN2TC2OLAsdCS6pqJrktRyiL7xRi51zuGpcXkw3kLFVgnVOYCKi8S0Np9oScdlJZ39I2UV
+YHBGB0BXcwghMf8TZwEEgCjg32YX1oCMANT1IqnbBDiAJXZa598DAP+m5+4+KeCCAAAAAElFTkSu
+QmCC' /><BR/>Doutorado em Engenharia Elétrica pela Universidade Presbiteriana Mackenzie, Brasil(2015)<BR/>Professor da Universidade Anhembi Morumbi , Brasil<BR/><BR/></li>
+<li><div class='relevancia tooltip' alt='Score: indicador da freqüência relativa dos termos de busca sobre o(s) currículo(s) encontrados.'><div class='barra'><div style='width:64%'></div></div><div class='porcentagem' style='font-size:9px; font-weight:normal' >64%</div></div><B><a href="javascript:abreDetalhe('K4781726U5','Eduardo_Marques',24541,)">Eduardo Marques</a></B>&nbsp;<img  alt='Brasil' title='País de nacionalidade: Brasil'src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA
+IGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAI1SURBVHjapJNLSFRh
+GIaf/5yjc5xxnEaHaWwqJEWFSaaMiNy2aVNktO+yqiykZVBGO3eBixatgmhXtoqIEJGGJswQJRqs
+xrIa5+IFzbmcy5zztxG1y0b8Nt/i/Xh4+XhfIaVkJyOAWqB+fW9nLKCoAYGzz+4U/lYlYDoKIPAo
+DkL8SxjuvRvWAJ/jOsTDrRuCLRUUJMcjyyhC8ibXRNUV1Cruxs1UIQ3g0wDVdh3WrDKLlSKGo9IW
+WOPMvjxNpgAJkehnhn/uJrXkp05zaKqrx3YdAFUDMG2LQrlC0SrR25LldHSJocc9jL7bA1VJd1eW
+mxeTvGoI8iTdjCNVTNsCQAMoGyaRcI7zsQ90RfK8SJ5ithLnWA/kl0qMvN9P0DvP7f4xund952H6
+ILMLWwAtnkUG4lM06AWwVe4/KjI6kcIfdGmOetnbEeBHKUx1JUNn6BsD/jmuLcRJAgrAZEHlciLG
+5Hwj6BUOdWRwqx5K5SpfZn4x+nyFwwfyaIEyH3MB+hIxkllt04FpGLzONZDIHuFq7CtXzr1leibE
+y2QbqAonjn7iZPdThibauTfdio2PWmN1E2AZBl7FS7kqGJxsZ2Q+xI3+MW5dSIAUrAYtrqdiJDIh
+fDVVfJpN2TC2OLAsdCS6pqJrktRyiL7xRi51zuGpcXkw3kLFVgnVOYCKi8S0Np9oScdlJZ39I2UV
+YHBGB0BXcwghMf8TZwEEgCjg32YX1oCMANT1IqnbBDiAJXZa598DAP+m5+4+KeCCAAAAAElFTkSu
+QmCC' /><BR/>Doutorado em Engenharia Elétrica pela Universidade de São Paulo, Brasil(1993)<BR/>Professor Associado da Universidade de São Paulo , Brasil<BR/><BR/></li>
+<li><div class='relevancia tooltip' alt='Score: indicador da freqüência relativa dos termos de busca sobre o(s) currículo(s) encontrados.'><div class='barra'><div style='width:64%'></div></div><div class='porcentagem' style='font-size:9px; font-weight:normal' >64%</div></div><B><a href="javascript:abreDetalhe('K4764330H5','Renato_Reder_Cazangi',209548,)">Renato Reder Cazangi</a></B>&nbsp;<img  alt='Brasil' title='País de nacionalidade: Brasil'src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA
+IGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAI1SURBVHjapJNLSFRh
+GIaf/5yjc5xxnEaHaWwqJEWFSaaMiNy2aVNktO+yqiykZVBGO3eBixatgmhXtoqIEJGGJswQJRqs
+xrIa5+IFzbmcy5zztxG1y0b8Nt/i/Xh4+XhfIaVkJyOAWqB+fW9nLKCoAYGzz+4U/lYlYDoKIPAo
+DkL8SxjuvRvWAJ/jOsTDrRuCLRUUJMcjyyhC8ibXRNUV1Cruxs1UIQ3g0wDVdh3WrDKLlSKGo9IW
+WOPMvjxNpgAJkehnhn/uJrXkp05zaKqrx3YdAFUDMG2LQrlC0SrR25LldHSJocc9jL7bA1VJd1eW
+mxeTvGoI8iTdjCNVTNsCQAMoGyaRcI7zsQ90RfK8SJ5ithLnWA/kl0qMvN9P0DvP7f4xund952H6
+ILMLWwAtnkUG4lM06AWwVe4/KjI6kcIfdGmOetnbEeBHKUx1JUNn6BsD/jmuLcRJAgrAZEHlciLG
+5Hwj6BUOdWRwqx5K5SpfZn4x+nyFwwfyaIEyH3MB+hIxkllt04FpGLzONZDIHuFq7CtXzr1leibE
+y2QbqAonjn7iZPdThibauTfdio2PWmN1E2AZBl7FS7kqGJxsZ2Q+xI3+MW5dSIAUrAYtrqdiJDIh
+fDVVfJpN2TC2OLAsdCS6pqJrktRyiL7xRi51zuGpcXkw3kLFVgnVOYCKi8S0Np9oScdlJZ39I2UV
+YHBGB0BXcwghMf8TZwEEgCjg32YX1oCMANT1IqnbBDiAJXZa598DAP+m5+4+KeCCAAAAAElFTkSu
+QmCC' /><BR/>Doutorado em Engenharia Elétrica pela Universidade Estadual de Campinas, Brasil(2008)<BR/>Research Software Development Engineer do Microsoft Corporation , Estados Unidos<BR/><BR/></li>
+<li><div class='relevancia tooltip' alt='Score: indicador da freqüência relativa dos termos de busca sobre o(s) currículo(s) encontrados.'><div class='barra'><div style='width:64%'></div></div><div class='porcentagem' style='font-size:9px; font-weight:normal' >64%</div></div><B><a href="javascript:abreDetalhe('K4385712D3','Claudia_Simone_Vieira',46568430,)">Claudia Simone Vieira</a></B>&nbsp;<img  alt='Brasil' title='País de nacionalidade: Brasil'src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA
+IGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAI1SURBVHjapJNLSFRh
+GIaf/5yjc5xxnEaHaWwqJEWFSaaMiNy2aVNktO+yqiykZVBGO3eBixatgmhXtoqIEJGGJswQJRqs
+xrIa5+IFzbmcy5zztxG1y0b8Nt/i/Xh4+XhfIaVkJyOAWqB+fW9nLKCoAYGzz+4U/lYlYDoKIPAo
+DkL8SxjuvRvWAJ/jOsTDrRuCLRUUJMcjyyhC8ibXRNUV1Cruxs1UIQ3g0wDVdh3WrDKLlSKGo9IW
+WOPMvjxNpgAJkehnhn/uJrXkp05zaKqrx3YdAFUDMG2LQrlC0SrR25LldHSJocc9jL7bA1VJd1eW
+mxeTvGoI8iTdjCNVTNsCQAMoGyaRcI7zsQ90RfK8SJ5ithLnWA/kl0qMvN9P0DvP7f4xund952H6
+ILMLWwAtnkUG4lM06AWwVe4/KjI6kcIfdGmOetnbEeBHKUx1JUNn6BsD/jmuLcRJAgrAZEHlciLG
+5Hwj6BUOdWRwqx5K5SpfZn4x+nyFwwfyaIEyH3MB+hIxkllt04FpGLzONZDIHuFq7CtXzr1leibE
+y2QbqAonjn7iZPdThibauTfdio2PWmN1E2AZBl7FS7kqGJxsZ2Q+xI3+MW5dSIAUrAYtrqdiJDIh
+fDVVfJpN2TC2OLAsdCS6pqJrktRyiL7xRi51zuGpcXkw3kLFVgnVOYCKi8S0Np9oScdlJZ39I2UV
+YHBGB0BXcwghMf8TZwEEgCjg32YX1oCMANT1IqnbBDiAJXZa598DAP+m5+4+KeCCAAAAAElFTkSu
+QmCC' /><BR/>Doutorado em Administração de Empresas pela Fundação Getulio Vargas, Brasil(2017)<BR/><BR/></li>
+
+									</ol>
+								</div>
+								
+								<div class="paginacao">
+									<script language='JavaScript'>
+var intLTotReg = 15635;
+var intLRegInicio = 20;
+var intLRegPagina = 10;
+var strLQuery = '&query=%28%2Bidx_assunto%3A%28computacao%29%2Bidx_particao%3A1%29&analise=cv';
+var intLPagina = 1 
+var intLPaginaIni = intLPagina; 
+var strLParPag = ''; 
+document.write("");
+if (intLRegInicio > 0) { 
+intLRegInicio = (intLPagina * intLRegPagina) - intLRegPagina; 
+} 
+if (intLPagina > 1) { 
+document.write("... <a data-role='paginacao' href='/buscatextual/busca.do?metodo=forwardPaginaResultados&?numeroPagina=" 
++ (intLPagina - 10) + "&registros=" + (intLRegInicio - intLRegPagina) 
++ ";" + intLRegPagina + strLQuery + "&tipoOrdenacao=null&paginaOrigem=index.do&mostrarScore=true&mostrarBandeira=true&modoIndAdhoc=null'>anterior</a>&nbsp"); 
+strLParPag = "&numeroPagina=" + intLPagina; 
+} 
+document.write("&nbsp;&nbsp;"); 
+while ((intLPaginaIni < intLPagina + 11) && (intLRegInicio < intLTotReg)) { 
+if (20 == intLRegInicio) { 
+document.write("<a data-role='paginacao' href='/buscatextual/busca.do?metodo=forwardPaginaResultados&registros="+ intLRegInicio + ";" + intLRegPagina + strLQuery + strLParPag + "&tipoOrdenacao=null&paginaOrigem=index.do&mostrarScore=true&mostrarBandeira=true&modoIndAdhoc=null'><font color='#ff0000'>" + intLPaginaIni + "</font></a>&nbsp;");
+} else { 
+document.write("<a data-role='paginacao' href='/buscatextual/busca.do?metodo=forwardPaginaResultados&registros="
++ intLRegInicio + ";" + intLRegPagina + strLQuery + strLParPag + "&tipoOrdenacao=null&paginaOrigem=index.do&mostrarScore=true&mostrarBandeira=true&modoIndAdhoc=null'>"
++ intLPaginaIni + "</a>&nbsp;"); 
+} 
+intLRegInicio += intLRegPagina; 
+intLPaginaIni++; 
+} 
+document.write("&nbsp;&nbsp;"); 
+if (intLRegInicio < intLTotReg) { 
+document.write("<a data-role='paginacao' href='/buscatextual/busca.do?metodo=forwardPaginaResultados&?numeroPagina="
++ (intLPagina + 10) + "&registros=" + intLRegInicio 
++ ";" + intLRegPagina + strLQuery + "&tipoOrdenacao=null&paginaOrigem=index.do&mostrarScore=true&mostrarBandeira=true&modoIndAdhoc=null'>pr&oacute;ximo</a> ..."); 
+} 
+document.write("");
+</script> 
+												
+									
+								</div>
+	            				<div class="control-bar-wrapper">
+	            					<a class="button" id="botaoBuscaFiltros" href="javascript:void(0)" onclick="javascript:novaBusca()" >
+										<span class="mini-ico mini-ico-lupa"></span>Nova consulta
+									</a>
+	            				</div>
+	            				<br class="clear"/>
+							</div>
+					 	</div>
+					 </div>
+				  </div>
+			   </div>
+			</div>	
+		</div>
+	</form>
+</body>
+</html>
+<script language="javaScript" type="text/javascript" >
+	cvsSemPermissao = ['0'
+	
+	];
+</script>
+
