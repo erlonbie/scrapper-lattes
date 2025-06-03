@@ -301,3 +301,39 @@ This project is for educational purposes. Please respect the CNPq platform's ter
 ---
 
 **🔬 Enhanced CNPq Lattes Research Aggregator - Comprehensive Formal Methods Research Intelligence**
+
+## Local Machin Run
+
+✅ [107:04] ✅ Batch 418 completed: 48/48 successful
+
+📍 COMPLETION SUMMARY (TURBO MODE)
+--------------------------------------------------
+
+✅ [107:04] ✅ Processing completed!
+
+👥 [107:04] 👥 Researchers: 41748/41748 processed successfully
+
+📋 [107:04] 📋 Projects: 18195 extracted
+
+🎯 [107:04] 🎯 FM Projects: 82 identified
+
+✅ [107:04] ❌ Errors: 0
+
+⏱️ [107:04] ⏱️ Total time: 107:04
+
+🚀 [107:04] 🚀 Speed: 389.9 researchers/minute
+
+💾 [107:04] 💾 Data saved to 'cnpq_researchers.db' (BATCH MODE)
+
+📊 FINAL STATISTICS:
+   👥 Unique researchers: 41748
+   📋 Total projects: 18195
+   🎯 Formal methods projects: 82 (0.5%)
+   🏛️ Top institutions:
+      • Universidade de São Paulo: 1137 researchers
+      • USP: 1005 researchers
+      • Universidade Estadual Paulista Júlio de Mesquita Filho: 563 researchers
+
+💡 Next steps:
+   🔍 Run: python view_detailed_results.py
+   📊 Explore your comprehensive formal methods research database!
