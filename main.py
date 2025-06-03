@@ -389,7 +389,152 @@ class CNPqScraper:
         
         return date_str  # Return as-is if no pattern matches
 
+    async def search_researchers_async(self, search_term="metodos formais", max_pages=None, max_concurrent=5):
+        """Async version of search_researchers with parallel page fetching"""
+        self.progress.print_status(f"🚀 Async searching for: '{search_term}' (max {max_concurrent} concurrent)", "🚀")
+        
+        # Build the search query URL
+        terms = search_term.split()
+        if len(terms) >= 2:
+            query = f"(+idx_assunto:({terms[0]})+idx_assunto:({terms[1]})+idx_particao:1)"
+        else:
+            query = f"(+idx_assunto:({terms[0]})+idx_particao:1)"
+        
+        # First, get the total number of pages from page 1
+        first_page_data = await self.fetch_page_async(0, query, search_term)
+        if not first_page_data:
+            return []
+        
+        researchers, pagination_info = first_page_data
+        total_records = pagination_info.get('total_records', 0) if pagination_info else 0
+        page_size = pagination_info.get('page_size', 10) if pagination_info else 10
+        total_pages = (total_records + page_size - 1) // page_size if total_records > 0 else 1
+        
+        self.progress.print_status(f"📊 Found {total_records} total records ({total_pages} pages) for '{search_term}'", "📊")
+        
+        # Apply max_pages limit if specified
+        if max_pages and total_pages > max_pages:
+            total_pages = max_pages
+            estimated_records = max_pages * page_size
+            self.progress.print_status(f"⚠️ Limiting to {max_pages} pages ({estimated_records} records) as requested", "⚠️")
+        else:
+            self.progress.print_status(f"🎯 Will fetch ALL {total_pages} pages ({total_records} records) in parallel", "🎯")
+        
+        all_researchers = researchers  # Start with page 1 results
+        
+        if total_pages > 1:
+            # Create semaphore to limit concurrent requests
+            semaphore = asyncio.Semaphore(max_concurrent)
+            
+            # Create tasks for remaining pages
+            tasks = []
+            for page in range(1, total_pages):  # Skip page 0 (already fetched)
+                task = self.fetch_page_with_semaphore(semaphore, page, query, search_term)
+                tasks.append(task)
+            
+            # Execute all tasks in parallel with progress tracking
+            self.progress.print_status(f"🧵 Fetching {len(tasks)} pages in parallel (max {max_concurrent} concurrent)", "🧵")
+            
+            completed = 0
+            async for task in asyncio.as_completed(tasks):
+                try:
+                    result = await task
+                    if result:
+                        page_researchers, _ = result
+                        all_researchers.extend(page_researchers)
+                    
+                    completed += 1
+                    # Show progress every 10 completions or at key intervals
+                    if completed % 10 == 0 or completed == len(tasks) or completed <= 5:
+                        percentage = (completed / len(tasks)) * 100
+                        self.progress.print_status(f"📄 Progress: {completed}/{len(tasks)} pages ({percentage:.1f}%) - Total researchers: {len(all_researchers)}", "📄")
+                
+                except Exception as e:
+                    logger.error(f"Error fetching page: {e}")
+                    completed += 1
+        
+        if total_records:
+            percentage = (len(all_researchers) / total_records) * 100
+            self.progress.print_status(f"✅ Collected {len(all_researchers)} researchers out of {total_records} total available ({percentage:.1f}%) for '{search_term}'", "✅")
+        
+        return all_researchers
+    
+    async def fetch_page_with_semaphore(self, semaphore, page, query, search_term):
+        """Fetch a single page with semaphore limiting"""
+        async with semaphore:
+            return await self.fetch_page_async(page, query, search_term)
+    
+    async def fetch_page_async(self, page, query, search_term):
+        """Fetch a single page asynchronously"""
+        start_record = page * 10
+        url = f"{self.base_url}/busca.do"
+        
+        params = {
+            'metodo': 'forwardPaginaResultados',
+            'registros': f'{start_record};10',
+            'query': query,
+            'analise': 'cv',
+            'tipoOrdenacao': 'null',
+            'paginaOrigem': 'index.do',
+            'mostrarScore': 'true',
+            'mostrarBandeira': 'true',
+            'modoIndAdhoc': 'null'
+        }
+        
+        try:
+            # Create SSL context similar to sync version
+            import ssl
+            ssl_context = ssl.create_default_context()
+            ssl_context.set_ciphers('DEFAULT@SECLEVEL=1')
+            ssl_context.check_hostname = False
+            ssl_context.verify_mode = ssl.CERT_NONE
+            
+            # Create aiohttp connector with custom SSL
+            connector = aiohttp.TCPConnector(
+                ssl=ssl_context,
+                limit=100,
+                limit_per_host=20
+            )
+            
+            # Create aiohttp session with proper headers and SSL config
+            async with aiohttp.ClientSession(
+                timeout=aiohttp.ClientTimeout(total=30),
+                headers=self.session.headers,
+                cookies=self.session.cookies,
+                connector=connector
+            ) as session:
+                async with session.get(url, params=params) as response:
+                    response.raise_for_status()
+                    html_content = await response.text()
+                    
+                    # Parse results
+                    researchers = self.parse_search_results(html_content, search_term)
+                    pagination_info = self.extract_pagination_info(html_content)
+                    
+                    return researchers, pagination_info
+        
+        except Exception as e:
+            logger.error(f"Error fetching page {page + 1}: {e}")
+            return None
+    
     def search_researchers(self, search_term="metodos formais", max_pages=None):
+        """Enhanced search with async support - wrapper for backward compatibility"""
+        # Try async version first for better performance
+        try:
+            loop = asyncio.get_event_loop()
+            if loop.is_running():
+                # If we're already in an async context, use the sync version
+                return self.search_researchers_sync(search_term, max_pages)
+            else:
+                # Use async version for better performance
+                return loop.run_until_complete(
+                    self.search_researchers_async(search_term, max_pages, max_concurrent=8)
+                )
+        except RuntimeError:
+            # Fallback to sync version if async fails
+            return self.search_researchers_sync(search_term, max_pages)
+    
+    def search_researchers_sync(self, search_term="metodos formais", max_pages=None):
         """Search for researchers based on the search term"""
         self.progress.print_status(f"🔍 Searching for: '{search_term}'", "🔍")
         
@@ -1407,9 +1552,9 @@ class CNPqScraper:
                 if conn:
                     conn.close()
     
-    def scrape_all(self, search_terms=None, max_pages_per_term=None, get_details=True, use_threading=True):
-        """Main method to scrape all researchers with enhanced progress tracking"""
-        print("\n🚀 Starting CNPq Lattes Enhanced Research Aggregator")
+    def scrape_all(self, search_terms=None, max_pages_per_term=None, get_details=True, use_threading=True, batch_size=100):
+        """Main method to scrape all researchers with enhanced performance optimizations"""
+        print("\n🚀 Starting CNPq Lattes Enhanced Research Aggregator v3.0 (TURBO)")
         print("=" * 70)
         
         if search_terms is None:
@@ -1420,14 +1565,17 @@ class CNPqScraper:
         if max_pages_per_term:
             self.progress.print_status(f"📄 Limited to max {max_pages_per_term} pages per term", "📄")
         else:
-            self.progress.print_status(f"🌐 Will fetch ALL available pages per term", "🌐")
+            self.progress.print_status(f"🌐 Will fetch ALL available pages per term (ASYNC PARALLEL)", "🌐")
             
-        self.progress.print_status(f"🧵 Using {self.max_workers} threads" if use_threading else "🔄 Sequential processing", "🧵" if use_threading else "🔄")
+        if use_threading:
+            self.progress.print_status(f"🧵 Using {self.max_workers} threads with batch processing (batch size: {batch_size})", "🧵")
+        else:
+            self.progress.print_status(f"🔄 Sequential processing with batch saves", "🔄")
         
         all_researchers = []
         
-        # Phase 1: Search for researchers
-        print(f"\n📍 PHASE 1: Searching for Researchers")
+        # Phase 1: Search for researchers (OPTIMIZED WITH ASYNC)
+        print(f"\n📍 PHASE 1: Searching for Researchers (TURBO MODE)")
         print("-" * 50)
         
         term_progress = 0
@@ -1438,7 +1586,7 @@ class CNPqScraper:
             
             # Try Portuguese term first, then English if no results
             for term_lang, term in [("PT", portuguese_term.lower()), ("EN", english_term.lower())]:
-                self.progress.print_status(f"🌐 Trying {term_lang}: '{term}'", "🌐")
+                self.progress.print_status(f"🌐 Trying {term_lang}: '{term}' (ASYNC)", "🌐")
                 researchers = self.search_researchers(term, max_pages_per_term)
                 
                 if researchers:
@@ -1466,86 +1614,40 @@ class CNPqScraper:
         self.progress.print_status(f"📊 Found {len(researchers_list)} unique researchers total (removed {len(all_researchers) - len(researchers_list)} duplicates)", "📊")
         
         if not get_details:
-            # Just save basic info without details
-            for researcher in researchers_list:
-                self.save_researcher(researcher)
-            self.progress.print_status("💾 Basic information saved to database", "💾")
+            # Just save basic info without details using batch save
+            self.save_researchers_batch(researchers_list)
+            self.progress.print_status("💾 Basic information saved to database (BATCH)", "💾")
             return researchers_list
         
-        # Phase 2: Extract detailed information
-        print(f"\n📍 PHASE 2: Extracting Detailed Project Information")
+        # Phase 2: Extract detailed information (OPTIMIZED WITH BATCHING)
+        print(f"\n📍 PHASE 2: Extracting Detailed Project Information (BATCH MODE)")
         print("-" * 50)
         
-        completed_count = 0
-        total_projects = 0
-        total_fm_projects = 0
-        errors = 0
+        self.progress.print_status(f"🔄 Processing {len(researchers_list)} researchers in batches of {batch_size}", "🔄")
         
-        if use_threading and len(researchers_list) > 1:
-            self.progress.print_status(f"🧵 Starting parallel processing with {self.max_workers} threads", "🧵")
-            
-            with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
-                # Submit all tasks
-                future_to_researcher = {
-                    executor.submit(self.process_researcher_with_details, researcher): researcher 
-                    for researcher in researchers_list
-                }
-                
-                # Process completed tasks with progress tracking
-                for future in as_completed(future_to_researcher):
-                    completed_count += 1
-                    result = future.result()
-                    
-                    if result['success']:
-                        total_projects += result['project_count']
-                        total_fm_projects += result['fm_projects']
-                        
-                        # Show progress bar
-                        self.progress.show_progress_bar(
-                            completed_count, 
-                            len(researchers_list), 
-                            "Processing researchers"
-                        )
-                        
-                        # Show detailed info every 10 completions or at end
-                        if completed_count % 10 == 0 or completed_count == len(researchers_list):
-                            print(f"\n✅ Completed: {result['researcher']['name']} ({result['project_count']} projects, {result['fm_projects']} FM)")
-                            print(f"📊 Running totals: {total_projects} projects, {total_fm_projects} FM projects, {errors} errors")
-                    else:
-                        errors += 1
-                        print(f"\n❌ Failed: {result['researcher']['name']} - {result.get('error', 'Unknown error')}")
-        else:
-            # Sequential processing with progress
-            self.progress.print_status("🔄 Processing researchers sequentially", "🔄")
-            
-            for i, researcher in enumerate(researchers_list, 1):
-                self.progress.show_progress_bar(i, len(researchers_list), "Processing researchers")
-                
-                result = self.process_researcher_with_details(researcher)
-                
-                if result['success']:
-                    total_projects += result['project_count']
-                    total_fm_projects += result['fm_projects']
-                    print(f"\n✅ [{i}/{len(researchers_list)}] {result['researcher']['name']} ({result['project_count']} projects, {result['fm_projects']} FM)")
-                else:
-                    errors += 1
-                    print(f"\n❌ [{i}/{len(researchers_list)}] Failed: {result['researcher']['name']}")
-                
-                # Be respectful to the server
-                time.sleep(2)
+        # Use the optimized batch processing
+        all_results = self.process_researchers_batch(researchers_list, batch_size)
+        
+        # Calculate final statistics
+        completed_count = len(all_results)
+        successful_results = [r for r in all_results if r['success']]
+        total_projects = sum(r['project_count'] for r in successful_results)
+        total_fm_projects = sum(r['fm_projects'] for r in successful_results)
+        errors = len(all_results) - len(successful_results)
         
         # Final summary
-        print(f"\n📍 COMPLETION SUMMARY")
+        print(f"\n📍 COMPLETION SUMMARY (TURBO MODE)")
         print("-" * 50)
         elapsed_total = time.time() - self.progress.start_time
         
         self.progress.print_status(f"✅ Processing completed!", "✅")
-        self.progress.print_status(f"👥 Researchers: {len(researchers_list)} processed", "👥")
+        self.progress.print_status(f"👥 Researchers: {len(successful_results)}/{completed_count} processed successfully", "👥")
         self.progress.print_status(f"📋 Projects: {total_projects} extracted", "📋")
         self.progress.print_status(f"🎯 FM Projects: {total_fm_projects} identified", "🎯")
         self.progress.print_status(f"❌ Errors: {errors}", "❌" if errors > 0 else "✅")
         self.progress.print_status(f"⏱️ Total time: {int(elapsed_total//60)}:{int(elapsed_total%60):02d}", "⏱️")
-        self.progress.print_status(f"💾 Data saved to 'cnpq_researchers.db'", "💾")
+        self.progress.print_status(f"🚀 Speed: {len(researchers_list)/(elapsed_total/60):.1f} researchers/minute", "🚀")
+        self.progress.print_status(f"💾 Data saved to 'cnpq_researchers.db' (BATCH MODE)", "💾")
         
         return researchers_list
     
@@ -1752,6 +1854,194 @@ class CNPqScraper:
             logger.error(f"Error extracting projects from summary: {e}")
         
         return projects
+
+    def save_researchers_batch(self, researchers_data_list):
+        """Save multiple researchers and their projects in a single transaction (much faster)"""
+        if not researchers_data_list:
+            return
+        
+        with self.db_lock:  # Ensure thread-safe database operations
+            try:
+                # Create a new connection for thread safety
+                conn = sqlite3.connect('cnpq_researchers.db')
+                cursor = conn.cursor()
+                
+                # Begin transaction
+                cursor.execute('BEGIN TRANSACTION')
+                
+                saved_count = 0
+                updated_count = 0
+                projects_count = 0
+                
+                for researcher_data in researchers_data_list:
+                    try:
+                        # Check if researcher already exists
+                        cursor.execute('SELECT id, cnpq_id FROM researchers WHERE cnpq_id = ?', 
+                                      (researcher_data.get('cnpq_id'),))
+                        existing = cursor.fetchone()
+                        
+                        researcher_id = None
+                        
+                        if existing:
+                            researcher_id = existing[0]
+                            # Update existing record
+                            cursor.execute('''
+                                UPDATE researchers 
+                                SET search_term = CASE 
+                                    WHEN search_term LIKE '%' || ? || '%' THEN search_term
+                                    ELSE search_term || ', ' || ?
+                                END,
+                                name = COALESCE(?, name),
+                                institution = COALESCE(?, institution),
+                                area = COALESCE(?, area),
+                                city = COALESCE(?, city),
+                                state = COALESCE(?, state),
+                                country = COALESCE(?, country),
+                                last_update_date = COALESCE(?, last_update_date),
+                                updated_at = CURRENT_TIMESTAMP
+                                WHERE cnpq_id = ?
+                            ''', (
+                                researcher_data.get('search_term'),
+                                researcher_data.get('search_term'),
+                                researcher_data.get('name'),
+                                researcher_data.get('institution'),
+                                researcher_data.get('area'),
+                                researcher_data.get('city'),
+                                researcher_data.get('state'),
+                                researcher_data.get('country'),
+                                researcher_data.get('last_update_date'),
+                                researcher_data.get('cnpq_id')
+                            ))
+                            updated_count += 1
+                        else:
+                            # Insert new researcher
+                            cursor.execute('''
+                                INSERT INTO researchers 
+                                (cnpq_id, name, institution, area, city, state, country, lattes_url, search_term, last_update_date)
+                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                            ''', (
+                                researcher_data.get('cnpq_id'),
+                                researcher_data.get('name'),
+                                researcher_data.get('institution'),
+                                researcher_data.get('area'),
+                                researcher_data.get('city'),
+                                researcher_data.get('state'),
+                                researcher_data.get('country'),
+                                f"http://lattes.cnpq.br/{researcher_data.get('cnpq_id')}" if researcher_data.get('cnpq_id') else None,
+                                researcher_data.get('search_term'),
+                                researcher_data.get('last_update_date')
+                            ))
+                            researcher_id = cursor.lastrowid
+                            saved_count += 1
+                        
+                        # Save projects if they exist
+                        projects = researcher_data.get('projects', [])
+                        if projects and researcher_id:
+                            # Delete existing projects for this researcher to avoid duplicates
+                            cursor.execute('DELETE FROM projects WHERE cnpq_id = ?', (researcher_data.get('cnpq_id'),))
+                            
+                            # Prepare batch insert for projects
+                            project_data = []
+                            for project in projects:
+                                project_data.append((
+                                    researcher_id,
+                                    researcher_data.get('cnpq_id'),
+                                    project.get('title'),
+                                    project.get('start_date'),
+                                    project.get('end_date'),
+                                    project.get('status'),
+                                    project.get('description'),
+                                    project.get('funding_sources'),
+                                    project.get('coordinator_name'),
+                                    project.get('team_members'),
+                                    project.get('industry_cooperation'),
+                                    project.get('formal_methods_concepts'),
+                                    project.get('formal_methods_tools'),
+                                    project.get('is_formal_methods_related', False)
+                                ))
+                            
+                            # Batch insert projects
+                            cursor.executemany('''
+                                INSERT INTO projects 
+                                (researcher_id, cnpq_id, title, start_date, end_date, status, description, 
+                                 funding_sources, coordinator_name, team_members, industry_cooperation, 
+                                 formal_methods_concepts, formal_methods_tools, is_formal_methods_related)
+                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                            ''', project_data)
+                            
+                            projects_count += len(projects)
+                    
+                    except Exception as e:
+                        logger.error(f"Error saving researcher {researcher_data.get('name', 'Unknown')}: {e}")
+                        continue
+                
+                # Commit the transaction
+                conn.commit()
+                conn.close()
+                
+                logger.info(f"Batch saved: {saved_count} new researchers, {updated_count} updated, {projects_count} total projects")
+                
+            except sqlite3.Error as e:
+                logger.error(f"Database batch error: {e}")
+                if conn:
+                    conn.rollback()
+                    conn.close()
+
+    def process_researchers_batch(self, researchers_list, batch_size=50):
+        """Process researchers in batches for better performance"""
+        if not researchers_list:
+            return []
+        
+        all_results = []
+        total_batches = (len(researchers_list) + batch_size - 1) // batch_size
+        
+        for batch_idx in range(0, len(researchers_list), batch_size):
+            batch = researchers_list[batch_idx:batch_idx + batch_size]
+            batch_num = (batch_idx // batch_size) + 1
+            
+            self.progress.print_status(f"🔄 Processing batch {batch_num}/{total_batches} ({len(batch)} researchers)", "🔄")
+            
+            # Process this batch with threading
+            batch_results = []
+            
+            if len(batch) > 1:
+                # Use threading for the batch
+                with ThreadPoolExecutor(max_workers=min(self.max_workers, len(batch))) as executor:
+                    future_to_researcher = {
+                        executor.submit(self.process_researcher_with_details, researcher): researcher 
+                        for researcher in batch
+                    }
+                    
+                    for future in as_completed(future_to_researcher):
+                        result = future.result()
+                        batch_results.append(result)
+            else:
+                # Single researcher
+                result = self.process_researcher_with_details(batch[0])
+                batch_results.append(result)
+            
+            # Collect successful researchers for batch save
+            successful_researchers = [
+                result['researcher'] for result in batch_results 
+                if result['success'] and result['researcher']
+            ]
+            
+            # Batch save to database
+            if successful_researchers:
+                self.save_researchers_batch(successful_researchers)
+            
+            # Collect all results
+            all_results.extend(batch_results)
+            
+            # Show progress
+            success_count = sum(1 for r in batch_results if r['success'])
+            self.progress.print_status(f"✅ Batch {batch_num} completed: {success_count}/{len(batch)} successful", "✅")
+            
+            # Be respectful to the server between batches
+            if batch_num < total_batches:
+                time.sleep(1)
+        
+        return all_results
 
 def main():
     scraper = CNPqScraper(max_workers=8)  # Increased workers for better performance
