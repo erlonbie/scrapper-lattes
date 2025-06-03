@@ -389,7 +389,7 @@ class CNPqScraper:
         
         return date_str  # Return as-is if no pattern matches
 
-    def search_researchers(self, search_term="metodos formais", max_pages=5):
+    def search_researchers(self, search_term="metodos formais", max_pages=None):
         """Search for researchers based on the search term"""
         self.progress.print_status(f"🔍 Searching for: '{search_term}'", "🔍")
         
@@ -409,9 +409,11 @@ class CNPqScraper:
         
         all_researchers = []
         total_records = None
+        total_pages = None
         spinner_count = 0
+        page = 0
         
-        for page in range(max_pages):
+        while True:
             start_record = page * 10
             url = f"{self.base_url}/busca.do"
             
@@ -429,7 +431,11 @@ class CNPqScraper:
             
             try:
                 # Show progress while fetching
-                self.progress.show_spinner(f"Fetching page {page + 1}/{max_pages} for '{search_term}'", spinner_count)
+                progress_msg = f"Fetching page {page + 1}"
+                if total_pages:
+                    progress_msg += f"/{total_pages}"
+                progress_msg += f" for '{search_term}'"
+                self.progress.show_spinner(progress_msg, spinner_count)
                 spinner_count += 1
                 
                 response = self.session.get(url, params=params)
@@ -440,13 +446,18 @@ class CNPqScraper:
                     pagination_info = self.extract_pagination_info(response.text)
                     if pagination_info:
                         total_records = pagination_info['total_records']
-                        self.progress.print_status(f"📊 Found {total_records} total records for '{search_term}'", "📊")
+                        page_size = pagination_info['page_size']
+                        total_pages = (total_records + page_size - 1) // page_size  # Round up
                         
-                        # Adjust max_pages based on actual data available
-                        max_possible_pages = (total_records + 9) // 10  # Round up
-                        if max_pages > max_possible_pages:
-                            max_pages = max_possible_pages
-                            self.progress.print_status(f"📄 Adjusted to {max_pages} pages based on available data", "📄")
+                        self.progress.print_status(f"📊 Found {total_records} total records ({total_pages} pages) for '{search_term}'", "📊")
+                        
+                        # Apply max_pages limit only if specified by user
+                        if max_pages and total_pages > max_pages:
+                            total_pages = max_pages
+                            estimated_records = max_pages * page_size
+                            self.progress.print_status(f"⚠️ Limiting to {max_pages} pages ({estimated_records} records) as requested", "⚠️")
+                        else:
+                            self.progress.print_status(f"🎯 Will fetch ALL {total_pages} pages ({total_records} records)", "🎯")
                 
                 researchers = self.parse_search_results(response.text, search_term)
                 
@@ -458,6 +469,7 @@ class CNPqScraper:
                     if pagination_info and pagination_info['has_more']:
                         self.progress.print_status(f"⚠️ Expected more results but found none on page {page + 1}. Continuing...", "⚠️")
                         time.sleep(2)
+                        page += 1
                         continue
                     else:
                         self.progress.print_status(f"✅ Reached end of results on page {page + 1}", "✅")
@@ -471,15 +483,27 @@ class CNPqScraper:
                     self.progress.print_status(f"🏁 Reached last page ({page + 1}) based on pagination info", "🏁")
                     break
                 
+                # Check if we've reached the user-specified max_pages limit
+                if max_pages and page + 1 >= max_pages:
+                    self.progress.print_status(f"🛑 Reached user-specified limit of {max_pages} pages", "🛑")
+                    break
+                
+                # Check if we've reached the total pages available
+                if total_pages and page + 1 >= total_pages:
+                    self.progress.print_status(f"🏁 Reached all available pages ({total_pages})", "🏁")
+                    break
+                
                 # Be respectful to the server
                 time.sleep(2)
+                page += 1
                 
             except requests.RequestException as e:
                 self.progress.print_status(f"❌ Error fetching page {page + 1}: {e}", "❌")
                 break
         
         if total_records:
-            self.progress.print_status(f"✅ Collected {len(all_researchers)} researchers out of {total_records} total available for '{search_term}'", "✅")
+            percentage = (len(all_researchers) / total_records) * 100
+            self.progress.print_status(f"✅ Collected {len(all_researchers)} researchers out of {total_records} total available ({percentage:.1f}%) for '{search_term}'", "✅")
         
         return all_researchers
     
@@ -1383,7 +1407,7 @@ class CNPqScraper:
                 if conn:
                     conn.close()
     
-    def scrape_all(self, search_terms=None, max_pages=3, get_details=True, use_threading=True):
+    def scrape_all(self, search_terms=None, max_pages_per_term=None, get_details=True, use_threading=True):
         """Main method to scrape all researchers with enhanced progress tracking"""
         print("\n🚀 Starting CNPq Lattes Enhanced Research Aggregator")
         print("=" * 70)
@@ -1392,7 +1416,12 @@ class CNPqScraper:
             search_terms = SEARCH_TERMS
         
         self.progress.print_status(f"🎯 Will process {len(search_terms)} search term pairs", "🎯")
-        self.progress.print_status(f"📄 Max {max_pages} pages per term", "📄")
+        
+        if max_pages_per_term:
+            self.progress.print_status(f"📄 Limited to max {max_pages_per_term} pages per term", "📄")
+        else:
+            self.progress.print_status(f"🌐 Will fetch ALL available pages per term", "🌐")
+            
         self.progress.print_status(f"🧵 Using {self.max_workers} threads" if use_threading else "🔄 Sequential processing", "🧵" if use_threading else "🔄")
         
         all_researchers = []
@@ -1410,7 +1439,7 @@ class CNPqScraper:
             # Try Portuguese term first, then English if no results
             for term_lang, term in [("PT", portuguese_term.lower()), ("EN", english_term.lower())]:
                 self.progress.print_status(f"🌐 Trying {term_lang}: '{term}'", "🌐")
-                researchers = self.search_researchers(term, max_pages)
+                researchers = self.search_researchers(term, max_pages_per_term)
                 
                 if researchers:
                     self.progress.print_status(f"✅ Found {len(researchers)} researchers for '{term}' ({term_lang})", "✅")
@@ -1735,7 +1764,7 @@ def main():
         # Use the new comprehensive scraping approach
         researchers = scraper.scrape_all(
             search_terms=SEARCH_TERMS,  # Use all formal methods terms
-            max_pages=10,  # Increased to get more comprehensive results
+            max_pages_per_term=None,  # Fetch ALL available pages (no limit)
             get_details=True,
             use_threading=True
         )
