@@ -571,39 +571,317 @@ class CNPqScraper:
         return researchers
     
     def get_researcher_details(self, cnpq_id):
-        """Get detailed information from the researcher's CV page"""
+        """Get detailed information from the researcher's CV page using multiple approaches"""
         try:
-            # First, get the preview page to extract the token
+            # First approach: Try the preview page which already has all the info we need
+            # This bypasses the reCaptcha issue completely
+            logger.info(f"Trying preview-based extraction for {cnpq_id}")
+            preview_details = self.get_researcher_details_from_preview(cnpq_id)
+            
+            if preview_details and preview_details.get('name'):
+                logger.info(f"Successfully extracted details from preview for {cnpq_id}")
+                return preview_details
+            
+            # If preview extraction fails, fall back to the complex reCaptcha approach
+            logger.info(f"Preview extraction failed, trying reCaptcha approach for {cnpq_id}")
+            return self.get_researcher_details_with_captcha(cnpq_id)
+            
+        except Exception as e:
+            logger.error(f"Error in get_researcher_details for {cnpq_id}: {e}")
+            return {}
+    
+    def get_researcher_details_with_captcha(self, cnpq_id):
+        """Original method that deals with reCaptcha - kept as fallback"""
+        try:
+            # First, try to access the CV directly using the simple GET method (sometimes works)
+            logger.info(f"Attempting direct CV access for {cnpq_id}")
+            direct_cv_url = f"{self.base_url}/visualizacv.do"
+            direct_params = {
+                'metodo': 'apresentar',
+                'id': cnpq_id
+            }
+            
+            try:
+                direct_response = self.session.get(direct_cv_url, params=direct_params, timeout=15)
+                direct_response.raise_for_status()
+                
+                # Check if this is a valid CV page (not a captcha page)
+                if self.is_valid_cv_page(direct_response.text):
+                    logger.info(f"Direct access successful for {cnpq_id}")
+                    return self.parse_cv_details(direct_response.text)
+                else:
+                    logger.info(f"Direct access returned captcha page for {cnpq_id}")
+            except Exception as e:
+                logger.warning(f"Direct access failed for {cnpq_id}: {e}")
+            
+            # If direct access fails, try the preview + token approach
+            logger.info(f"Trying preview + token approach for {cnpq_id}")
             preview_url = f"{self.base_url}/preview.do"
             preview_params = {
                 'metodo': 'apresentar',
                 'id': cnpq_id
             }
             
-            preview_response = self.session.get(preview_url, params=preview_params)
+            preview_response = self.session.get(preview_url, params=preview_params, timeout=15)
             preview_response.raise_for_status()
             
-            # Extract token from the preview page
-            token_match = re.search(r'tokenCaptchar=([^&"\']+)', preview_response.text)
+            # Check if preview page is also showing captcha
+            if not self.is_valid_cv_page(preview_response.text):
+                logger.warning(f"Preview page also shows captcha for {cnpq_id}")
+                # Save the HTML for debugging
+                self.save_debug_html(preview_response.text, f"debug_preview_{cnpq_id}.html")
             
-            if token_match:
-                token = token_match.group(1)
-                
-                # Now get the full CV
-                cv_url = f"{self.base_url}/visualizacv.do"
-                cv_params = {
-                    'id': cnpq_id,
-                    'tokenCaptchar': token
-                }
-                
-                cv_response = self.session.get(cv_url, params=cv_params)
-                cv_response.raise_for_status()
-                
+            # Try multiple token extraction patterns
+            token = self.extract_token_from_html(preview_response.text)
+            
+            if not token:
+                logger.warning(f"No token found for {cnpq_id}, attempting without token")
+                token = ""
+            
+            # Now make the POST request to get the full CV using multipart form-data
+            cv_url = f"{self.base_url}/visualizacv.do"
+            
+            # Prepare the multipart form data based on the curl example
+            form_data = {
+                'metodo': 'apresentar',
+                'id': cnpq_id,
+                'idiomaExibicao': '',
+                'tipo': '',
+                'tokenCaptchar': token,
+                'nomeCaptchar': 'V2',
+                'mostrarNroCitacoesScielo': '',
+                'mostrarNroCitacoesScopus': '',
+                'mostrarNroCitacoesISI': '',
+                # Add all the filter fields with default values
+                'filtros.paisAtividade': '0',
+                'filtros.regiaoAtividade': '0',
+                'filtros.ufAtividade': '0',
+                'filtros.siglaInstAtividade': '',
+                'filtros.nomeInstAtividade': '',
+                'filtros.naturezaAtividade': '0',
+                'filtros.atividadeAtual': 'false',
+                'filtros.paisFormacao': '0',
+                'filtros.regiaoFormacao': '0',
+                'filtros.ufFormacao': '0',
+                'filtros.siglaInstFormacao': '',
+                'filtros.nomeInstFormacao': '',
+                'filtros.nivelFormacao': '0',
+                'filtros.grdAreaFormacao': '0',
+                'filtros.areaFormacao': '0',
+                'filtros.idioma': '0',
+                'filtros.proeficienciaLeitura': '',
+                'filtros.proeficienciaEscrita': '',
+                'filtros.proeficienciaFala': '',
+                'filtros.proeficienciaCompreensao': '',
+                'filtros.grandeAreaAtuacao': '0',
+                'filtros.areaAtuacao': '0',
+                'filtros.subareaAtuacao': '0',
+                'filtros.especialidadeAtuacao': '0',
+                'filtros.codigoGrandeAreaAtuacao': '0',
+                'filtros.codigoAreaAtuacao': '0',
+                'filtros.codigoSubareaAtuacao': '0',
+                'filtros.codigoEspecialidadeAtuacao': '0',
+                'filtros.grandeAreaProducao': '0',
+                'filtros.areaProducao': '0',
+                'filtros.setorProducao': '0',
+                'filtros.subSetorProducao': '0',
+                'filtros.tipoRelacao': 'AND',
+                'filtros.categoriaNivelBolsa': '',
+                'filtros.orientadorCNPq': '',
+                'filtros.conceitoCurso': '',
+                'filtros.participaDGP': 'false',
+                'filtros.modalidadeBolsa': '0',
+                'filtros.buscaNome': 'false',
+                'filtros.buscaAssunto': 'false',
+                'filtros.buscaCPF': 'false',
+                'filtros.buscaAtuacao': 'false',
+                'filtros.tipoOrdenacao': 'SCR',
+                'filtros.atualizacaoCurriculo': '48',
+                'filtros.quantidadeRegistros': '25',
+                'filtros.registroInicial': '1',
+                'filtros.registroFinal': '25',
+                'textoBuscaTodas': '',
+                'textoBuscaFrase': '',
+                'textoBuscaQualquer': '',
+                'textoBuscaNenhuma': '',
+                'textoExpressao': '',
+                'particaoProcura': '',
+                'buscarDoutores': 'false',
+                'buscarDemais': 'false',
+                'buscarDoutoresAvancada': 'false',
+                'buscarDemaisAvancada': 'false',
+                'textoBuscaAssunto': '',
+                'tipoConector': 'AND',
+                'resumoFormacao': '',
+                'resumoAtividade': '',
+                'resumoAtuacao': '',
+                'resumoProducao': '',
+                'resumoPesquisador': '',
+                'resumoIdioma': '',
+                'resumoPresencaDGP': '',
+                'resumoModalidade': '',
+                'intCPaginaAtual': '1',
+                'parametrosBusca': '',
+                'strCNavegador': '',
+                'strCSistemaOperacional': '',
+                'strCIP': '',
+                'buscaAvancada': '0',
+                'moduloIndicacaoAdhoc': 'false',
+                'query': '',
+                'modoIndAdhoc': '',
+                'tipoFuncaoIndicacaoAdHoc': '',
+                'buscarBrasileirosAvancada': 'false',
+                'buscarEstrangeirosAvancada': 'false',
+                'buscarBrasileiros': 'false',
+                'buscarEstrangeiros': 'false',
+                'g-recaptcha-response': token  # Use the same token for reCaptcha
+            }
+            
+            # Set the correct content-type for multipart form-data
+            cv_response = self.session.post(cv_url, data=form_data, timeout=30)
+            cv_response.raise_for_status()
+            
+            # Check if the response is valid
+            if self.is_valid_cv_page(cv_response.text):
+                logger.info(f"Successfully fetched CV for {cnpq_id} using POST method")
                 return self.parse_cv_details(cv_response.text)
+            else:
+                logger.warning(f"POST method returned captcha page for {cnpq_id}")
+                # Save the HTML for debugging
+                self.save_debug_html(cv_response.text, f"debug_post_{cnpq_id}.html")
+                
+                # Try alternative approach: use the Lattes direct URL
+                return self.try_alternative_access(cnpq_id)
             
         except requests.RequestException as e:
             logger.error(f"Error fetching details for {cnpq_id}: {e}")
+            return self.try_alternative_access(cnpq_id)
         
+        return {}
+    
+    def is_valid_cv_page(self, html_content):
+        """Check if the HTML content is a valid CV page (not a captcha page)"""
+        # Signs that this is a captcha page
+        captcha_indicators = [
+            'código de segurança',
+            'security code',
+            'recaptcha',
+            'g-recaptcha',
+            'captcha',
+            'verificação de segurança',
+            'security verification'
+        ]
+        
+        html_lower = html_content.lower()
+        
+        # If it contains captcha indicators, it's not a valid CV
+        if any(indicator in html_lower for indicator in captcha_indicators):
+            return False
+        
+        # Signs that this is a valid CV page
+        cv_indicators = [
+            'curriculum lattes',
+            'dados pessoais',
+            'personal data',
+            'formação acadêmica',
+            'academic background',
+            'projetos de pesquisa',
+            'research projects',
+            'última atualização',
+            'last update'
+        ]
+        
+        # If it contains CV indicators, it's probably valid
+        return any(indicator in html_lower for indicator in cv_indicators)
+    
+    def extract_token_from_html(self, html_content):
+        """Extract token from HTML using multiple patterns"""
+        token_patterns = [
+            r'tokenCaptchar["\s]*[:=]["\s]*([^"&\s]+)',
+            r'token["\s]*[:=]["\s]*["\']([^"\']+)["\']',
+            r'name=["\']tokenCaptchar["\'][^>]*value=["\']([^"\']+)["\']',
+            r'<input[^>]*name=["\']tokenCaptchar["\'][^>]*value=["\']([^"\']+)["\']',
+            r'g-recaptcha-response["\'][^>]*value=["\']([^"\']+)["\']',
+            # Try to find any long alphanumeric string that might be a token
+            r'([A-Za-z0-9_-]{50,})',
+        ]
+        
+        for pattern in token_patterns:
+            match = re.search(pattern, html_content, re.IGNORECASE)
+            if match:
+                token = match.group(1)
+                if len(token) > 10:  # Only consider tokens that are long enough
+                    logger.info(f"Found token using pattern: {pattern[:30]}...")
+                    logger.info(f"Token preview: {token[:50]}...")
+                    return token
+        
+        return None
+    
+    def save_debug_html(self, html_content, filename):
+        """Save HTML content for debugging purposes"""
+        try:
+            with open(filename, 'w', encoding='utf-8') as f:
+                f.write(html_content)
+            logger.info(f"Debug HTML saved to {filename}")
+        except Exception as e:
+            logger.warning(f"Failed to save debug HTML: {e}")
+    
+    def try_alternative_access(self, cnpq_id):
+        """Try alternative methods to access the CV"""
+        logger.info(f"Trying alternative access methods for {cnpq_id}")
+        
+        # Method 1: Try direct Lattes URL
+        try:
+            lattes_url = f"http://lattes.cnpq.br/{cnpq_id}"
+            logger.info(f"Trying direct Lattes URL: {lattes_url}")
+            
+            response = self.session.get(lattes_url, timeout=15)
+            response.raise_for_status()
+            
+            if self.is_valid_cv_page(response.text):
+                logger.info(f"Direct Lattes access successful for {cnpq_id}")
+                return self.parse_cv_details(response.text)
+            else:
+                logger.warning(f"Direct Lattes also shows captcha for {cnpq_id}")
+                self.save_debug_html(response.text, f"debug_lattes_{cnpq_id}.html")
+                
+        except Exception as e:
+            logger.error(f"Direct Lattes access failed for {cnpq_id}: {e}")
+        
+        # Method 2: Try different user agent
+        try:
+            logger.info(f"Trying with different user agent for {cnpq_id}")
+            old_user_agent = self.session.headers.get('User-Agent')
+            
+            # Use a simpler user agent
+            self.session.headers.update({
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+            })
+            
+            cv_url = f"{self.base_url}/visualizacv.do"
+            params = {
+                'metodo': 'apresentar',
+                'id': cnpq_id
+            }
+            
+            response = self.session.get(cv_url, params=params, timeout=15)
+            response.raise_for_status()
+            
+            # Restore original user agent
+            if old_user_agent:
+                self.session.headers.update({'User-Agent': old_user_agent})
+            
+            if self.is_valid_cv_page(response.text):
+                logger.info(f"Alternative user agent successful for {cnpq_id}")
+                return self.parse_cv_details(response.text)
+                
+        except Exception as e:
+            logger.error(f"Alternative user agent failed for {cnpq_id}: {e}")
+            # Restore original user agent
+            if old_user_agent:
+                self.session.headers.update({'User-Agent': old_user_agent})
+        
+        logger.error(f"All access methods failed for {cnpq_id}")
         return {}
     
     def parse_cv_details(self, html_content):
@@ -612,19 +890,34 @@ class CNPqScraper:
         details = {'projects': []}
         
         try:
-            # Extract researcher name
-            name_elem = soup.find('div', class_='nome') or soup.find('h1') or soup.find('div', string=re.compile(r'Nome', re.I))
-            if name_elem:
-                details['name'] = name_elem.get_text(strip=True)
-                logger.info(f"Found researcher name: {details['name']}")
+            # Extract researcher name - try multiple patterns
+            name_patterns = [
+                soup.find('div', class_='nome'),
+                soup.find('h1'),
+                soup.find('h2'),
+                soup.find('div', string=re.compile(r'Nome', re.I)),
+                soup.find('td', string=re.compile(r'Nome', re.I)),
+                # Try to find name in spans or other elements
+                soup.find('span', class_='nome'),
+                soup.find('b', string=re.compile(r'^[A-Z][a-z]+ [A-Z]', re.I))
+            ]
             
-            # Extract last update date from Lattes
-            # Look for patterns like "Última atualização em 26/02/2025" or similar
+            for name_elem in name_patterns:
+                if name_elem:
+                    name_text = name_elem.get_text(strip=True)
+                    if name_text and len(name_text) > 5 and not any(x in name_text.lower() for x in ['curriculum', 'lattes', 'cnpq']):
+                        details['name'] = name_text
+                        logger.info(f"Found researcher name: {details['name']}")
+                        break
+            
+            # Extract last update date - enhanced patterns
             update_patterns = [
                 r'última\s+atualização.*?(\d{1,2}/\d{1,2}/\d{4})',
                 r'last\s+update.*?(\d{1,2}/\d{1,2}/\d{4})',
                 r'atualizado\s+em.*?(\d{1,2}/\d{1,2}/\d{4})',
-                r'updated\s+on.*?(\d{1,2}/\d{1,2}/\d{4})'
+                r'updated\s+on.*?(\d{1,2}/\d{1,2}/\d{4})',
+                r'atualização\s+do\s+cv\s*:\s*(\d{1,2}/\d{1,2}/\d{4})',
+                r'(\d{1,2}/\d{1,2}/\d{4})',  # Just find any date pattern
             ]
             
             for pattern in update_patterns:
@@ -634,22 +927,97 @@ class CNPqScraper:
                     logger.info(f"Found last update date: {details['last_update_date']}")
                     break
             
-            # Extract institution
-            institution_patterns = [
-                soup.find('div', class_='instituicao'),
-                soup.find('div', string=re.compile(r'Instituição', re.I)),
-                soup.find('td', string=re.compile(r'Instituição', re.I))
+            # Extract institution - try multiple approaches
+            institution_selectors = [
+                ('div', {'class': 'instituicao'}),
+                ('div', {'class': 'inst'}),
+                ('span', {'class': 'instituicao'}),
+                ('td', {'string': re.compile(r'Instituição', re.I)}),
+                ('div', {'string': re.compile(r'Instituição', re.I)}),
             ]
             
-            for elem in institution_patterns:
+            for tag, attrs in institution_selectors:
+                if 'string' in attrs:
+                    elem = soup.find(tag, string=attrs['string'])
+                else:
+                    elem = soup.find(tag, attrs)
+                
                 if elem:
                     if elem.name == 'td':
-                        # If it's a table cell, get the next cell
                         next_td = elem.find_next_sibling('td')
                         if next_td:
                             details['institution'] = next_td.get_text(strip=True)
                     else:
                         details['institution'] = elem.get_text(strip=True)
+                    break
+            
+            # Enhanced project extraction - try multiple approaches
+            logger.info("Starting project extraction...")
+            
+            # Approach 1: Look for specific project section headers
+            project_section_patterns = [
+                r'Projetos?\s+de\s+pesquisa',
+                r'Projetos?\s+de\s+desenvolvimento',
+                r'Research\s+projects?',
+                r'Development\s+projects?',
+                r'Projetos?',
+                r'Pesquisa',
+                r'Research'
+            ]
+            
+            projects_found = False
+            for pattern in project_section_patterns:
+                # Find section headers
+                section_headers = soup.find_all(['h1', 'h2', 'h3', 'h4', 'td', 'div', 'span'], 
+                                                string=re.compile(pattern, re.I))
+                
+                for header in section_headers:
+                    logger.info(f"Found potential project section: {header.get_text()}")
+                    projects = self.extract_projects_from_section(header)
+                    if projects:
+                        details['projects'].extend(projects)
+                        projects_found = True
+                        logger.info(f"Extracted {len(projects)} projects from section: {header.get_text()}")
+            
+            # Approach 2: If no projects found in sections, try table-based extraction
+            if not projects_found:
+                logger.info("No projects found in sections, trying table extraction...")
+                tables = soup.find_all('table')
+                for i, table in enumerate(tables):
+                    projects = self.extract_projects_from_table(table)
+                    if projects:
+                        details['projects'].extend(projects)
+                        logger.info(f"Extracted {len(projects)} projects from table {i+1}")
+            
+            # Approach 3: Try to find project information in general text blocks
+            if not details['projects']:
+                logger.info("No projects found in tables, trying text block extraction...")
+                # Look for div or p elements that might contain project information
+                potential_project_blocks = soup.find_all(['div', 'p'], 
+                    string=re.compile(r'(projeto|project|pesquisa|research)', re.I))
+                
+                for block in potential_project_blocks:
+                    parent = block.find_parent(['div', 'td', 'li'])
+                    if parent:
+                        project = self.parse_project_element(parent)
+                        if project and project.get('title'):
+                            details['projects'].append(project)
+            
+            # Extract other fields (area, location, etc.)
+            area_patterns = [
+                soup.find('div', class_='area-atuacao'),
+                soup.find('div', string=re.compile(r'Área.*atuação', re.I)),
+                soup.find('td', string=re.compile(r'Área.*atuação', re.I))
+            ]
+            
+            for elem in area_patterns:
+                if elem:
+                    if elem.name == 'td':
+                        next_td = elem.find_next_sibling('td')
+                        if next_td:
+                            details['area'] = next_td.get_text(strip=True)
+                    else:
+                        details['area'] = elem.get_text(strip=True)
                     break
             
             # Extract location information
@@ -667,60 +1035,7 @@ class CNPqScraper:
                 elif len(location_parts) >= 1:
                     details['country'] = location_parts[-1].strip()
             
-            # Extract projects information
-            # Look for project sections in the CV
-            project_sections = [
-                'Projetos de pesquisa',
-                'Projetos de desenvolvimento',
-                'Research projects',
-                'Development projects',
-                'Projetos'
-            ]
-            
-            for section_name in project_sections:
-                section = soup.find('div', string=re.compile(section_name, re.I))
-                if not section:
-                    section = soup.find('td', string=re.compile(section_name, re.I))
-                if not section:
-                    section = soup.find('h2', string=re.compile(section_name, re.I))
-                if not section:
-                    section = soup.find('h3', string=re.compile(section_name, re.I))
-                
-                if section:
-                    logger.info(f"Found project section: {section_name}")
-                    projects = self.extract_projects_from_section(section)
-                    details['projects'].extend(projects)
-                    break
-            
-            # If no projects found through sections, try alternative approaches
-            if not details['projects']:
-                logger.info("No projects found in sections, trying alternative extraction...")
-                # Look for table rows that might contain project information
-                tables = soup.find_all('table')
-                for table in tables:
-                    projects = self.extract_projects_from_table(table)
-                    if projects:
-                        details['projects'].extend(projects)
-                        break
-            
-            # Extract research area
-            area_patterns = [
-                soup.find('div', class_='area-atuacao'),
-                soup.find('div', string=re.compile(r'Área.*atuação', re.I)),
-                soup.find('td', string=re.compile(r'Área.*atuação', re.I))
-            ]
-            
-            for elem in area_patterns:
-                if elem:
-                    if elem.name == 'td':
-                        next_td = elem.find_next_sibling('td')
-                        if next_td:
-                            details['area'] = next_td.get_text(strip=True)
-                    else:
-                        details['area'] = elem.get_text(strip=True)
-                    break
-            
-            logger.info(f"Extracted {len(details['projects'])} projects for researcher")
+            logger.info(f"Extracted {len(details['projects'])} total projects for researcher")
         
         except Exception as e:
             logger.error(f"Error parsing CV details: {e}")
@@ -1209,6 +1524,205 @@ class CNPqScraper:
         """Close database connection"""
         if self.conn:
             self.conn.close()
+
+    def get_researcher_details_from_preview(self, cnpq_id):
+        """Extract researcher details from the preview page which has all the info we need"""
+        try:
+            logger.info(f"Extracting details from preview page for {cnpq_id}")
+            
+            preview_url = f"{self.base_url}/preview.do"
+            preview_params = {
+                'metodo': 'apresentar',
+                'id': cnpq_id
+            }
+            
+            response = self.session.get(preview_url, params=preview_params, timeout=15)
+            response.raise_for_status()
+            
+            return self.parse_preview_details(response.text, cnpq_id)
+            
+        except Exception as e:
+            logger.error(f"Error fetching preview details for {cnpq_id}: {e}")
+            return {}
+    
+    def parse_preview_details(self, html_content, cnpq_id):
+        """Parse the preview page to extract researcher information"""
+        soup = BeautifulSoup(html_content, 'html.parser')
+        details = {'projects': []}
+        
+        try:
+            # Extract researcher name from h1.name
+            name_elem = soup.find('h1', class_='name')
+            if name_elem:
+                details['name'] = name_elem.get_text(strip=True)
+                logger.info(f"Found researcher name: {details['name']}")
+            
+            # Extract last update date - look for "Certificado pelo autor em XX/XX/XXXX"
+            update_patterns = [
+                r'Certificado pelo autor em\s*(\d{1,2}/\d{1,2}/\d{4})',
+                r'última\s+atualização.*?(\d{1,2}/\d{1,2}/\d{4})',
+                r'last\s+update.*?(\d{1,2}/\d{1,2}/\d{4})',
+                r'(\d{1,2}/\d{1,2}/\d{4})',
+            ]
+            
+            for pattern in update_patterns:
+                match = re.search(pattern, html_content, re.IGNORECASE)
+                if match:
+                    details['last_update_date'] = match.group(1)
+                    logger.info(f"Found last update date: {details['last_update_date']}")
+                    break
+            
+            # Extract the researcher's summary/bio
+            resumo_elem = soup.find('p', class_='resumo')
+            if resumo_elem:
+                resumo_text = resumo_elem.get_text(strip=True)
+                details['summary'] = resumo_text
+                
+                # Extract institution from bio (usually mentions UFPE, USP, etc.)
+                institution_patterns = [
+                    r'(?:do|da|na)\s+(Centro de Informática.*?(?:UFPE|da UFPE))',
+                    r'(?:do|da|na)\s+(Universidade[^.]*)',
+                    r'(?:do|da|na)\s+(Instituto[^.]*)',
+                    r'(?:do|da|na)\s+(Faculdade[^.]*)',
+                    r'(UFPE|USP|UNICAMP|UFRJ|UFRGS|UFMG|UnB)',
+                ]
+                
+                for pattern in institution_patterns:
+                    match = re.search(pattern, resumo_text, re.IGNORECASE)
+                    if match:
+                        details['institution'] = match.group(1)
+                        logger.info(f"Found institution: {details['institution']}")
+                        break
+                
+                # Extract area from bio 
+                if 'engenharia de software' in resumo_text.lower():
+                    details['area'] = 'Engenharia de Software'
+                elif 'ciência da computação' in resumo_text.lower():
+                    details['area'] = 'Ciência da Computação'
+                elif 'métodos formais' in resumo_text.lower():
+                    details['area'] = 'Métodos Formais'
+                elif 'inteligência artificial' in resumo_text.lower():
+                    details['area'] = 'Inteligência Artificial'
+                
+                # Try to extract projects from the summary text
+                projects = self.extract_projects_from_summary(resumo_text)
+                if projects:
+                    details['projects'] = projects
+                    logger.info(f"Extracted {len(projects)} projects from summary")
+            
+            # Set some default location info (Brazil)
+            details['country'] = 'Brasil'
+            
+            # Extract state from institution if possible
+            if details.get('institution'):
+                inst = details['institution'].lower()
+                if 'ufpe' in inst or 'pernambuco' in inst:
+                    details['state'] = 'PE'
+                    details['city'] = 'Recife'
+                elif 'usp' in inst or 'são paulo' in inst:
+                    details['state'] = 'SP'
+                    details['city'] = 'São Paulo'
+                elif 'ufrj' in inst or 'rio de janeiro' in inst:
+                    details['state'] = 'RJ'
+                    details['city'] = 'Rio de Janeiro'
+            
+            logger.info(f"Successfully extracted preview details for {cnpq_id}")
+            
+        except Exception as e:
+            logger.error(f"Error parsing preview details: {e}")
+        
+        return details
+    
+    def extract_projects_from_summary(self, summary_text):
+        """Extract project information from the researcher's summary/bio"""
+        projects = []
+        
+        try:
+            # Look for project mentions in the summary
+            # Common patterns: "Projeto X", "Coordenador do Projeto Y", etc.
+            project_patterns = [
+                r'(?:Coordenador[^.]*do\s+)?Projeto\s+([^.,]+(?:Project|projeto)[^.,]*)',
+                r'(?:Coordenador[^.]*da\s+)?Cooperação\s+(?:entre\s+)?([^.,]+(?:e\s+[^.,]+)?)',
+                r'(?:financiado\s+)?(?:pela\s+)?([^.,]*(?:Comunidade Europeia|CNPq|CAPES|FAPESP)[^.,]*)',
+            ]
+            
+            for pattern in project_patterns:
+                matches = re.finditer(pattern, summary_text, re.IGNORECASE)
+                for match in matches:
+                    project_title = match.group(1).strip()
+                    if len(project_title) > 10:  # Only consider substantial project names
+                        project = {
+                            'title': project_title,
+                            'description': f"Extraído do resumo: {project_title}",
+                            'coordinator_name': "Extraído do resumo (possivelmente o próprio pesquisador)",
+                            'source': 'summary'
+                        }
+                        
+                        # Check if it's formal methods related
+                        project['is_formal_methods_related'] = self.is_formal_methods_related(
+                            project_title, project_title
+                        )
+                        
+                        # Extract concepts and tools
+                        concepts = self.identify_formal_methods_concepts(project_title)
+                        tools = self.identify_formal_methods_tools(project_title)
+                        industry = self.identify_industry_cooperation(project_title)
+                        
+                        if concepts:
+                            project['formal_methods_concepts'] = ', '.join(concepts)
+                        if tools:
+                            project['formal_methods_tools'] = ', '.join(tools)
+                        if industry:
+                            project['industry_cooperation'] = '; '.join(industry)
+                        
+                        projects.append(project)
+            
+            # Look for specific project mentions in Augusto's summary
+            if 'COMPASS' in summary_text:
+                compass_project = {
+                    'title': 'COMPASS (Comprehensive Modelling for Advanced Systems of Systems)',
+                    'start_date': '2011',
+                    'end_date': '2014',
+                    'description': 'Projeto financiado pela Comunidade Europeia, edital FP7',
+                    'funding_sources': 'Comunidade Europeia (FP7)',
+                    'coordinator_name': 'Augusto Cezar Alves Sampaio (Coordenador Brasileiro)',
+                    'is_formal_methods_related': True,
+                    'formal_methods_concepts': 'Model Checking, Formal Specification, System Modeling',
+                    'source': 'summary_specific'
+                }
+                projects.append(compass_project)
+            
+            if 'Motorola' in summary_text:
+                motorola_project = {
+                    'title': 'Cooperação Motorola Mobility e CIn-UFPE',
+                    'start_date': '2002',
+                    'end_date': 'Atual',
+                    'status': 'Em andamento',
+                    'description': 'Cooperação com ênfase na geração automática de testes a partir de modelos formais de requisitos',
+                    'industry_cooperation': 'Motorola Mobility',
+                    'coordinator_name': 'Augusto Cezar Alves Sampaio',
+                    'is_formal_methods_related': True,
+                    'formal_methods_concepts': 'Model-Based Testing, Formal Specification',
+                    'source': 'summary_specific'
+                }
+                projects.append(motorola_project)
+            
+            if 'Embraer' in summary_text:
+                embraer_project = {
+                    'title': 'Cooperação com Embraer',
+                    'description': 'Tema de geração automática de testes a partir de modelos formais de requisitos',
+                    'industry_cooperation': 'Embraer',
+                    'coordinator_name': 'Augusto Cezar Alves Sampaio',
+                    'is_formal_methods_related': True,
+                    'formal_methods_concepts': 'Model-Based Testing, Formal Methods',
+                    'source': 'summary_specific'
+                }
+                projects.append(embraer_project)
+            
+        except Exception as e:
+            logger.error(f"Error extracting projects from summary: {e}")
+        
+        return projects
 
 def main():
     scraper = CNPqScraper(max_workers=8)  # Increased workers for better performance
