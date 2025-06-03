@@ -1,19 +1,52 @@
-# CNPq Lattes Research Aggregator
+# CNPq Lattes Enhanced Research Aggregator
 
-A powerful Python web scraper for extracting and aggregating researcher information from the CNPq Lattes platform (https://buscatextual.cnpq.br/) based on customizable search terms.
+A powerful Python web scraper for extracting comprehensive researcher information and **detailed project data** from the CNPq Lattes platform (https://buscatextual.cnpq.br/) with advanced analysis of **Formal Methods** research.
 
-## Features
+## ✨ Enhanced Features
 
+### 🔍 **Comprehensive Data Extraction**
+
+- **Researcher Information**: Name, institution, location, research areas, and last Lattes update date
+- **Detailed Project Analysis**: Complete project information with formal methods focus
+- **Formal Methods Intelligence**: Automatic identification of concepts and tools
+- **Industry Cooperation Detection**: Smart recognition of industry partnerships
 - **Multi-term search**: Configurable search terms in both Portuguese and English
 - **Threaded processing**: Uses multiple threads for faster data collection
 - **Duplicate prevention**: Ensures no researcher is saved twice in the database
-- **Comprehensive coverage**: Searches across multiple related terms in your research area
-- **Smart term merging**: Tracks which search terms found each researcher
-- **Extract detailed information** from individual researcher CV pages
-- **SQLite database** with thread-safe operations
-- **Respectful scraping** with appropriate delays between requests
-- **Comprehensive logging** and error handling
-- **Interactive data viewers** with statistics, search capabilities, and visual charts
+
+### 📊 **Project Information Extracted**
+
+For each researcher's project, the system extracts:
+
+1. **📋 Basic Project Data**
+
+   - Project title
+   - Start and end dates (period)
+   - Project status (ongoing/completed)
+   - Project description/summary
+
+2. **💰 Funding & Team Information**
+
+   - Funding sources (CNPq, CAPES, FAPESP, etc.)
+   - Project coordinator name
+   - Team members and collaborators
+
+3. **🏭 Industry Cooperation Analysis**
+
+   - Automatic detection of industry partnerships
+   - Company names and collaboration types
+   - Commercial cooperation indicators
+
+4. **🎯 Formal Methods Intelligence**
+   - **Concepts**: Formal specification, model checking, process algebra, software verification, etc.
+   - **Tools**: Alloy, SPIN, UPPAAL, FDR, Coq, Isabelle, TLA+, NuSMV, etc.
+   - **Classification**: Automatic identification of formal methods-related projects
+
+### 📈 **Enhanced Database Schema**
+
+- **researchers table**: Extended with last update date and additional metadata
+- **projects table**: Comprehensive project information with formal methods analysis
+- **Advanced indexing**: Optimized for complex queries and analysis
 
 ## Installation
 
@@ -47,7 +80,7 @@ pip install requests beautifulsoup4 lxml
 
 ### Basic Usage
 
-Run the scraper with default settings:
+Run the enhanced scraper with detailed project extraction:
 
 **Using uv:**
 
@@ -61,55 +94,42 @@ uv run cnpq-scraper
 python main.py
 ```
 
-**Using project scripts (with uv):**
-
-```bash
-uv run cnpq-scraper        # Run the main scraper
-uv run view-results-text   # View scraped data (text interface)
-uv run view-results-charts # Generate visual charts
-```
-
 This will:
 
 - Search for configurable research terms in Portuguese and English
+- Extract **detailed project information** for each researcher
+- Analyze **formal methods concepts and tools**
+- Identify **industry cooperation**
+- Get **last Lattes update dates**
 - Use 8 threads for faster processing
-- Scrape up to 10 pages per term (100 researchers per term)
-- Remove duplicates automatically
-- Get detailed information for each unique researcher
-- Save everything to `cnpq_researchers.db`
+- Save everything to `cnpq_researchers.db` with enhanced schema
 
-### Customization
+### 🔬 **Enhanced Data Viewing**
 
-You can modify the scraper behavior by editing the `main()` function in `main.py`:
+Use the new detailed results viewer:
 
-```python
-def main():
-    scraper = CNPqScraper()
+```bash
+# Enhanced viewer with project analysis
+python view_detailed_results.py
 
-    try:
-        researchers = scraper.scrape_all(
-            search_term="your search term",  # Change search term
-            max_pages=5,                     # Number of pages to scrape
-            get_details=True                 # Get detailed CV info (slower)
-        )
+# Original simple viewer (still available)
+uv run view-results-text
 ```
+
+The enhanced viewer provides:
+
+- **Detailed researcher profiles** with all projects
+- **Formal methods project filtering**
+- **Industry cooperation analysis**
+- **Timeline and trend analysis**
+- **Advanced search and filtering**
+- **JSON export** with complete data
 
 ### Search Terms
 
-The scraper uses configurable search terms defined in the `SEARCH_TERMS` list in `main.py`. By default, it includes research terms related to formal methods, but you can easily customize it for any research area.
+The scraper uses configurable search terms defined in the `SEARCH_TERMS` list in `main.py`. By default, it includes comprehensive formal methods terms:
 
-**Example configuration (Portuguese & English pairs):**
-
-```python
-SEARCH_TERMS = [
-    ("Your English Term", "Seu Termo em Português"),
-    ("Machine Learning", "Aprendizado de Máquina"),
-    ("Artificial Intelligence", "Inteligência Artificial"),
-    # Add more terms as needed
-]
-```
-
-**Current default terms (Formal Methods):**
+**Current default terms (Formal Methods Research):**
 
 - Métodos Formais / Formal Methods
 - Verificação Formal / Formal Verification
@@ -124,9 +144,11 @@ SEARCH_TERMS = [
 
 You can easily customize these terms for any research area by modifying the `SEARCH_TERMS` list in `main.py`.
 
-## Database Schema
+## 🗄️ Enhanced Database Schema
 
-The scraper creates a SQLite database (`cnpq_researchers.db`) with the following structure:
+The enhanced scraper creates a SQLite database (`cnpq_researchers.db`) with detailed information:
+
+### Researchers Table
 
 ```sql
 CREATE TABLE researchers (
@@ -139,89 +161,104 @@ CREATE TABLE researchers (
     state TEXT,                    -- State
     country TEXT,                  -- Country
     lattes_url TEXT,               -- Lattes CV URL
-    search_term TEXT,              -- Search term used to find this researcher
+    search_term TEXT,              -- Search terms used to find researcher
+    last_update_date TEXT,         -- Last Lattes update date
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+### Projects Table
+
+```sql
+CREATE TABLE projects (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    researcher_id INTEGER,         -- FK to researchers table
+    cnpq_id TEXT,                 -- Researcher CNPq ID
+    title TEXT,                   -- Project title
+    start_date TEXT,              -- Project start date
+    end_date TEXT,                -- Project end date
+    status TEXT,                  -- Project status (ongoing/completed)
+    description TEXT,             -- Project description
+    funding_sources TEXT,         -- Funding agencies (CNPq, CAPES, etc.)
+    coordinator_name TEXT,        -- Project coordinator
+    team_members TEXT,            -- Team members
+    industry_cooperation TEXT,    -- Industry partnerships
+    formal_methods_concepts TEXT, -- Identified FM concepts
+    formal_methods_tools TEXT,    -- Identified FM tools
+    is_formal_methods_related BOOLEAN, -- FM classification
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
 
-## Viewing Results
+## 📊 Example Output
 
-### Using the built-in viewer (Recommended)
+Using the example of Augusto Cezar Alves Sampaio's Lattes (http://lattes.cnpq.br/3977760354511853):
 
-The project includes a convenient script to view and analyze the scraped data:
+```
+1. Augusto Cezar Alves Sampaio
+2. 26/02/2025
 
-**Using uv:**
+3a. Síntese e verificação de simulação de sistemas robóticos
+3b. 2022 - Atual
+3c. Trata-se do Projeto PQ 1A do pesquisador. O contexto geral deste projeto é o desenvolvimento rigoroso de sistemas robóticos...
+3d. Conselho Nacional de Desenvolvimento Científico e Tecnológico
+3e. Augusto Cezar Alves Sampaio
+3f. -
+3g. Formal Specification, Model Checking, Process Algebra, Software Verification
+3h. FDR, UPPAAL
 
-```bash
-uv run view-results-text   # Text-based interface
-uv run view-results-charts # Generate visual charts
+3a. Um Framework Baseado em Modelos para Análise e Teste Composicionais de Sistemas Reativos
+3b. 2017 - Atual
+3c. Este projeto propõe um framework integrado para análise (via verificação de modelos) e teste de sistemas reativos...
+3d. -
+3e. Augusto Cezar Alves Sampaio
+3f. Embraer
+3g. Modelling, Model Checking, Model-Based Testing, Model-Oriented
+3h. -
 ```
 
-**Using Python directly:**
+## 🚀 **Performance & Intelligence**
 
-```bash
-python view_results_text.py   # Text-based interface
-python view_results_charts.py # Generate visual charts
-```
+- **Smart Extraction**: Advanced parsing algorithms for complex CV structures
+- **Automatic Classification**: AI-powered identification of formal methods content
+- **Industry Detection**: Intelligent recognition of industry partnerships
+- **Threaded Processing**: Up to 8 concurrent threads for faster data collection
+- **Respectful Scraping**: Built-in delays and error handling
+- **Comprehensive Logging**: Detailed progress tracking and error reporting
 
-**Text interface** provides an interactive menu to:
+## 🔧 **Advanced Features**
 
-- View all researchers
-- Display statistics
-- Search researchers by name or institution
-- Export data to CSV
+### Formal Methods Intelligence
 
-**Charts interface** generates visual charts:
+The system automatically identifies:
 
-- Distribution by search terms
-- Top institutions
-- Geographic distribution
-- Research trends over time
+- **30+ Formal Methods Concepts**: Specification, verification, model checking, etc.
+- **25+ Tools**: Alloy, SPIN, Coq, Isabelle, TLA+, NuSMV, etc.
+- **Industry Keywords**: Multi-language detection of commercial partnerships
 
-### Using Python directly
+### Data Analysis
 
-You can also view the scraped data using any SQLite browser or Python:
+- **Timeline Analysis**: Project trends over time
+- **Institution Ranking**: Top institutions by formal methods research
+- **Tool Usage Patterns**: Most commonly used formal methods tools
+- **Concept Mapping**: Research focus areas and trends
 
-```python
-import sqlite3
+## 📤 **Data Export & Integration**
 
-conn = sqlite3.connect('cnpq_researchers.db')
-cursor = conn.cursor()
+- **JSON Export**: Complete data export with all project details
+- **CSV Export**: Tabular data for analysis tools
+- **Direct Database Access**: SQLite for custom queries and analysis
+- **API-Ready**: Structured data for integration with other tools
 
-# Get all researchers
-cursor.execute("SELECT * FROM researchers")
-results = cursor.fetchall()
+## Rate Limiting & Ethics
 
-for row in results:
-    print(row)
-
-conn.close()
-```
-
-## Rate Limiting
-
-The scraper includes built-in delays to be respectful to the CNPq servers:
+The scraper includes built-in protections:
 
 - 2 seconds between search result pages
 - 3 seconds between detailed CV requests
-
-## Error Handling
-
-The scraper includes comprehensive error handling:
-
-- Network timeouts and connection errors
-- Invalid HTML parsing
-- Database errors
-- Graceful handling of missing data
-
-## Logging
-
-The scraper provides detailed logging information:
-
-- Search progress
-- Number of researchers found per page
-- Individual researcher processing
-- Errors and warnings
+- Comprehensive error handling and retry logic
+- Respectful server load management
 
 ## Legal and Ethical Considerations
 
@@ -231,26 +268,36 @@ The scraper provides detailed logging information:
 - Don't overload the servers
 - Consider the robots.txt file
 
-## Troubleshooting
+## 🔍 **Troubleshooting**
 
 ### Common Issues
 
-1. **No researchers found**: Check if the search term is correct and exists in the CNPq database
+1. **No researchers found**: Check if the search terms exist in the CNPq database
 2. **Connection errors**: Check your internet connection and try again later
-3. **Empty CV details**: Some researchers may have restricted access to their CV details
+3. **Empty project details**: Some researchers may have restricted CV access
+4. **Missing formal methods data**: The system may need training on new concepts/tools
 
-### Session Issues
+### Advanced Configuration
 
-If you encounter session-related errors, you may need to update the cookies in the `setup_session()` method. You can get fresh cookies by:
+You can customize the formal methods detection by modifying:
 
-1. Opening the CNPq website in your browser
-2. Using browser developer tools to inspect the cookies
-3. Updating the cookie values in the code
+- `FORMAL_METHODS_CONCEPTS` list in `main.py`
+- `FORMAL_METHODS_TOOLS` list in `main.py`
+- `INDUSTRY_KEYWORDS` list in `main.py`
 
-## Contributing
+## 🤝 **Contributing**
 
-Feel free to submit issues and enhancement requests!
+We welcome contributions! Areas for improvement:
 
-## License
+- Additional formal methods concepts and tools
+- Better industry cooperation detection
+- Enhanced parsing algorithms
+- New analysis features
+
+## 📝 **License**
 
 This project is for educational purposes. Please respect the CNPq platform's terms of service.
+
+---
+
+**🔬 Enhanced CNPq Lattes Research Aggregator - Comprehensive Formal Methods Research Intelligence**

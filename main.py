@@ -14,6 +14,9 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 import ssl
 from urllib3.util.ssl_ import create_urllib3_context
+from datetime import datetime
+import json
+import sys
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -33,12 +36,90 @@ SEARCH_TERMS = [
     ("Formal Semantics", "Semântica Formal"),
 ]
 
+# Formal Methods concepts and tools for extraction
+FORMAL_METHODS_CONCEPTS = [
+    'formal specification', 'especificação formal', 'model checking', 'verificação de modelos',
+    'process algebra', 'álgebra de processos', 'software verification', 'verificação de software',
+    'formal verification', 'verificação formal', 'theorem proving', 'prova de teoremas',
+    'temporal logic', 'lógica temporal', 'static analysis', 'análise estática',
+    'formal semantics', 'semântica formal', 'automated reasoning', 'raciocínio automatizado',
+    'model-based testing', 'teste baseado em modelos', 'model-oriented', 'orientado a modelos',
+    'compositional analysis', 'análise composicional', 'reactive systems', 'sistemas reativos',
+    'concurrent systems', 'sistemas concorrentes', 'real-time systems', 'sistemas de tempo real',
+    'safety critical', 'crítico de segurança', 'refinement', 'refinamento',
+    'specification languages', 'linguagens de especificação', 'formal languages', 'linguagens formais'
+]
+
+FORMAL_METHODS_TOOLS = [
+    'alloy', 'spin', 'promela', 'uppaal', 'fdr', 'csp', 'tla+', 'nusmv', 'smv',
+    'java pathfinder', 'jpf', 'cbmc', 'slam', 'blast', 'cpachecker', 'esbmc',
+    'why3', 'dafny', 'coq', 'isabelle', 'lean', 'agda', 'pvs', 'event-b',
+    'b-method', 'z notation', 'vdm', 'raise', 'rsl', 'lotos', 'estelle',
+    'petri nets', 'redes de petri', 'timed automata', 'autômatos temporizados',
+    'model finder', 'sat solver', 'smt solver', 'theorem prover',
+    'bounded model checker', 'symbolic model checker'
+]
+
+INDUSTRY_KEYWORDS = [
+    'industry', 'company', 'enterprise', 'corporation', 'cooperation', 'collaboration',
+    'partnership', 'commercial', 'business', 'industrial', 'private sector',
+    'indústria', 'empresa', 'corporação', 'cooperação', 'colaboração',
+    'parceria', 'comercial', 'negócio', 'industrial', 'setor privado',
+    'embraer', 'petrobras', 'vale', 'banco', 'microsoft', 'google', 'ibm',
+    'siemens', 'bosch', 'volkswagen', 'ford', 'general motors'
+]
+
+class ProgressIndicator:
+    """Enhanced progress indicator for better user feedback"""
+    
+    def __init__(self):
+        self.start_time = time.time()
+        self.last_update = time.time()
+    
+    def show_progress_bar(self, current, total, prefix="Progress", bar_length=40):
+        """Show a progress bar with percentage and ETA"""
+        if total == 0:
+            return
+        
+        percent = float(current) * 100 / total
+        filled_length = int(bar_length * current // total)
+        bar = '█' * filled_length + '-' * (bar_length - filled_length)
+        
+        # Calculate ETA
+        elapsed = time.time() - self.start_time
+        if current > 0:
+            eta = (elapsed * total / current) - elapsed
+            eta_str = f"ETA: {int(eta//60)}:{int(eta%60):02d}"
+        else:
+            eta_str = "ETA: --:--"
+        
+        # Show progress
+        sys.stdout.write(f'\r{prefix}: |{bar}| {percent:.1f}% ({current}/{total}) {eta_str}')
+        sys.stdout.flush()
+        
+        if current == total:
+            print()  # New line when complete
+    
+    def show_spinner(self, message, count=0):
+        """Show a spinning indicator for ongoing processes"""
+        spinner_chars = "|/-\\"
+        char = spinner_chars[count % len(spinner_chars)]
+        elapsed = time.time() - self.start_time
+        sys.stdout.write(f'\r{char} {message} ({int(elapsed)}s)')
+        sys.stdout.flush()
+    
+    def print_status(self, message, emoji="ℹ️"):
+        """Print a status message with timestamp"""
+        elapsed = time.time() - self.start_time
+        print(f"\n{emoji} [{int(elapsed//60)}:{int(elapsed%60):02d}] {message}")
+
 class CNPqScraper:
     def __init__(self, max_workers=5):
         self.session = requests.Session()
         self.base_url = "https://buscatextual.cnpq.br/buscatextual"
         self.max_workers = max_workers
         self.db_lock = threading.Lock()  # Thread-safe database operations
+        self.progress = ProgressIndicator()
         self.setup_session()
         self.setup_database()
     
@@ -105,10 +186,11 @@ class CNPqScraper:
         })
     
     def setup_database(self):
-        """Create SQLite database and table"""
+        """Create SQLite database and tables for detailed researcher and project information"""
         self.conn = sqlite3.connect('cnpq_researchers.db')
         self.cursor = self.conn.cursor()
         
+        # Main researchers table with additional fields
         self.cursor.execute('''
             CREATE TABLE IF NOT EXISTS researchers (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -121,9 +203,52 @@ class CNPqScraper:
                 country TEXT,
                 lattes_url TEXT,
                 search_term TEXT,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                last_update_date TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         ''')
+        
+        # Projects table for detailed project information
+        self.cursor.execute('''
+            CREATE TABLE IF NOT EXISTS projects (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                researcher_id INTEGER,
+                cnpq_id TEXT,
+                title TEXT,
+                start_date TEXT,
+                end_date TEXT,
+                status TEXT,
+                description TEXT,
+                funding_sources TEXT,
+                coordinator_name TEXT,
+                team_members TEXT,
+                industry_cooperation TEXT,
+                formal_methods_concepts TEXT,
+                formal_methods_tools TEXT,
+                is_formal_methods_related BOOLEAN DEFAULT 0,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (researcher_id) REFERENCES researchers (id),
+                FOREIGN KEY (cnpq_id) REFERENCES researchers (cnpq_id)
+            )
+        ''')
+        
+        # Index for better performance
+        self.cursor.execute('''
+            CREATE INDEX IF NOT EXISTS idx_researcher_cnpq_id 
+            ON researchers (cnpq_id)
+        ''')
+        
+        self.cursor.execute('''
+            CREATE INDEX IF NOT EXISTS idx_projects_cnpq_id 
+            ON projects (cnpq_id)
+        ''')
+        
+        self.cursor.execute('''
+            CREATE INDEX IF NOT EXISTS idx_projects_formal_methods 
+            ON projects (is_formal_methods_related)
+        ''')
+        
         self.conn.commit()
     
     def test_connection(self):
@@ -165,9 +290,108 @@ class CNPqScraper:
         
         return None
 
+    def identify_formal_methods_concepts(self, text):
+        """Identify formal methods concepts in text"""
+        if not text:
+            return []
+        
+        text_lower = text.lower()
+        found_concepts = []
+        
+        for concept in FORMAL_METHODS_CONCEPTS:
+            if concept.lower() in text_lower:
+                found_concepts.append(concept)
+        
+        return list(set(found_concepts))  # Remove duplicates
+    
+    def identify_formal_methods_tools(self, text):
+        """Identify formal methods tools in text"""
+        if not text:
+            return []
+        
+        text_lower = text.lower()
+        found_tools = []
+        
+        for tool in FORMAL_METHODS_TOOLS:
+            if tool.lower() in text_lower:
+                found_tools.append(tool)
+        
+        return list(set(found_tools))  # Remove duplicates
+    
+    def identify_industry_cooperation(self, text):
+        """Identify industry cooperation mentions in text"""
+        if not text:
+            return []
+        
+        text_lower = text.lower()
+        industry_mentions = []
+        
+        for keyword in INDUSTRY_KEYWORDS:
+            if keyword.lower() in text_lower:
+                # Try to extract the specific company/organization name around the keyword
+                # This is a simple approach - could be improved with NLP
+                sentences = re.split(r'[.!?]+', text)
+                for sentence in sentences:
+                    if keyword.lower() in sentence.lower():
+                        industry_mentions.append(sentence.strip())
+                        break
+        
+        return list(set(industry_mentions))  # Remove duplicates
+    
+    def is_formal_methods_related(self, title, description):
+        """Check if a project is related to formal methods"""
+        if not title and not description:
+            return False
+        
+        text = f"{title or ''} {description or ''}".lower()
+        
+        # Check for formal methods keywords
+        formal_keywords = [
+            'formal', 'verificação', 'verification', 'model checking',
+            'theorem proving', 'static analysis', 'temporal logic',
+            'specification', 'especificação', 'métodos formais',
+            'formal methods', 'prova', 'proving', 'análise estática'
+        ]
+        
+        return any(keyword in text for keyword in formal_keywords)
+    
+    def parse_date_string(self, date_str):
+        """Parse various date formats from Lattes"""
+        if not date_str:
+            return None
+        
+        # Remove extra whitespace and common words
+        date_str = re.sub(r'\s+', ' ', date_str.strip())
+        date_str = re.sub(r'(desde|from|até|to|atual|current)', '', date_str, flags=re.IGNORECASE)
+        date_str = date_str.strip(' -')
+        
+        # Try different date formats
+        date_patterns = [
+            r'(\d{4})',  # Just year
+            r'(\d{1,2})/(\d{4})',  # MM/YYYY
+            r'(\d{1,2})/(\d{1,2})/(\d{4})',  # DD/MM/YYYY
+            r'(\d{4})-(\d{1,2})-(\d{1,2})',  # YYYY-MM-DD
+        ]
+        
+        for pattern in date_patterns:
+            match = re.search(pattern, date_str)
+            if match:
+                groups = match.groups()
+                if len(groups) == 1:  # Just year
+                    return groups[0]
+                elif len(groups) == 2:  # MM/YYYY
+                    return f"{groups[1]}-{groups[0].zfill(2)}"
+                elif len(groups) == 3:  # Full date
+                    if len(groups[0]) == 4:  # YYYY-MM-DD
+                        return f"{groups[0]}-{groups[1].zfill(2)}-{groups[2].zfill(2)}"
+                    else:  # DD/MM/YYYY
+                        return f"{groups[2]}-{groups[1].zfill(2)}-{groups[0].zfill(2)}"
+        
+        return date_str  # Return as-is if no pattern matches
+
     def search_researchers(self, search_term="metodos formais", max_pages=5):
         """Search for researchers based on the search term"""
-        logger.info(f"Starting search for: {search_term}")
+        self.progress.print_status(f"🔍 Searching for: '{search_term}'", "🔍")
         
         # Test connection first
         if not self.test_connection():
@@ -185,6 +409,7 @@ class CNPqScraper:
         
         all_researchers = []
         total_records = None
+        spinner_count = 0
         
         for page in range(max_pages):
             start_record = page * 10
@@ -203,6 +428,10 @@ class CNPqScraper:
             }
             
             try:
+                # Show progress while fetching
+                self.progress.show_spinner(f"Fetching page {page + 1}/{max_pages} for '{search_term}'", spinner_count)
+                spinner_count += 1
+                
                 response = self.session.get(url, params=params)
                 response.raise_for_status()
                 
@@ -211,15 +440,13 @@ class CNPqScraper:
                     pagination_info = self.extract_pagination_info(response.text)
                     if pagination_info:
                         total_records = pagination_info['total_records']
-                        logger.info(f"Found {total_records} total records for '{search_term}'")
+                        self.progress.print_status(f"📊 Found {total_records} total records for '{search_term}'", "📊")
                         
                         # Adjust max_pages based on actual data available
                         max_possible_pages = (total_records + 9) // 10  # Round up
                         if max_pages > max_possible_pages:
                             max_pages = max_possible_pages
-                            logger.info(f"Adjusted max_pages to {max_pages} based on available data")
-                
-                logger.info(f"Response status: {response.status_code} for page {page + 1}")
+                            self.progress.print_status(f"📄 Adjusted to {max_pages} pages based on available data", "📄")
                 
                 researchers = self.parse_search_results(response.text, search_term)
                 
@@ -227,33 +454,32 @@ class CNPqScraper:
                 pagination_info = self.extract_pagination_info(response.text)
                 
                 if not researchers:
-                    logger.info(f"No researchers found on page {page + 1}")
                     # If we have pagination info, check if there should be more pages
                     if pagination_info and pagination_info['has_more']:
-                        logger.warning(f"Expected more results but found none on page {page + 1}. Continuing...")
+                        self.progress.print_status(f"⚠️ Expected more results but found none on page {page + 1}. Continuing...", "⚠️")
                         time.sleep(2)
                         continue
                     else:
-                        logger.info(f"Reached end of results on page {page + 1}")
+                        self.progress.print_status(f"✅ Reached end of results on page {page + 1}", "✅")
                         break
                 
                 all_researchers.extend(researchers)
-                logger.info(f"Found {len(researchers)} researchers on page {page + 1}")
+                self.progress.print_status(f"📋 Found {len(researchers)} researchers on page {page + 1} (Total: {len(all_researchers)})", "📋")
                 
                 # Check if we should continue based on pagination info
                 if pagination_info and not pagination_info['has_more']:
-                    logger.info(f"Reached last page ({page + 1}) based on pagination info")
+                    self.progress.print_status(f"🏁 Reached last page ({page + 1}) based on pagination info", "🏁")
                     break
                 
                 # Be respectful to the server
                 time.sleep(2)
                 
             except requests.RequestException as e:
-                logger.error(f"Error fetching page {page + 1}: {e}")
+                self.progress.print_status(f"❌ Error fetching page {page + 1}: {e}", "❌")
                 break
         
         if total_records:
-            logger.info(f"Collected {len(all_researchers)} researchers out of {total_records} total available")
+            self.progress.print_status(f"✅ Collected {len(all_researchers)} researchers out of {total_records} total available for '{search_term}'", "✅")
         
         return all_researchers
     
@@ -381,26 +607,55 @@ class CNPqScraper:
         return {}
     
     def parse_cv_details(self, html_content):
-        """Parse the CV page to extract detailed information"""
+        """Parse the CV page to extract detailed information including projects"""
         soup = BeautifulSoup(html_content, 'html.parser')
-        details = {}
+        details = {'projects': []}
         
         try:
-            # Extract name
-            name_elem = soup.find('div', class_='nome') or soup.find('h1')
+            # Extract researcher name
+            name_elem = soup.find('div', class_='nome') or soup.find('h1') or soup.find('div', string=re.compile(r'Nome', re.I))
             if name_elem:
                 details['name'] = name_elem.get_text(strip=True)
+                logger.info(f"Found researcher name: {details['name']}")
+            
+            # Extract last update date from Lattes
+            # Look for patterns like "Última atualização em 26/02/2025" or similar
+            update_patterns = [
+                r'última\s+atualização.*?(\d{1,2}/\d{1,2}/\d{4})',
+                r'last\s+update.*?(\d{1,2}/\d{1,2}/\d{4})',
+                r'atualizado\s+em.*?(\d{1,2}/\d{1,2}/\d{4})',
+                r'updated\s+on.*?(\d{1,2}/\d{1,2}/\d{4})'
+            ]
+            
+            for pattern in update_patterns:
+                match = re.search(pattern, html_content, re.IGNORECASE)
+                if match:
+                    details['last_update_date'] = match.group(1)
+                    logger.info(f"Found last update date: {details['last_update_date']}")
+                    break
             
             # Extract institution
-            institution_elem = soup.find('div', class_='instituicao')
-            if institution_elem:
-                details['institution'] = institution_elem.get_text(strip=True)
+            institution_patterns = [
+                soup.find('div', class_='instituicao'),
+                soup.find('div', string=re.compile(r'Instituição', re.I)),
+                soup.find('td', string=re.compile(r'Instituição', re.I))
+            ]
+            
+            for elem in institution_patterns:
+                if elem:
+                    if elem.name == 'td':
+                        # If it's a table cell, get the next cell
+                        next_td = elem.find_next_sibling('td')
+                        if next_td:
+                            details['institution'] = next_td.get_text(strip=True)
+                    else:
+                        details['institution'] = elem.get_text(strip=True)
+                    break
             
             # Extract location information
             location_elem = soup.find('div', class_='endereco')
             if location_elem:
                 location_text = location_elem.get_text(strip=True)
-                # Try to parse city, state, country
                 location_parts = location_text.split(',')
                 if len(location_parts) >= 3:
                     details['city'] = location_parts[-3].strip()
@@ -412,38 +667,301 @@ class CNPqScraper:
                 elif len(location_parts) >= 1:
                     details['country'] = location_parts[-1].strip()
             
+            # Extract projects information
+            # Look for project sections in the CV
+            project_sections = [
+                'Projetos de pesquisa',
+                'Projetos de desenvolvimento',
+                'Research projects',
+                'Development projects',
+                'Projetos'
+            ]
+            
+            for section_name in project_sections:
+                section = soup.find('div', string=re.compile(section_name, re.I))
+                if not section:
+                    section = soup.find('td', string=re.compile(section_name, re.I))
+                if not section:
+                    section = soup.find('h2', string=re.compile(section_name, re.I))
+                if not section:
+                    section = soup.find('h3', string=re.compile(section_name, re.I))
+                
+                if section:
+                    logger.info(f"Found project section: {section_name}")
+                    projects = self.extract_projects_from_section(section)
+                    details['projects'].extend(projects)
+                    break
+            
+            # If no projects found through sections, try alternative approaches
+            if not details['projects']:
+                logger.info("No projects found in sections, trying alternative extraction...")
+                # Look for table rows that might contain project information
+                tables = soup.find_all('table')
+                for table in tables:
+                    projects = self.extract_projects_from_table(table)
+                    if projects:
+                        details['projects'].extend(projects)
+                        break
+            
             # Extract research area
-            area_elem = soup.find('div', class_='area-atuacao') or soup.find('div', string=re.compile(r'Área.*atuação', re.I))
-            if area_elem:
-                details['area'] = area_elem.get_text(strip=True)
+            area_patterns = [
+                soup.find('div', class_='area-atuacao'),
+                soup.find('div', string=re.compile(r'Área.*atuação', re.I)),
+                soup.find('td', string=re.compile(r'Área.*atuação', re.I))
+            ]
+            
+            for elem in area_patterns:
+                if elem:
+                    if elem.name == 'td':
+                        next_td = elem.find_next_sibling('td')
+                        if next_td:
+                            details['area'] = next_td.get_text(strip=True)
+                    else:
+                        details['area'] = elem.get_text(strip=True)
+                    break
+            
+            logger.info(f"Extracted {len(details['projects'])} projects for researcher")
         
         except Exception as e:
             logger.error(f"Error parsing CV details: {e}")
         
         return details
     
+    def extract_projects_from_section(self, section_element):
+        """Extract projects from a specific section of the CV"""
+        projects = []
+        
+        try:
+            # Get the container that holds the projects
+            # This could be the parent table, div, or the section itself
+            container = section_element.find_parent('table')
+            if not container:
+                container = section_element.find_parent('div')
+            if not container:
+                container = section_element
+            
+            # Look for patterns that indicate project entries
+            # Projects are usually in table rows or divs following the section
+            project_rows = []
+            
+            # Try to find table rows with project information
+            if container.name == 'table':
+                project_rows = container.find_all('tr')[1:]  # Skip header row
+            else:
+                # Look for divs or other elements that might contain projects
+                project_rows = container.find_all('div', class_=re.compile(r'projeto|project', re.I))
+                if not project_rows:
+                    # Try to find any child elements that might be projects
+                    project_rows = container.find_all(['div', 'p', 'li'])
+            
+            for row in project_rows:
+                project = self.parse_project_element(row)
+                if project and project.get('title'):
+                    projects.append(project)
+        
+        except Exception as e:
+            logger.error(f"Error extracting projects from section: {e}")
+        
+        return projects
+    
+    def extract_projects_from_table(self, table):
+        """Extract projects from a table structure"""
+        projects = []
+        
+        try:
+            rows = table.find_all('tr')
+            current_project = {}
+            
+            for row in rows:
+                cells = row.find_all(['td', 'th'])
+                if len(cells) >= 2:
+                    label = cells[0].get_text(strip=True).lower()
+                    value = cells[1].get_text(strip=True)
+                    
+                    # Map common field labels to our project structure
+                    if any(keyword in label for keyword in ['título', 'title', 'projeto']):
+                        if current_project:  # Save previous project
+                            if current_project.get('title'):
+                                projects.append(current_project)
+                        current_project = {'title': value}
+                    
+                    elif any(keyword in label for keyword in ['período', 'period', 'duração']):
+                        current_project['period'] = value
+                    
+                    elif any(keyword in label for keyword in ['descrição', 'description', 'resumo']):
+                        current_project['description'] = value
+                    
+                    elif any(keyword in label for keyword in ['financiador', 'funding', 'financiamento']):
+                        current_project['funding_sources'] = value
+                    
+                    elif any(keyword in label for keyword in ['coordenador', 'coordinator', 'responsável']):
+                        current_project['coordinator_name'] = value
+                    
+                    elif any(keyword in label for keyword in ['integrantes', 'members', 'equipe', 'team']):
+                        current_project['team_members'] = value
+            
+            # Don't forget the last project
+            if current_project and current_project.get('title'):
+                projects.append(current_project)
+        
+        except Exception as e:
+            logger.error(f"Error extracting projects from table: {e}")
+        
+        return projects
+    
+    def parse_project_element(self, element):
+        """Parse a single project element to extract all relevant information"""
+        project = {}
+        
+        try:
+            text_content = element.get_text()
+            
+            # Extract title (usually the first line or in bold)
+            title_elem = element.find('b') or element.find('strong')
+            if title_elem:
+                project['title'] = title_elem.get_text(strip=True)
+            else:
+                # Try to extract title from the first line
+                lines = [line.strip() for line in text_content.split('\n') if line.strip()]
+                if lines:
+                    project['title'] = lines[0]
+            
+            # Extract period/dates
+            period_patterns = [
+                r'(\d{4})\s*[-–]\s*(\d{4})',  # 2020 - 2023
+                r'(\d{4})\s*[-–]\s*(atual|current)',  # 2020 - atual
+                r'desde\s+(\d{4})',  # desde 2020
+                r'from\s+(\d{4})',  # from 2020
+                r'(\d{1,2}/\d{4})\s*[-–]\s*(\d{1,2}/\d{4})',  # MM/YYYY - MM/YYYY
+            ]
+            
+            for pattern in period_patterns:
+                match = re.search(pattern, text_content, re.IGNORECASE)
+                if match:
+                    if 'atual' in match.group().lower() or 'current' in match.group().lower():
+                        project['start_date'] = self.parse_date_string(match.group(1))
+                        project['end_date'] = 'Atual'
+                        project['status'] = 'Em andamento'
+                    else:
+                        project['start_date'] = self.parse_date_string(match.group(1))
+                        project['end_date'] = self.parse_date_string(match.group(2))
+                        project['status'] = 'Concluído'
+                    break
+            
+            # Extract description (usually the largest text block)
+            # Remove title and period from the description
+            description = text_content
+            if project.get('title'):
+                description = description.replace(project['title'], '', 1)
+            
+            # Remove date patterns
+            for pattern in period_patterns:
+                description = re.sub(pattern, '', description, flags=re.IGNORECASE)
+            
+            project['description'] = description.strip()
+            
+            # Extract specific fields using patterns
+            funding_patterns = [
+                r'financiador[^:]*:([^.]+)',
+                r'funding[^:]*:([^.]+)',
+                r'financiamento[^:]*:([^.]+)',
+                r'apoio[^:]*:([^.]+)',
+                r'cnpq|capes|fapesp|faperj|fapemig|finep',  # Common funding agencies
+            ]
+            
+            for pattern in funding_patterns:
+                match = re.search(pattern, text_content, re.IGNORECASE)
+                if match:
+                    if match.groups():
+                        project['funding_sources'] = match.group(1).strip()
+                    else:
+                        project['funding_sources'] = match.group().strip()
+                    break
+            
+            # Extract coordinator
+            coordinator_patterns = [
+                r'coordenador[^:]*:([^.]+)',
+                r'coordinator[^:]*:([^.]+)',
+                r'responsável[^:]*:([^.]+)',
+            ]
+            
+            for pattern in coordinator_patterns:
+                match = re.search(pattern, text_content, re.IGNORECASE)
+                if match:
+                    project['coordinator_name'] = match.group(1).strip()
+                    break
+            
+            # Extract team members
+            team_patterns = [
+                r'integrantes[^:]*:([^.]+)',
+                r'members[^:]*:([^.]+)',
+                r'equipe[^:]*:([^.]+)',
+                r'team[^:]*:([^.]+)',
+            ]
+            
+            for pattern in team_patterns:
+                match = re.search(pattern, text_content, re.IGNORECASE)
+                if match:
+                    project['team_members'] = match.group(1).strip()
+                    break
+            
+            # Identify industry cooperation
+            industry_mentions = self.identify_industry_cooperation(text_content)
+            if industry_mentions:
+                project['industry_cooperation'] = '; '.join(industry_mentions)
+            
+            # Identify formal methods concepts and tools
+            concepts = self.identify_formal_methods_concepts(text_content)
+            tools = self.identify_formal_methods_tools(text_content)
+            
+            if concepts:
+                project['formal_methods_concepts'] = ', '.join(concepts)
+            
+            if tools:
+                project['formal_methods_tools'] = ', '.join(tools)
+            
+            # Check if project is formal methods related
+            project['is_formal_methods_related'] = self.is_formal_methods_related(
+                project.get('title', ''), 
+                project.get('description', '')
+            )
+        
+        except Exception as e:
+            logger.error(f"Error parsing project element: {e}")
+        
+        return project
+    
     def process_researcher_with_details(self, researcher):
         """Process a single researcher with details (for threading)"""
         try:
-            logger.info(f"Processing researcher: {researcher['name']}")
-            
             # Get detailed information
             details = self.get_researcher_details(researcher['cnpq_id'])
             researcher.update(details)
             
-            # Save to database
+            # Save to database (including projects)
             self.save_researcher(researcher)
             
-            # Be respectful to the server
-            time.sleep(1)  # Reduced delay for threading
+            project_count = len(details.get('projects', []))
+            fm_projects = sum(1 for p in details.get('projects', []) if p.get('is_formal_methods_related'))
             
-            return researcher
+            return {
+                'researcher': researcher,
+                'project_count': project_count,
+                'fm_projects': fm_projects,
+                'success': True
+            }
         except Exception as e:
             logger.error(f"Error processing researcher {researcher.get('name', 'Unknown')}: {e}")
-            return researcher
+            return {
+                'researcher': researcher,
+                'project_count': 0,
+                'fm_projects': 0,
+                'success': False,
+                'error': str(e)
+            }
     
     def save_researcher(self, researcher_data):
-        """Save researcher data to the database (thread-safe)"""
+        """Save researcher data and projects to the database (thread-safe)"""
         with self.db_lock:  # Ensure thread-safe database operations
             try:
                 # Create a new connection for thread safety
@@ -451,11 +969,14 @@ class CNPqScraper:
                 cursor = conn.cursor()
                 
                 # Check if researcher already exists
-                cursor.execute('SELECT cnpq_id FROM researchers WHERE cnpq_id = ?', 
+                cursor.execute('SELECT id, cnpq_id FROM researchers WHERE cnpq_id = ?', 
                                   (researcher_data.get('cnpq_id'),))
                 existing = cursor.fetchone()
                 
+                researcher_id = None
+                
                 if existing:
+                    researcher_id = existing[0]
                     # Update existing record with new search term if different
                     cursor.execute('''
                         UPDATE researchers 
@@ -468,7 +989,9 @@ class CNPqScraper:
                         area = COALESCE(?, area),
                         city = COALESCE(?, city),
                         state = COALESCE(?, state),
-                        country = COALESCE(?, country)
+                        country = COALESCE(?, country),
+                        last_update_date = COALESCE(?, last_update_date),
+                        updated_at = CURRENT_TIMESTAMP
                         WHERE cnpq_id = ?
                     ''', (
                         researcher_data.get('search_term'),
@@ -479,6 +1002,7 @@ class CNPqScraper:
                         researcher_data.get('city'),
                         researcher_data.get('state'),
                         researcher_data.get('country'),
+                        researcher_data.get('last_update_date'),
                         researcher_data.get('cnpq_id')
                     ))
                     logger.info(f"Updated researcher: {researcher_data.get('name')} ({researcher_data.get('cnpq_id')})")
@@ -486,8 +1010,8 @@ class CNPqScraper:
                     # Insert new researcher
                     cursor.execute('''
                         INSERT INTO researchers 
-                        (cnpq_id, name, institution, area, city, state, country, lattes_url, search_term)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        (cnpq_id, name, institution, area, city, state, country, lattes_url, search_term, last_update_date)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     ''', (
                         researcher_data.get('cnpq_id'),
                         researcher_data.get('name'),
@@ -497,39 +1021,91 @@ class CNPqScraper:
                         researcher_data.get('state'),
                         researcher_data.get('country'),
                         f"http://lattes.cnpq.br/{researcher_data.get('cnpq_id')}" if researcher_data.get('cnpq_id') else None,
-                        researcher_data.get('search_term')
+                        researcher_data.get('search_term'),
+                        researcher_data.get('last_update_date')
                     ))
+                    researcher_id = cursor.lastrowid
                     logger.info(f"Saved new researcher: {researcher_data.get('name')} ({researcher_data.get('cnpq_id')})")
+                
+                # Save projects if they exist
+                projects = researcher_data.get('projects', [])
+                if projects and researcher_id:
+                    # First, delete existing projects for this researcher to avoid duplicates
+                    cursor.execute('DELETE FROM projects WHERE cnpq_id = ?', (researcher_data.get('cnpq_id'),))
+                    
+                    # Insert new projects
+                    for project in projects:
+                        cursor.execute('''
+                            INSERT INTO projects 
+                            (researcher_id, cnpq_id, title, start_date, end_date, status, description, 
+                             funding_sources, coordinator_name, team_members, industry_cooperation, 
+                             formal_methods_concepts, formal_methods_tools, is_formal_methods_related)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        ''', (
+                            researcher_id,
+                            researcher_data.get('cnpq_id'),
+                            project.get('title'),
+                            project.get('start_date'),
+                            project.get('end_date'),
+                            project.get('status'),
+                            project.get('description'),
+                            project.get('funding_sources'),
+                            project.get('coordinator_name'),
+                            project.get('team_members'),
+                            project.get('industry_cooperation'),
+                            project.get('formal_methods_concepts'),
+                            project.get('formal_methods_tools'),
+                            project.get('is_formal_methods_related', False)
+                        ))
+                    
+                    formal_methods_projects = sum(1 for p in projects if p.get('is_formal_methods_related'))
+                    logger.info(f"Saved {len(projects)} projects for {researcher_data.get('name')} ({formal_methods_projects} formal methods related)")
                 
                 conn.commit()
                 conn.close()
             except sqlite3.Error as e:
                 logger.error(f"Database error: {e}")
+                if conn:
+                    conn.close()
     
     def scrape_all(self, search_terms=None, max_pages=3, get_details=True, use_threading=True):
-        """Main method to scrape all researchers"""
-        logger.info("Starting CNPq scraping process...")
+        """Main method to scrape all researchers with enhanced progress tracking"""
+        print("\n🚀 Starting CNPq Lattes Enhanced Research Aggregator")
+        print("=" * 70)
         
         if search_terms is None:
             search_terms = SEARCH_TERMS
         
+        self.progress.print_status(f"🎯 Will process {len(search_terms)} search term pairs", "🎯")
+        self.progress.print_status(f"📄 Max {max_pages} pages per term", "📄")
+        self.progress.print_status(f"🧵 Using {self.max_workers} threads" if use_threading else "🔄 Sequential processing", "🧵" if use_threading else "🔄")
+        
         all_researchers = []
         
-        # Process each search term
+        # Phase 1: Search for researchers
+        print(f"\n📍 PHASE 1: Searching for Researchers")
+        print("-" * 50)
+        
+        term_progress = 0
         for english_term, portuguese_term in search_terms:
-            logger.info(f"Processing search terms: '{english_term}' / '{portuguese_term}'")
+            term_progress += 1
+            
+            print(f"\n🔍 [{term_progress}/{len(search_terms)}] Processing: '{english_term}' / '{portuguese_term}'")
             
             # Try Portuguese term first, then English if no results
-            for term in [portuguese_term.lower(), english_term.lower()]:
+            for term_lang, term in [("PT", portuguese_term.lower()), ("EN", english_term.lower())]:
+                self.progress.print_status(f"🌐 Trying {term_lang}: '{term}'", "🌐")
                 researchers = self.search_researchers(term, max_pages)
+                
                 if researchers:
-                    logger.info(f"Found {len(researchers)} researchers for '{term}'")
+                    self.progress.print_status(f"✅ Found {len(researchers)} researchers for '{term}' ({term_lang})", "✅")
                     all_researchers.extend(researchers)
                     break  # Found results, no need to try the other language
                 else:
-                    logger.info(f"No results for '{term}'")
+                    self.progress.print_status(f"❌ No results for '{term}' ({term_lang})", "❌")
         
-        # Remove duplicates based on CNPq ID
+        # Remove duplicates
+        print(f"\n🔄 Removing duplicates...")
         unique_researchers = {}
         for researcher in all_researchers:
             cnpq_id = researcher['cnpq_id']
@@ -543,18 +1119,26 @@ class CNPqScraper:
                     unique_researchers[cnpq_id]['search_term'] = f"{existing_terms}, {new_term}"
         
         researchers_list = list(unique_researchers.values())
-        logger.info(f"Found {len(researchers_list)} unique researchers total")
+        self.progress.print_status(f"📊 Found {len(researchers_list)} unique researchers total (removed {len(all_researchers) - len(researchers_list)} duplicates)", "📊")
         
         if not get_details:
             # Just save basic info without details
             for researcher in researchers_list:
                 self.save_researcher(researcher)
-            logger.info("Scraping completed!")
+            self.progress.print_status("💾 Basic information saved to database", "💾")
             return researchers_list
         
-        # Process researchers with details using threading
+        # Phase 2: Extract detailed information
+        print(f"\n📍 PHASE 2: Extracting Detailed Project Information")
+        print("-" * 50)
+        
+        completed_count = 0
+        total_projects = 0
+        total_fm_projects = 0
+        errors = 0
+        
         if use_threading and len(researchers_list) > 1:
-            logger.info(f"Processing researchers using {self.max_workers} threads...")
+            self.progress.print_status(f"🧵 Starting parallel processing with {self.max_workers} threads", "🧵")
             
             with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
                 # Submit all tasks
@@ -563,30 +1147,62 @@ class CNPqScraper:
                     for researcher in researchers_list
                 }
                 
-                # Process completed tasks
-                completed = 0
+                # Process completed tasks with progress tracking
                 for future in as_completed(future_to_researcher):
-                    completed += 1
-                    researcher = future_to_researcher[future]
-                    try:
-                        result = future.result()
-                        logger.info(f"Completed {completed}/{len(researchers_list)}: {result['name']}")
-                    except Exception as e:
-                        logger.error(f"Error processing {researcher['name']}: {e}")
+                    completed_count += 1
+                    result = future.result()
+                    
+                    if result['success']:
+                        total_projects += result['project_count']
+                        total_fm_projects += result['fm_projects']
+                        
+                        # Show progress bar
+                        self.progress.show_progress_bar(
+                            completed_count, 
+                            len(researchers_list), 
+                            "Processing researchers"
+                        )
+                        
+                        # Show detailed info every 10 completions or at end
+                        if completed_count % 10 == 0 or completed_count == len(researchers_list):
+                            print(f"\n✅ Completed: {result['researcher']['name']} ({result['project_count']} projects, {result['fm_projects']} FM)")
+                            print(f"📊 Running totals: {total_projects} projects, {total_fm_projects} FM projects, {errors} errors")
+                    else:
+                        errors += 1
+                        print(f"\n❌ Failed: {result['researcher']['name']} - {result.get('error', 'Unknown error')}")
         else:
-            # Sequential processing (fallback)
-            logger.info("Processing researchers sequentially...")
+            # Sequential processing with progress
+            self.progress.print_status("🔄 Processing researchers sequentially", "🔄")
+            
             for i, researcher in enumerate(researchers_list, 1):
-                logger.info(f"Processing researcher {i}/{len(researchers_list)}: {researcher['name']}")
+                self.progress.show_progress_bar(i, len(researchers_list), "Processing researchers")
                 
-                details = self.get_researcher_details(researcher['cnpq_id'])
-                researcher.update(details)
-                self.save_researcher(researcher)
+                result = self.process_researcher_with_details(researcher)
+                
+                if result['success']:
+                    total_projects += result['project_count']
+                    total_fm_projects += result['fm_projects']
+                    print(f"\n✅ [{i}/{len(researchers_list)}] {result['researcher']['name']} ({result['project_count']} projects, {result['fm_projects']} FM)")
+                else:
+                    errors += 1
+                    print(f"\n❌ [{i}/{len(researchers_list)}] Failed: {result['researcher']['name']}")
                 
                 # Be respectful to the server
                 time.sleep(2)
         
-        logger.info("Scraping completed!")
+        # Final summary
+        print(f"\n📍 COMPLETION SUMMARY")
+        print("-" * 50)
+        elapsed_total = time.time() - self.progress.start_time
+        
+        self.progress.print_status(f"✅ Processing completed!", "✅")
+        self.progress.print_status(f"👥 Researchers: {len(researchers_list)} processed", "👥")
+        self.progress.print_status(f"📋 Projects: {total_projects} extracted", "📋")
+        self.progress.print_status(f"🎯 FM Projects: {total_fm_projects} identified", "🎯")
+        self.progress.print_status(f"❌ Errors: {errors}", "❌" if errors > 0 else "✅")
+        self.progress.print_status(f"⏱️ Total time: {int(elapsed_total//60)}:{int(elapsed_total%60):02d}", "⏱️")
+        self.progress.print_status(f"💾 Data saved to 'cnpq_researchers.db'", "💾")
+        
         return researchers_list
     
     def close(self):
@@ -598,10 +1214,9 @@ def main():
     scraper = CNPqScraper(max_workers=8)  # Increased workers for better performance
     
     try:
-        print("🚀 Starting CNPq Lattes Scraper with improved performance!")
-        print(f"📋 Will search for {len(SEARCH_TERMS)} formal methods related terms")
-        print(f"🧵 Using {scraper.max_workers} threads for faster processing")
-        print("=" * 60)
+        print("🔬 CNPq Lattes Enhanced Research Aggregator v2.0")
+        print("   Comprehensive Formal Methods Research Intelligence")
+        print("=" * 70)
         
         # Use the new comprehensive scraping approach
         researchers = scraper.scrape_all(
@@ -611,36 +1226,56 @@ def main():
             use_threading=True
         )
         
-        print("\n" + "=" * 60)
-        print(f"✅ Scraping completed! Found and saved {len(researchers)} unique researchers.")
-        print("💾 Data saved to 'cnpq_researchers.db' SQLite database.")
-        print("\n📊 Quick stats:")
+        print("\n" + "=" * 70)
+        print("🎉 SCRAPING COMPLETED SUCCESSFULLY!")
+        print("=" * 70)
         
-        # Show some quick statistics
-        institutions = {}
-        search_terms_used = {}
+        # Quick final statistics
+        total_researchers = len(researchers)
         
-        for researcher in researchers:
-            # Count institutions
-            inst = researcher.get('institution', 'Unknown')
-            institutions[inst] = institutions.get(inst, 0) + 1
-            
-            # Count search terms
-            terms = researcher.get('search_term', '').split(', ')
-            for term in terms:
-                if term.strip():
-                    search_terms_used[term.strip()] = search_terms_used.get(term.strip(), 0) + 1
+        # Get database statistics
+        conn = sqlite3.connect('cnpq_researchers.db')
+        cursor = conn.cursor()
         
-        print(f"🏛️  Top institutions: {dict(list(institutions.items())[:3])}")
-        print(f"🔍 Search terms found: {len(search_terms_used)} different terms")
-        print("\n💡 Use 'uv run view-results' to explore the data!")
+        cursor.execute("SELECT COUNT(*) FROM projects")
+        total_projects = cursor.fetchone()[0]
+        
+        cursor.execute("SELECT COUNT(*) FROM projects WHERE is_formal_methods_related = 1")
+        fm_projects = cursor.fetchone()[0]
+        
+        cursor.execute("""
+            SELECT institution, COUNT(*) as count 
+            FROM researchers 
+            WHERE institution IS NOT NULL AND institution != ""
+            GROUP BY institution 
+            ORDER BY count DESC 
+            LIMIT 3
+        """)
+        top_institutions = cursor.fetchall()
+        
+        conn.close()
+        
+        print(f"📊 FINAL STATISTICS:")
+        print(f"   👥 Unique researchers: {total_researchers}")
+        print(f"   📋 Total projects: {total_projects}")
+        print(f"   🎯 Formal methods projects: {fm_projects} ({fm_projects/total_projects*100:.1f}%)" if total_projects > 0 else "   🎯 Formal methods projects: 0")
+        
+        if top_institutions:
+            print(f"   🏛️ Top institutions:")
+            for inst, count in top_institutions:
+                print(f"      • {inst}: {count} researchers")
+        
+        print(f"\n💡 Next steps:")
+        print(f"   🔍 Run: python view_detailed_results.py")
+        print(f"   📊 Explore your comprehensive formal methods research database!")
         
     except KeyboardInterrupt:
+        print("\n\n⚠️ SCRAPING INTERRUPTED")
+        print("Partial data may have been saved to the database.")
         logger.info("Scraping interrupted by user")
-        print("\n⚠️  Scraping was interrupted, but partial data may have been saved.")
     except Exception as e:
+        print(f"\n❌ ERROR OCCURRED: {e}")
         logger.error(f"Unexpected error: {e}")
-        print(f"\n❌ Error occurred: {e}")
     finally:
         scraper.close()
 
