@@ -1765,95 +1765,321 @@ class CNPqScraper:
         return details
     
     def extract_projects_from_summary(self, summary_text):
-        """Extract project information from the researcher's summary/bio"""
+        """Extract project information from researcher's summary using generic patterns for technology/computing"""
         projects = []
         
         try:
-            # Look for project mentions in the summary
-            # Common patterns: "Projeto X", "Coordenador do Projeto Y", etc.
+            # Enhanced patterns for detecting projects in technology/computing domain
             project_patterns = [
-                r'(?:Coordenador[^.]*do\s+)?Projeto\s+([^.,]+(?:Project|projeto)[^.,]*)',
-                r'(?:Coordenador[^.]*da\s+)?Cooperação\s+(?:entre\s+)?([^.,]+(?:e\s+[^.,]+)?)',
-                r'(?:financiado\s+)?(?:pela\s+)?([^.,]*(?:Comunidade Europeia|CNPq|CAPES|FAPESP)[^.,]*)',
+                # Direct project mentions - improved to avoid fragments
+                r'(?i)(?:coordenador|coordena|lidera|participa).*?(?:do\s+|da\s+)?projeto\s+(?:de\s+)?(?:pesquisa\s+)?(?:denominado\s+)?["\']?([^"\'.,;]+(?:projeto|project|pesquisa|research|sistema|system|desenvolvimento|development)[^"\'.,;]*)["\']?',
+                r'(?i)projeto\s+(?:de\s+)?(?:pesquisa\s+)?(?:denominado\s+)?["\']?([^"\'.,;]{20,150})["\']?',
+                r'(?i)(?:participa|atua|desenvolve).*?projeto\s+(?:de\s+)?["\']?([^"\'.,;]{15,100})["\']?',
+                
+                # Cooperation patterns - more specific
+                r'(?i)(?:cooperação|parceria|colaboração)\s+(?:com\s+)?(?:a\s+)?([A-Z][A-Za-z\s]{10,80}?)(?:\s+(?:para|sobre|em|no|na|do|da))',
+                r'(?i)(?:em\s+)?colaboração\s+com\s+([A-Z][^.,;]{10,80}?)(?:\s+(?:para|sobre|em|trabalha|desenvolve))',
+                
+                # Development/implementation projects - more specific
+                r'(?i)(?:desenvolvimento|implementação|criação|construção)\s+(?:de\s+|do\s+)?([^.,;]{20,100}?)(?:[.,;]|$)',
+                r'(?i)(?:developing|implementation|creating|building)\s+([^.,;]{20,100}?)(?:[.,;]|$)',
+                
+                # Research themes/topics - more focused
+                r'(?i)(?:pesquisa|research)\s+(?:em\s+|in\s+|sobre\s+|on\s+)?([^.,;]{15,80}(?:software|system|algorithm|network|data|artificial|machine|computer|computing|programming|development|technology|digital|information|cyber|security|database|web|mobile|cloud|sistemas|algoritmo|dados|inteligência|computação|tecnologia|segurança)[^.,;]{0,40})',
             ]
             
+            # Technology companies and institutions (for cooperation detection)
+            tech_companies = [
+                'Microsoft', 'Google', 'IBM', 'Oracle', 'SAP', 'Amazon', 'Facebook', 'Meta',
+                'Apple', 'Intel', 'NVIDIA', 'Samsung', 'Huawei', 'Siemens', 'Bosch',
+                'Motorola', 'Nokia', 'Ericsson', 'Cisco', 'VMware', 'Adobe', 'Salesforce',
+                'Embraer', 'Petrobras', 'Vale', 'Itaú', 'Bradesco', 'Banco do Brasil',
+                'TIM', 'Vivo', 'Claro', 'NET', 'Porto Seguro', 'Globo', 'Record'
+            ]
+            
+            # Funding agencies (Brazilian and international)
+            funding_agencies = [
+                'CNPq', 'CAPES', 'FAPESP', 'FAPERJ', 'FAPEMIG', 'FINEP', 'BNDES',
+                'European Commission', 'European Union', 'Comunidade Europeia', 'FP7', 'H2020',
+                'NSF', 'NIH', 'DARPA', 'NASA', 'IEEE', 'ACM'
+            ]
+            
+            # Extract projects using patterns
+            extracted_titles = set()  # Avoid duplicates
+            
             for pattern in project_patterns:
-                matches = re.finditer(pattern, summary_text, re.IGNORECASE)
+                matches = re.finditer(pattern, summary_text, re.IGNORECASE | re.MULTILINE)
                 for match in matches:
                     project_title = match.group(1).strip()
-                    if len(project_title) > 10:  # Only consider substantial project names
-                        project = {
-                            'title': project_title,
-                            'description': f"Extraído do resumo: {project_title}",
-                            'coordinator_name': "Extraído do resumo (possivelmente o próprio pesquisador)",
-                            'source': 'summary'
-                        }
+                    
+                    # Clean and validate the extracted title
+                    project_title = self.clean_project_title(project_title)
+                    
+                    if self.is_valid_project_title(project_title) and project_title not in extracted_titles:
+                        extracted_titles.add(project_title)
                         
-                        # Check if it's formal methods related
-                        project['is_formal_methods_related'] = self.is_formal_methods_related(
-                            project_title, project_title
-                        )
-                        
-                        # Extract concepts and tools
-                        concepts = self.identify_formal_methods_concepts(project_title)
-                        tools = self.identify_formal_methods_tools(project_title)
-                        industry = self.identify_industry_cooperation(project_title)
-                        
-                        if concepts:
-                            project['formal_methods_concepts'] = ', '.join(concepts)
-                        if tools:
-                            project['formal_methods_tools'] = ', '.join(tools)
-                        if industry:
-                            project['industry_cooperation'] = '; '.join(industry)
-                        
+                        # Create project object
+                        project = self.create_project_from_title(project_title, summary_text)
                         projects.append(project)
             
-            # Look for specific project mentions in Augusto's summary
-            if 'COMPASS' in summary_text:
-                compass_project = {
-                    'title': 'COMPASS (Comprehensive Modelling for Advanced Systems of Systems)',
-                    'start_date': '2011',
-                    'end_date': '2014',
-                    'description': 'Projeto financiado pela Comunidade Europeia, edital FP7',
-                    'funding_sources': 'Comunidade Europeia (FP7)',
-                    'coordinator_name': 'Augusto Cezar Alves Sampaio (Coordenador Brasileiro)',
-                    'is_formal_methods_related': True,
-                    'formal_methods_concepts': 'Model Checking, Formal Specification, System Modeling',
-                    'source': 'summary_specific'
-                }
-                projects.append(compass_project)
+            # Look for company cooperations
+            for company in tech_companies:
+                if re.search(rf'\b{re.escape(company)}\b', summary_text, re.IGNORECASE):
+                    # Try to extract more context about this cooperation
+                    cooperation_project = self.extract_company_cooperation(company, summary_text)
+                    if cooperation_project:
+                        projects.append(cooperation_project)
             
-            if 'Motorola' in summary_text:
-                motorola_project = {
-                    'title': 'Cooperação Motorola Mobility e CIn-UFPE',
-                    'start_date': '2002',
-                    'end_date': 'Atual',
-                    'status': 'Em andamento',
-                    'description': 'Cooperação com ênfase na geração automática de testes a partir de modelos formais de requisitos',
-                    'industry_cooperation': 'Motorola Mobility',
-                    'coordinator_name': 'Augusto Cezar Alves Sampaio',
-                    'is_formal_methods_related': True,
-                    'formal_methods_concepts': 'Model-Based Testing, Formal Specification',
-                    'source': 'summary_specific'
-                }
-                projects.append(motorola_project)
+            # Look for funded projects
+            for agency in funding_agencies:
+                if re.search(rf'\b{re.escape(agency)}\b', summary_text, re.IGNORECASE):
+                    funded_project = self.extract_funded_project(agency, summary_text)
+                    if funded_project:
+                        projects.append(funded_project)
             
-            if 'Embraer' in summary_text:
-                embraer_project = {
-                    'title': 'Cooperação com Embraer',
-                    'description': 'Tema de geração automática de testes a partir de modelos formais de requisitos',
-                    'industry_cooperation': 'Embraer',
-                    'coordinator_name': 'Augusto Cezar Alves Sampaio',
-                    'is_formal_methods_related': True,
-                    'formal_methods_concepts': 'Model-Based Testing, Formal Methods',
-                    'source': 'summary_specific'
-                }
-                projects.append(embraer_project)
+            # Extract dates and periods for all projects
+            for project in projects:
+                self.extract_project_dates(project, summary_text)
+            
+            # Remove duplicates based on title similarity
+            projects = self.deduplicate_projects(projects)
             
         except Exception as e:
             logger.error(f"Error extracting projects from summary: {e}")
         
         return projects
+    
+    def clean_project_title(self, title):
+        """Clean and normalize project title"""
+        if not title:
+            return ""
+        
+        # Remove common prefixes/suffixes
+        title = re.sub(r'^(?:do\s+|da\s+|de\s+|em\s+|no\s+|na\s+)', '', title, flags=re.IGNORECASE)
+        title = re.sub(r'(?:\s+do\s+|\s+da\s+|\s+de\s+)$', '', title, flags=re.IGNORECASE)
+        
+        # Remove quotes and extra whitespace
+        title = re.sub(r'^["\']|["\']$', '', title)
+        title = re.sub(r'\s+', ' ', title).strip()
+        
+        return title
+    
+    def is_valid_project_title(self, title):
+        """Check if extracted title is likely a valid project title"""
+        if not title or len(title) < 8 or len(title) > 200:  # Reduced minimum length
+            return False
+        
+        # Must contain at least one technology/computing related term OR formal methods term
+        tech_terms = [
+            'software', 'system', 'algorithm', 'network', 'data', 'artificial', 'machine',
+            'computer', 'computing', 'programming', 'development', 'technology', 'digital',
+            'information', 'cyber', 'security', 'database', 'web', 'mobile', 'cloud',
+            'internet', 'application', 'platform', 'framework', 'model', 'analysis',
+            'optimization', 'simulation', 'visualization', 'interface', 'processing',
+            'mining', 'learning', 'intelligence', 'automation', 'robotics', 'sensor',
+            'embedded', 'distributed', 'parallel', 'concurrent', 'real-time', 'IoT',
+            'blockchain', 'cryptocurrency', 'AR', 'VR', 'AI', 'ML', 'NLP', 'CV',
+            # Portuguese terms
+            'sistemas', 'algoritmo', 'redes', 'dados', 'inteligência', 'máquina',
+            'computação', 'programação', 'desenvolvimento', 'tecnologia', 'digital',
+            'informação', 'segurança', 'aplicação', 'plataforma', 'modelo', 'análise',
+            'otimização', 'simulação', 'visualização', 'processamento', 'mineração',
+            'aprendizado', 'automação', 'robótica', 'distribuído', 'paralelo', 'tempo real',
+            'protocolo', 'protocolos', 'protocol', 'protocols', 'criptografia', 'cryptography',
+            'malware', 'firewall', 'antivirus', 'blockchain', 'IoT', 'internet das coisas',
+            'cyber', 'cibernética', 'rede', 'redes', 'wireless', 'sem fio',
+            # Project-related terms
+            'projeto', 'project', 'pesquisa', 'research', 'desenvolvimento', 'cooperação',
+            'collaboration', 'sistema', 'protocolo', 'protocol', 'método', 'method'
+        ]
+        
+        return any(term.lower() in title.lower() for term in tech_terms)
+    
+    def create_project_from_title(self, title, summary_text):
+        """Create a project object from extracted title and context"""
+        project = {
+            'title': title,
+            'description': f"Projeto identificado no resumo do pesquisador: {title}",
+            'source': 'summary_generic',
+            'coordinator_name': "Identificado no resumo (possivelmente o próprio pesquisador)"
+        }
+        
+        # Analyze if it's formal methods related
+        project['is_formal_methods_related'] = self.is_formal_methods_related(title, title)
+        
+        # Extract concepts and tools
+        concepts = self.identify_formal_methods_concepts(title)
+        tools = self.identify_formal_methods_tools(title)
+        industry = self.identify_industry_cooperation(title)
+        
+        if concepts:
+            project['formal_methods_concepts'] = ', '.join(concepts)
+        if tools:
+            project['formal_methods_tools'] = ', '.join(tools)
+        if industry:
+            project['industry_cooperation'] = '; '.join(industry)
+        
+        return project
+    
+    def extract_company_cooperation(self, company, summary_text):
+        """Extract cooperation project with a specific company"""
+        # Look for context around the company mention
+        pattern = rf'([^.]*\b{re.escape(company)}\b[^.]*)'
+        match = re.search(pattern, summary_text, re.IGNORECASE)
+        
+        if match:
+            context = match.group(1).strip()
+            if len(context) > 20 and any(keyword in context.lower() for keyword in 
+                                       ['cooperação', 'colaboração', 'parceria', 'projeto', 'cooperation', 'collaboration']):
+                return {
+                    'title': f'Cooperação com {company}',
+                    'description': context,
+                    'industry_cooperation': company,
+                    'source': 'summary_cooperation',
+                    'coordinator_name': "Identificado no resumo"
+                }
+        return None
+    
+    def extract_funded_project(self, agency, summary_text):
+        """Extract project funded by a specific agency"""
+        # Look for context around the funding agency mention
+        pattern = rf'([^.]*\b{re.escape(agency)}\b[^.]*)'
+        match = re.search(pattern, summary_text, re.IGNORECASE)
+        
+        if match:
+            context = match.group(1).strip()
+            if len(context) > 20 and any(keyword in context.lower() for keyword in 
+                                       ['financiado', 'apoiado', 'projeto', 'pesquisa', 'funded', 'grant']):
+                return {
+                    'title': f'Projeto financiado pela {agency}',
+                    'description': context,
+                    'funding_sources': agency,
+                    'source': 'summary_funding',
+                    'coordinator_name': "Identificado no resumo"
+                }
+        return None
+    
+    def extract_project_dates(self, project, summary_text):
+        """Try to extract dates for a project from the summary"""
+        # Look for date patterns near the project title
+        title = project.get('title', '')
+        
+        # Find the project mention in the text
+        title_pos = summary_text.lower().find(title.lower())
+        if title_pos != -1:
+            # Look in a window around the title for dates
+            window_start = max(0, title_pos - 100)
+            window_end = min(len(summary_text), title_pos + len(title) + 100)
+            window = summary_text[window_start:window_end]
+            
+            # Date patterns
+            date_patterns = [
+                r'(\d{4})\s*[-–]\s*(\d{4})',  # 2020-2023
+                r'(\d{4})\s*[-–]\s*(?:atual|current|presente)',  # 2020-atual
+                r'(?:desde|from|starting)\s+(\d{4})',  # desde 2020
+                r'(\d{1,2})/(\d{4})\s*[-–]\s*(\d{1,2})/(\d{4})',  # MM/YYYY - MM/YYYY
+            ]
+            
+            for pattern in date_patterns:
+                match = re.search(pattern, window, re.IGNORECASE)
+                if match:
+                    groups = match.groups()
+                    if len(groups) >= 2:
+                        if 'atual' in match.group().lower() or 'current' in match.group().lower():
+                            project['start_date'] = groups[0]
+                            project['end_date'] = 'Atual'
+                            project['status'] = 'Em andamento'
+                        else:
+                            project['start_date'] = groups[0]
+                            project['end_date'] = groups[1] if len(groups) > 1 else None
+                            project['status'] = 'Concluído' if project.get('end_date') and project['end_date'] != 'Atual' else 'Em andamento'
+                    break
+    
+    def deduplicate_projects(self, projects):
+        """Remove duplicate projects based on title similarity and content"""
+        if not projects:
+            return projects
+        
+        unique_projects = []
+        
+        for project in projects:
+            title = project.get('title', '').strip()
+            if not title:
+                continue
+                
+            # Check if this project is too similar to any existing project
+            is_duplicate = False
+            
+            for existing_project in unique_projects:
+                existing_title = existing_project.get('title', '').strip()
+                
+                # Check for exact duplicates
+                if title.lower() == existing_title.lower():
+                    is_duplicate = True
+                    break
+                
+                # Check for substantial overlap (considering one title contained in another)
+                if len(title) >= 15 and len(existing_title) >= 15:
+                    # If one title is completely contained in the other, it's likely a duplicate
+                    if title.lower() in existing_title.lower() or existing_title.lower() in title.lower():
+                        # Keep the longer, more descriptive title
+                        if len(title) > len(existing_title):
+                            unique_projects.remove(existing_project)
+                            break  # Will add the current (longer) title
+                        else:
+                            is_duplicate = True
+                            break
+                
+                # Check for high word overlap
+                similarity = self.title_similarity(title, existing_title)
+                if similarity > 0.7:  # 70% similarity threshold
+                    # Keep the more descriptive title (longer or with more specific terms)
+                    if self.is_more_descriptive(title, existing_title):
+                        unique_projects.remove(existing_project)
+                        break  # Will add the current (more descriptive) title
+                    else:
+                        is_duplicate = True
+                        break
+            
+            if not is_duplicate:
+                unique_projects.append(project)
+        
+        return unique_projects
+    
+    def is_more_descriptive(self, title1, title2):
+        """Check if title1 is more descriptive than title2"""
+        # Longer titles are generally more descriptive
+        if len(title1) > len(title2) + 10:  # Significantly longer
+            return True
+        elif len(title2) > len(title1) + 10:
+            return False
+        
+        # Count technical terms
+        tech_terms = ['software', 'system', 'algorithm', 'network', 'data', 'artificial', 
+                     'machine', 'computer', 'computing', 'programming', 'development', 
+                     'technology', 'digital', 'information', 'cyber', 'security', 'database',
+                     'sistemas', 'algoritmo', 'dados', 'inteligência', 'computação', 'tecnologia']
+        
+        title1_tech_count = sum(1 for term in tech_terms if term in title1.lower())
+        title2_tech_count = sum(1 for term in tech_terms if term in title2.lower())
+        
+        return title1_tech_count > title2_tech_count
+    
+    def title_similarity(self, title1, title2):
+        """Calculate similarity between two titles (simple word overlap)"""
+        if not title1 or not title2:
+            return 0
+        
+        words1 = set(title1.lower().split())
+        words2 = set(title2.lower().split())
+        
+        if not words1 or not words2:
+            return 0
+        
+        intersection = words1.intersection(words2)
+        union = words1.union(words2)
+        
+        return len(intersection) / len(union) if union else 0
 
     def save_researchers_batch(self, researchers_data_list):
         """Save multiple researchers and their projects in a single transaction (much faster)"""
